@@ -24,6 +24,16 @@
     });
     document.body.appendChild(btn);
     sync();
+
+    // 返回主页按钮（仅注入按钮的页面=报告页才有；href相对路径兼容 file:// 与线上）
+    if (!document.querySelector('.home-btn')) {
+      var home = document.createElement('a');
+      home.className = 'home-btn';
+      home.href = '../index.html';
+      home.title = '返回主页';
+      home.textContent = '🏠';
+      document.body.appendChild(home);
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
