@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>2026 世界杯预测中心</title>
+<script>/* 提前应用主题，避免闪屏 */(function(){try{var t=localStorage.getItem('wc-theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
 <style>
 /* ===== 与预测报告统一的暗色风格 ===== */
 *{box-sizing:border-box;margin:0;padding:0}
@@ -85,9 +86,51 @@ a.fx-row:hover .fx-arrow{color:#e8b84b}
 /* ===== footer ===== */
 .footer{text-align:center;font-size:11px;color:#444;margin-top:34px;letter-spacing:.05em}
 .footer b{color:#e8b84b}
+
+/* ===== 主题切换按钮（右上角悬浮）===== */
+.theme-toggle{position:fixed;top:16px;right:16px;z-index:99;width:38px;height:38px;border-radius:50%;border:1px solid #2a2a2a;background:#161616;color:#e8b84b;font-size:17px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s,border-color .15s;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.theme-toggle:hover{transform:rotate(20deg) scale(1.08);border-color:rgba(232,184,75,.6)}
+
+/* ===== ☀️ 浅色主题覆盖 ===== */
+html[data-theme="light"] body{background:#f6f4ef;color:#3a3a3a}
+html[data-theme="light"] h1{color:#1a1a1a}
+html[data-theme="light"] .sub{color:#999}
+html[data-theme="light"] .section-title{color:#a07d1c}
+html[data-theme="light"] .section-title::after{background:#e4dfd3}
+html[data-theme="light"] .stat-card{background:#fff;border-color:#e6e1d6}
+html[data-theme="light"] .stat-num{color:#bf8c12}
+html[data-theme="light"] .stat-hint{color:#aaa}
+html[data-theme="light"] .results-line{background:#fbfaf7;border-color:#e9e4d9;color:#666}
+html[data-theme="light"] .tl-date{color:#1a1a1a;border-bottom-color:#ddd}
+html[data-theme="light"] .tl-date .badge.tmr{background:#e9e4d9;color:#a07d1c}
+html[data-theme="light"] .fx-row{background:#fff;border-color:#e6e1d6}
+html[data-theme="light"] .fx-time{color:#111}
+html[data-theme="light"] .fx-mid{border-left-color:#eee9de}
+html[data-theme="light"] .fx-team{color:#333}
+html[data-theme="light"] .fx-score{color:#bf8c12}
+html[data-theme="light"] .fx-score.na{color:#c8c2b4}
+html[data-theme="light"] .fx-status.s-exact{color:#0d9263}
+html[data-theme="light"] .fx-status.s-alt{color:#b8860b}
+html[data-theme="light"] .fx-status.s-direction{color:#3674ab}
+html[data-theme="light"] .fx-status.s-miss{color:#c84545}
+html[data-theme="light"] .fx-status.s-pending{color:#777}
+html[data-theme="light"] .fx-status.s-none{color:#b8b2a4}
+html[data-theme="light"] .fx-pred{color:#b8860b}
+html[data-theme="light"] .fx-arrow{color:#c8c2b4}
+html[data-theme="light"] .group-card{background:#fff;border-color:#e6e1d6}
+html[data-theme="light"] .group-name{color:#a07d1c;border-bottom-color:#eee9de}
+html[data-theme="light"] .group-team{color:#444}
+html[data-theme="light"] .group-team.hl{color:#111}
+html[data-theme="light"] .group-team.hl .gname{color:#b8860b}
+html[data-theme="light"] .group-team.tbd{color:#aaa}
+html[data-theme="light"] .footer{color:#999}
+html[data-theme="light"] .footer b{color:#a07d1c}
+html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;color:#b8860b;box-shadow:0 2px 8px rgba(0,0,0,.1)}
 </style>
 </head>
 <body>
+
+<button class="theme-toggle" id="themeToggle" title="切换白天/黑夜主题">🌙</button>
 
 <h1><span class="ball">⚽</span> 2026 世界杯预测中心</h1>
 <div class="sub">五维框架 · 每场赛前预测 · 美加墨三国 48 队 · 北京时间口径</div>
@@ -109,6 +152,20 @@ a.fx-row:hover .fx-arrow{color:#e8b84b}
 
 <script src="data.js"></script>
 <script>
+/* ============ 主题切换：🌙黑夜 / ☀️白天，localStorage 记忆 ============ */
+(function(){
+  var btn = document.getElementById('themeToggle');
+  function sync(){ btn.textContent = document.documentElement.getAttribute('data-theme')==='light' ? '☀️' : '🌙'; }
+  btn.addEventListener('click', function(){
+    var light = document.documentElement.getAttribute('data-theme')==='light';
+    if (light) document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme','light');
+    try{ localStorage.setItem('wc-theme', light ? 'dark' : 'light'); }catch(e){}
+    sync();
+  });
+  sync();
+})();
+
 /* ============ 渲染逻辑：全部数据来自 data.js，本文件无需改动 ============ */
 (function(){
   var M = WORLDCUP_DATA.matches.slice().sort(function(a,b){
