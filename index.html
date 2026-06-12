@@ -70,6 +70,18 @@ a.fx-row:hover .fx-arrow{color:#e8b84b}
   .fx-status{font-size:11px}
 }
 
+/* ===== 淘汰赛占位 ===== */
+.ko-wrap{display:flex;flex-direction:column;gap:7px}
+.ko-stage{display:flex;align-items:center;gap:12px;background:rgba(17,17,17,.6);border:1px dashed #2a2a2a;border-radius:10px;padding:11px 16px;color:#777}
+.ko-stage .ko-icon{font-size:15px}
+.ko-stage .ko-name{font-size:13px;font-weight:700;color:#999;min-width:130px}
+.ko-stage .ko-date{font-size:11px;color:#555;font-variant-numeric:tabular-nums}
+.ko-stage .ko-hint{font-size:11px;color:#444;margin-left:auto;text-align:right}
+.ko-final{border-style:solid;border-color:rgba(232,184,75,.35);background:rgba(232,184,75,.04)}
+.ko-final .ko-name{color:#e8b84b}
+.ko-note{font-size:11px;color:#555;text-align:center;padding:6px 0 0}
+@media(max-width:560px){.ko-stage{flex-wrap:wrap;gap:6px}.ko-stage .ko-hint{margin-left:0;width:100%;text-align:left}}
+
 /* ===== 小组分组（降级到底部，仅队伍列表） ===== */
 .groups-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 @media(max-width:860px){.groups-grid{grid-template-columns:repeat(3,1fr)}}
@@ -117,6 +129,13 @@ html[data-theme="light"] .fx-status.s-pending{color:#777}
 html[data-theme="light"] .fx-status.s-none{color:#b8b2a4}
 html[data-theme="light"] .fx-pred{color:#b8860b}
 html[data-theme="light"] .fx-arrow{color:#c8c2b4}
+html[data-theme="light"] .ko-stage{background:rgba(255,255,255,.7);border-color:#ddd6c5;color:#999}
+html[data-theme="light"] .ko-stage .ko-name{color:#666}
+html[data-theme="light"] .ko-stage .ko-date{color:#999}
+html[data-theme="light"] .ko-stage .ko-hint{color:#aaa}
+html[data-theme="light"] .ko-final{border-color:rgba(160,125,28,.4);background:#fcf7ea}
+html[data-theme="light"] .ko-final .ko-name{color:#a07d1c}
+html[data-theme="light"] .ko-note{color:#aaa}
 html[data-theme="light"] .group-card{background:#fff;border-color:#e6e1d6}
 html[data-theme="light"] .group-name{color:#a07d1c;border-bottom-color:#eee9de}
 html[data-theme="light"] .group-team{color:#444}
@@ -143,6 +162,18 @@ html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;colo
 <!-- 赛程时间轴（主体） -->
 <div class="section-title">📅 小组赛赛程时间轴（全 72 场 · 北京时间）· 已预测场次可点击查看报告</div>
 <div id="timeline"></div>
+
+<!-- 淘汰赛占位（对阵待小组赛结束揭晓） -->
+<div class="section-title">🏆 淘汰赛阶段 · 敬请期待</div>
+<div class="ko-wrap">
+  <div class="ko-stage"><span class="ko-icon">🔒</span><span class="ko-name">1/16决赛（32强）</span><span class="ko-date">约6月29日~7月4日</span><span class="ko-hint">16场 · 对阵待小组赛揭晓</span></div>
+  <div class="ko-stage"><span class="ko-icon">🔒</span><span class="ko-name">1/8决赛（16强）</span><span class="ko-date">约7月5日~7月8日</span><span class="ko-hint">8场</span></div>
+  <div class="ko-stage"><span class="ko-icon">🔒</span><span class="ko-name">1/4决赛（8强）</span><span class="ko-date">约7月10日~7月12日</span><span class="ko-hint">4场</span></div>
+  <div class="ko-stage"><span class="ko-icon">🔒</span><span class="ko-name">半决赛</span><span class="ko-date">约7月15日~7月16日</span><span class="ko-hint">2场</span></div>
+  <div class="ko-stage"><span class="ko-icon">🔒</span><span class="ko-name">季军赛</span><span class="ko-date">约7月19日</span><span class="ko-hint">1场</span></div>
+  <div class="ko-stage ko-final"><span class="ko-icon">👑</span><span class="ko-name">决赛</span><span class="ko-date">约7月20日</span><span class="ko-hint">新泽西 MetLife球场 · 五维预测必到场</span></div>
+  <div class="ko-note">⏳ 对阵与精确开球时间（北京时间）将在小组赛结束后自动填入本时间轴 · 敬请期待</div>
+</div>
 
 <!-- 小组分组（底部速查） -->
 <div class="section-title">🌍 小组赛分组速查（A-L · 48强）· 金色 = 已出过预测</div>

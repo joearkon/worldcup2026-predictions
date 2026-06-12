@@ -5,7 +5,7 @@ set -e
 cd "$(dirname "$0")"
 rm -rf .deploy-dist
 mkdir -p .deploy-dist/reports
-cp index.html data.js .deploy-dist/
+cp index.html data.js theme.css theme.js .deploy-dist/
 cp reports/*.html .deploy-dist/reports/
 wrangler pages deploy .deploy-dist --project-name=worldcup2026 --branch=main --commit-dirty=true
 rm -rf .deploy-dist
