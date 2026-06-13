@@ -102,17 +102,24 @@ a.fx-row:hover .fx-arrow{color:#e8b84b}
 @media(max-width:560px){.ko-stage{flex-wrap:wrap;gap:6px}.ko-stage .ko-hint{margin-left:0;width:100%;text-align:left}}
 
 /* ===== 小组分组（降级到底部，仅队伍列表） ===== */
-.groups-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-@media(max-width:860px){.groups-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:640px){.groups-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:400px){.groups-grid{grid-template-columns:1fr}}
+.groups-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+@media(max-width:340px){.groups-grid{grid-template-columns:1fr}}
 .group-card{background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:12px 14px}
-.group-name{font-size:12px;font-weight:800;color:#e8b84b;letter-spacing:.08em;margin-bottom:8px;border-bottom:1px solid #1e1e1e;padding-bottom:6px}
-.group-team{display:flex;align-items:center;gap:8px;font-size:13px;color:#bbb;padding:3px 0}
-.group-team .gflag{font-size:16px;width:22px;text-align:center}
-.group-team.hl{color:#fff;font-weight:700}
-.group-team.hl .gname{color:#e8b84b}
-.group-team.tbd{color:#555;font-style:italic}
+.group-name{font-size:12px;font-weight:800;color:#e8b84b;letter-spacing:.08em;margin-bottom:6px;border-bottom:1px solid #1e1e1e;padding-bottom:6px}
+.gnote{font-size:10px;color:#555;margin:-4px 0 12px;line-height:1.6}
+table.stand{width:100%;border-collapse:collapse;font-size:12px}
+table.stand th{font-size:10px;color:#666;font-weight:600;text-align:center;padding:3px 1px}
+table.stand th.t{text-align:left;padding-left:3px}
+table.stand td{text-align:center;padding:4px 1px;color:#bbb;font-variant-numeric:tabular-nums}
+table.stand td.t{text-align:left;color:#ddd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}
+table.stand tbody tr{border-top:1px solid rgba(255,255,255,.05)}
+table.stand td.pts{color:#e8b84b;font-weight:800}
+.st-row .rk{display:inline-block;width:13px;color:#555;font-size:10px;text-align:center;margin-right:3px}
+.st-row .gflag{font-size:14px;margin-right:5px}
+.st-row .gname{font-size:12px}
+.st-row.qual .rk{color:#2ecc8f;font-weight:800}
+.st-row.qual td.t{box-shadow:inset 2px 0 0 #2ecc8f}
+.st-row.hl .gname{color:#e8b84b;font-weight:700}
 
 /* ===== footer ===== */
 .footer{text-align:center;font-size:11px;color:#444;margin-top:34px;letter-spacing:.05em}
@@ -171,10 +178,16 @@ html[data-theme="light"] .ko-final .ko-name{color:#a07d1c}
 html[data-theme="light"] .ko-note{color:#aaa}
 html[data-theme="light"] .group-card{background:#fff;border-color:#e6e1d6}
 html[data-theme="light"] .group-name{color:#a07d1c;border-bottom-color:#eee9de}
-html[data-theme="light"] .group-team{color:#444}
-html[data-theme="light"] .group-team.hl{color:#111}
-html[data-theme="light"] .group-team.hl .gname{color:#b8860b}
-html[data-theme="light"] .group-team.tbd{color:#aaa}
+html[data-theme="light"] .gnote{color:#aaa}
+html[data-theme="light"] table.stand th{color:#999}
+html[data-theme="light"] table.stand td{color:#555}
+html[data-theme="light"] table.stand td.t{color:#333}
+html[data-theme="light"] table.stand tbody tr{border-top-color:#eee9de}
+html[data-theme="light"] table.stand td.pts{color:#bf8c12}
+html[data-theme="light"] .st-row .rk{color:#bbb}
+html[data-theme="light"] .st-row.qual .rk{color:#0d9263}
+html[data-theme="light"] .st-row.qual td.t{box-shadow:inset 2px 0 0 #0d9263}
+html[data-theme="light"] .st-row.hl .gname{color:#b8860b}
 html[data-theme="light"] .footer{color:#999}
 html[data-theme="light"] .footer b{color:#a07d1c}
 html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;color:#b8860b;box-shadow:0 2px 8px rgba(0,0,0,.1)}
@@ -208,8 +221,9 @@ html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;colo
   <div class="ko-note">⏳ 对阵与精确开球时间（北京时间）将在小组赛结束后自动填入本时间轴 · 敬请期待</div>
 </div>
 
-<!-- 小组分组（底部速查） -->
-<div class="section-title">🌍 小组赛分组速查（A-L · 48强）· 金色 = 已出过预测</div>
+<!-- 小组积分榜（实时按已完赛结果计算） -->
+<div class="section-title">🌍 小组赛积分榜 · 实时按已完赛结果计算</div>
+<div class="gnote">列：赛=场次·胜·平·负·净=净胜球·分=积分 ｜ 每组前 2 名出线（绿色）｜ 同分排序按 积分→净胜球→进球数；相互交锋（H2H）等细则请对照赛果与复盘台账自行判断 ｜ 金色队名=已出过预测</div>
 <div class="groups-grid" id="groupsGrid"></div>
 
 <div class="footer">⚽ 2026 FIFA World Cup 预测中心 · 娱乐向，不构成投注建议 · powered by <b>坤桑</b></div>
@@ -424,18 +438,56 @@ html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;colo
     if (el) setTimeout(function(){ el.scrollIntoView({block:"start"}); }, 0);
   }
 
-  /* ---- 3. 小组卡片（底部速查：仅队伍列表 + 已预测高亮） ---- */
+  /* ---- 3. 小组积分榜（从已完赛结果实时计算） ---- */
   var predicted = {};
   M.forEach(function(m){ predicted[m.home.name]=1; predicted[m.away.name]=1; });
 
+  // 初始化每队积分行
+  var stand = {};
+  WORLDCUP_DATA.groups.forEach(function(g){ g.teams.forEach(function(t){
+    if (t.name !== "待确认") stand[t.name] = { flag:t.flag, P:0,W:0,D:0,L:0,GF:0,GA:0 };
+  }); });
+
+  // 遍历全部 72 场 fixtures（每场唯一，天然去重），逐场取结果累加
+  // 结果优先取 matches 里的 actual（站在 fixture.home 视角，必要时翻转），其次取 fixture.score
+  F.forEach(function(f){
+    var res = null;
+    var hit = findMatch(f);
+    if (hit && hit.m && hit.m.actual){
+      var sc = parseScore(hit.m.actual);
+      if (sc) res = hit.flipped ? [ +sc[1], +sc[0] ] : [ +sc[0], +sc[1] ];
+    }
+    if (!res && f.score && f.score.length === 2) res = [ +f.score[0], +f.score[1] ];
+    if (!res) return;
+    var H = stand[f.home.name], A = stand[f.away.name];
+    if (!H || !A) return;
+    H.P++; A.P++; H.GF+=res[0]; H.GA+=res[1]; A.GF+=res[1]; A.GA+=res[0];
+    if (res[0] > res[1]) { H.W++; A.L++; }
+    else if (res[0] < res[1]) { H.L++; A.W++; }
+    else { H.D++; A.D++; }
+  });
+
+  function ptsOf(s){ return s.W*3 + s.D; }
+  function gdOf(s){ return s.GF - s.GA; }
+
   document.getElementById("groupsGrid").innerHTML = WORLDCUP_DATA.groups.map(function(g){
-    var rows = g.teams.map(function(t){
-      var cls = "group-team";
-      if (t.name === "待确认") cls += " tbd";
-      else if (predicted[t.name]) cls += " hl";
-      return '<div class="'+cls+'"><span class="gflag">'+t.flag+'</span><span class="gname">'+t.name+'</span></div>';
-    }).join("");
-    return '<div class="group-card"><div class="group-name">'+g.name+' 组</div>'+rows+'</div>';
+    var rows = g.teams.filter(function(t){ return t.name !== "待确认"; })
+      .map(function(t){ var s = stand[t.name]; s.name = t.name; return s; })
+      .sort(function(a,b){
+        return ptsOf(b)-ptsOf(a) || gdOf(b)-gdOf(a) || b.GF-a.GF || (a.name < b.name ? -1 : 1);
+      })
+      .map(function(s, idx){
+        var cls = "st-row" + (predicted[s.name] ? " hl" : "") + (idx < 2 ? " qual" : "");
+        var d = gdOf(s);
+        return '<tr class="'+cls+'">'+
+          '<td class="t"><span class="rk">'+(idx+1)+'</span><span class="gflag">'+s.flag+'</span><span class="gname">'+esc(s.name)+'</span></td>'+
+          '<td>'+s.P+'</td><td>'+s.W+'</td><td>'+s.D+'</td><td>'+s.L+'</td>'+
+          '<td>'+(d>0?"+":"")+d+'</td><td class="pts">'+ptsOf(s)+'</td>'+
+          '</tr>';
+      }).join("");
+    return '<div class="group-card"><div class="group-name">'+g.name+' 组</div>'+
+      '<table class="stand"><thead><tr><th class="t">队</th><th>赛</th><th>胜</th><th>平</th><th>负</th><th>净</th><th>分</th></tr></thead>'+
+      '<tbody>'+rows+'</tbody></table></div>';
   }).join("");
 })();
 </script>
