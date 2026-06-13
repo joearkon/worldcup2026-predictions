@@ -59,6 +59,7 @@ a.fx-row:hover .fx-arrow{color:#e8b84b}
 .fx-status.s-pending{color:#aaa}
 .fx-status.s-none{color:#555;font-weight:400}
 .fx-pred{font-size:10px;color:#e8b84b;white-space:nowrap}
+.fx-sub{font-size:10px;color:#5a8abf;white-space:nowrap}
 .fx-arrow{font-size:10px;color:#444;white-space:nowrap;transition:color .15s}
 @media(max-width:560px){
   .fx-row{gap:10px;padding:9px 10px}
@@ -128,6 +129,7 @@ html[data-theme="light"] .fx-status.s-miss{color:#c84545}
 html[data-theme="light"] .fx-status.s-pending{color:#777}
 html[data-theme="light"] .fx-status.s-none{color:#b8b2a4}
 html[data-theme="light"] .fx-pred{color:#b8860b}
+html[data-theme="light"] .fx-sub{color:#3674ab}
 html[data-theme="light"] .fx-arrow{color:#c8c2b4}
 html[data-theme="light"] .ko-stage{background:rgba(255,255,255,.7);border-color:#ddd6c5;color:#999}
 html[data-theme="light"] .ko-stage .ko-name{color:#666}
@@ -237,7 +239,10 @@ html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;colo
   var exact = M.filter(function(m){return m.status==="exact";}).length;
   var alt   = M.filter(function(m){return m.status==="alt";}).length;
   var settled = M.filter(function(m){return m.status!=="pending";});
-  // 方向命中口径：已开赛场次中，精确/次选/方向任一档命中即算方向对
+  // 比分命中口径（核心，比分为王）：预测比分与实际完全一致 —— 主预测(精确)或次选命中才算
+  var scoreHit = exact + alt;
+  var scoreRate = settled.length ? Math.round(scoreHit/settled.length*100) : 0;
+  // 方向命中口径（辅助）：胜平负方向对即可，精确/次选/方向任一档都算方向对
   var dirHit = settled.filter(function(m){
     return m.status==="exact"||m.status==="alt"||m.status==="direction";
   }).length;
@@ -246,9 +251,9 @@ html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;colo
 
   document.getElementById("statsGrid").innerHTML =
     statCard(total, "已预测场次", settled.length+" 场已开赛 / "+(total-settled.length)+" 场待验证") +
-    statCard(exact, "精确命中", "比分完全一致") +
-    statCard(alt, "次选命中", "次选比分命中") +
-    statCard(dirRate+"<small>%</small>", "方向命中率", "已开赛 "+settled.length+" 场中 "+dirHit+" 场胜平负方向正确") +
+    statCard(scoreRate+"<small>%</small>", "比分命中率", "已开赛 "+settled.length+" 场中 "+scoreHit+" 场比分完全命中 · 比分为王") +
+    statCard(dirRate+"<small>%</small>", "方向命中率", settled.length+" 场中 "+dirHit+" 场胜平负方向对（含比分未中）") +
+    statCard(exact+" <small>/</small> "+alt, "精确 / 次选", "主预测全中 "+exact+" 场 / 次选命中 "+alt+" 场") +
     statCard(covered+"<small>/72</small>", "小组赛覆盖", "已对 "+covered+" 场小组赛出具预测");
 
   function statCard(num,label,hint){
@@ -313,6 +318,9 @@ html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;colo
         if (m.status === "pending"){
           var ps = parseScore(m.mainPred);
           rightHtml += '<br><span class="fx-pred">预测 '+esc(ps ? (hit.flipped ? ps[1]+"-"+ps[0] : ps[0]+"-"+ps[1]) : m.mainPred)+'</span>';
+        }
+        if (m.status === "direction"){
+          rightHtml += '<br><span class="fx-sub">比分未中</span>';
         }
         if (m.report) rightHtml += '<br><span class="fx-arrow">报告 →</span>';
       }
