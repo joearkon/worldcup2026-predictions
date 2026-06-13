@@ -24,8 +24,26 @@ h1 .ball{font-size:22px}
 .stat-num small{font-size:16px}
 .stat-label{font-size:11px;color:#777;margin-top:4px}
 .stat-hint{font-size:10px;color:#444;margin-top:2px}
-.results-line{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:8px;padding:10px 14px;margin-top:10px;font-size:12px;color:#999;display:flex;flex-wrap:wrap;gap:6px 18px}
-.results-line span{white-space:nowrap}
+.results-line{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:8px;padding:12px 14px;margin-top:10px}
+.rl-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.rl-title{font-size:12px;font-weight:800;color:#e8b84b;letter-spacing:.04em}
+.rl-title small{color:#777;font-weight:600}
+.rl-toggle{font-size:11px;font-weight:700;color:#5a8abf;cursor:pointer;user-select:none;white-space:nowrap;border:1px solid rgba(90,138,191,.4);border-radius:5px;padding:2px 9px;background:rgba(30,60,130,.12)}
+.rl-toggle:hover{border-color:rgba(90,138,191,.7)}
+.rl-item{padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.rl-item:last-child{border-bottom:none}
+.rl-list:not(.expanded) .rl-item.extra{display:none}
+.rl-l1{font-size:12.5px;color:#ddd;font-weight:700}
+.rl-l1 .ic{margin-right:5px}
+.rl-l1 .sc{color:#e8b84b;font-variant-numeric:tabular-nums;margin:0 5px}
+.rl-l2{font-size:11px;color:#888;margin-top:2px;font-variant-numeric:tabular-nums}
+.rl-l2 .st{font-weight:700;margin-left:5px}
+.rl-l2 .st.s-exact{color:#2ecc8f}
+.rl-l2 .st.s-alt{color:#e8b84b}
+.rl-l2 .st.s-direction{color:#5a8abf}
+.rl-l2 .st.s-miss{color:#e06c6c}
+.rl-empty{font-size:12px;color:#777}
+.rl-foot{font-size:10px;color:#444;margin-top:8px}
 
 /* ===== 赛程时间轴（主体） ===== */
 .tl-day{margin-bottom:18px}
@@ -114,6 +132,19 @@ html[data-theme="light"] .stat-card{background:#fff;border-color:#e6e1d6}
 html[data-theme="light"] .stat-num{color:#bf8c12}
 html[data-theme="light"] .stat-hint{color:#aaa}
 html[data-theme="light"] .results-line{background:#fbfaf7;border-color:#e9e4d9;color:#666}
+html[data-theme="light"] .rl-title{color:#a07d1c}
+html[data-theme="light"] .rl-title small{color:#999}
+html[data-theme="light"] .rl-toggle{color:#3674ab;border-color:#cdd8e6;background:#eef3fa}
+html[data-theme="light"] .rl-item{border-bottom-color:#eee9de}
+html[data-theme="light"] .rl-l1{color:#333}
+html[data-theme="light"] .rl-l1 .sc{color:#bf8c12}
+html[data-theme="light"] .rl-l2{color:#999}
+html[data-theme="light"] .rl-l2 .st.s-exact{color:#0d9263}
+html[data-theme="light"] .rl-l2 .st.s-alt{color:#b8860b}
+html[data-theme="light"] .rl-l2 .st.s-direction{color:#3674ab}
+html[data-theme="light"] .rl-l2 .st.s-miss{color:#c84545}
+html[data-theme="light"] .rl-empty{color:#999}
+html[data-theme="light"] .rl-foot{color:#aaa}
 html[data-theme="light"] .tl-date{color:#1a1a1a;border-bottom-color:#ddd}
 html[data-theme="light"] .tl-date .badge.tmr{background:#e9e4d9;color:#a07d1c}
 html[data-theme="light"] .fx-row{background:#fff;border-color:#e6e1d6}
@@ -262,11 +293,47 @@ html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;colo
            '<div class="stat-hint">'+hint+'</div></div>';
   }
 
-  /* 每场简要结果一行小字（按时间正序展示更直观） */
-  document.getElementById("resultsLine").innerHTML = M.slice().reverse().map(function(m){
-    var r = m.actual ? ("实际 "+m.actual) : "待赛";
-    return "<span>"+ICON[m.status]+" "+m.home.name+" vs "+m.away.name+"（预测 "+m.mainPred+" · "+r+"）</span>";
-  }).join("");
+  /* ---- 战绩流水：只显示已开赛场次（track record），最近在前，超出折叠 ---- */
+  var SHORT_TXT = { exact:"精确命中", alt:"次选命中", direction:"方向命中", miss:"未命中" };
+  var COLLAPSE_N = 6;                         // 默认显示最近几场
+  // settled 来自上方，M 已按 sortKey 时间倒序 → settled 天然最近在前
+  function scoreOnly(s){ var p = parseScore(s); return p ? p[0]+"-"+p[1] : (s||"—"); }
+
+  if (!settled.length){
+    document.getElementById("resultsLine").innerHTML =
+      '<div class="rl-empty">⏳ 还没有已开赛的场次，赛果出来后这里会出现战绩流水；预测见下方时间轴。</div>';
+  } else {
+    var hasMore = settled.length > COLLAPSE_N;
+    var rlItems = settled.map(function(m, i){
+      var sc = parseScore(m.actual) || ["?","?"];
+      var stTxt = SHORT_TXT[m.status] || "";
+      var extra = (i >= COLLAPSE_N) ? " extra" : "";
+      return '<div class="rl-item'+extra+'">'+
+        '<div class="rl-l1"><span class="ic">'+ICON[m.status]+'</span>'+
+          esc(m.home.name)+'<span class="sc">'+sc[0]+'-'+sc[1]+'</span>'+esc(m.away.name)+'</div>'+
+        '<div class="rl-l2">预测 '+esc(scoreOnly(m.mainPred))+' / 次选 '+esc(scoreOnly(m.altPred))+
+          ' / 实际 '+sc[0]+'-'+sc[1]+'<span class="st s-'+m.status+'">· '+stTxt+'</span></div>'+
+        '</div>';
+    }).join("");
+
+    var rlHead = '<div class="rl-head"><div class="rl-title">🏆 战绩流水 '+
+      '<small>（已开赛 '+settled.length+' 场 · 比分命中率 '+scoreRate+'%）</small></div>'+
+      (hasMore ? '<div class="rl-toggle" id="rlToggle">展开全部 '+settled.length+' 场 ▾</div>' : '')+
+      '</div>';
+
+    document.getElementById("resultsLine").innerHTML =
+      rlHead + '<div class="rl-list" id="rlList">'+rlItems+'</div>'+
+      (hasMore ? '<div class="rl-foot">默认只列最近 '+COLLAPSE_N+' 场，待赛场次见下方时间轴</div>'
+               : '<div class="rl-foot">待赛场次见下方时间轴</div>');
+
+    if (hasMore){
+      var rlTg = document.getElementById("rlToggle"), rlList = document.getElementById("rlList");
+      rlTg.addEventListener("click", function(){
+        var open = rlList.classList.toggle("expanded");
+        rlTg.textContent = open ? "收起 ▴" : ("展开全部 "+settled.length+" 场 ▾");
+      });
+    }
+  }
 
   /* ---- 2. 赛程时间轴（主体） ---- */
   var WEEK = ["周日","周一","周二","周三","周四","周五","周六"];
