@@ -55,10 +55,10 @@ const WORLDCUP_DATA = {
       away: { flag: "🇵🇾", name: "巴拉圭" },
       mainPred: "2-1 美国",
       altPred: "1-0 美国",
-      actual: null,
-      status: "pending",
+      actual: "3-0 美国胜",
+      status: "direction",
       report: "世界杯小组赛预测_美国vs巴拉圭.html",
-      note: "东道主首秀 · 洛杉矶SoFi体育场 · 巴拉圭核心恩西索伤缺"
+      note: "方向命中：美国胜对了，比分偏保守。巴博士乌龙(7')+巴洛贡梅开二度(31'/45+5')，半场3-0杀死比赛"
     },
     {
       date: "2026-06-13 03:00（北京时间）",
@@ -68,10 +68,10 @@ const WORLDCUP_DATA = {
       away: { flag: "🇧🇦", name: "波黑" },
       mainPred: "1-0 加拿大",
       altPred: "1-1",
-      actual: null,
-      status: "pending",
+      actual: "1-1 平",
+      status: "alt",
       report: "世界杯小组赛预测_加拿大vs波黑.html",
-      note: "东道主首秀 · 多伦多"
+      note: "次选1-1命中：卢基奇首球波黑半场领先，替补拉林78'扳平，加拿大队史世界杯首分"
     },
     {
       date: "2026-06-12（北京时间）",
