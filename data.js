@@ -48,6 +48,58 @@ const WORLDCUP_DATA = {
   /* ---------- 赛事预测记录（新比赛往最前面加） ---------- */
   matches: [
     {
+      date: "2026-06-14 12:00（北京时间）",
+      sortKey: "2026-06-14 12:00",
+      group: "D组",
+      home: { flag: "🇦🇺", name: "澳大利亚" },
+      away: { flag: "🇹🇷", name: "土耳其" },
+      mainPred: "1-2 土耳其",
+      altPred: "1-1",
+      actual: null,
+      status: "pending",
+      report: "世界杯小组赛预测_澳大利亚vs土耳其.html",
+      note: "温哥华BC Place · 土耳其黄金一代五连胜 vs 澳式铁桶，冷门系数最高的一场"
+    },
+    {
+      date: "2026-06-14 09:00（北京时间）",
+      sortKey: "2026-06-14 09:00",
+      group: "C组",
+      home: { flag: "🇭🇹", name: "海地" },
+      away: { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "苏格兰" },
+      mainPred: "0-1 苏格兰",
+      altPred: "1-1",
+      actual: null,
+      status: "pending",
+      report: "世界杯小组赛预测_海地vs苏格兰.html",
+      note: "波士顿Gillette · 苏格兰背负出线魔咒，海地52年重返+加勒比准主场声浪"
+    },
+    {
+      date: "2026-06-14 06:00（北京时间）",
+      sortKey: "2026-06-14 06:00",
+      group: "C组",
+      home: { flag: "🇧🇷", name: "巴西" },
+      away: { flag: "🇲🇦", name: "摩洛哥" },
+      mainPred: "2-1 巴西",
+      altPred: "2-0 巴西",
+      actual: null,
+      status: "pending",
+      report: "世界杯小组赛预测_巴西vs摩洛哥.html",
+      note: "新泽西MetLife重头戏 · 摩洛哥阿圭尔德伤缺(残阵→大球试验场)，2023曾2-1掀翻巴西"
+    },
+    {
+      date: "2026-06-14 03:00（北京时间）",
+      sortKey: "2026-06-14 03:00",
+      group: "B组",
+      home: { flag: "🇶🇦", name: "卡塔尔" },
+      away: { flag: "🇨🇭", name: "瑞士" },
+      mainPred: "0-2 瑞士",
+      altPred: "0-1 瑞士",
+      actual: null,
+      status: "pending",
+      report: "世界杯小组赛预测_卡塔尔vs瑞士.html",
+      note: "湾区Levi's · 瑞士-334大热控制局，周日四场最一边倒盘口"
+    },
+    {
       date: "2026-06-13 09:00（北京时间）",
       sortKey: "2026-06-13 09:00",
       group: "D组",
