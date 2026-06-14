@@ -1,0 +1,132 @@
+{
+  "_schema": "世界杯赛后技术统计数据中心 · 真相源(source of truth)。每场赛后录入一条;高阶数据(控球/射正/xG)只录可核实的,未知填 null 并在 _gaps 标注,严禁编造。stats 数组索引 0=主队 1=客队。",
+  "_fields": {
+    "ft": "全场比分 [主,客]",
+    "ht": "半场比分 [主,客],未知为 null",
+    "goals": "进球列表 {team,scorer,min,type}; type: open(运动战)/pk(点球)/og(乌龙)/fk(任意球)/header(头球)/gt(垃圾时间)",
+    "stats": "{poss控球%, shots射门, sot射正, corners角球, xg预期进球} 各为 [主,客]",
+    "absences": "各队赛前重大缺阵(伤停/停赛)",
+    "our_pred": "我方预测 {main主, alt次选, status: exact/alt/direction/miss}",
+    "tags": "可复用的球队/规律标签",
+    "lesson": "本场对预测框架的一句话教训"
+  },
+  "_updated": "2026-06-14",
+  "_round1_pending": ["澳大利亚vs土耳其(6/14 12:00,已预测1-2土)"],
+  "matches": [
+    {
+      "id": "20260614-HAI-SCO",
+      "date": "2026-06-14", "group": "C", "round": 1,
+      "home": "海地", "away": "苏格兰",
+      "ft": [0, 1], "ht": [0, 1],
+      "goals": [
+        { "team": "苏格兰", "scorer": "麦金", "min": 28, "type": "open" }
+      ],
+      "stats": { "poss": [56, 44], "shots": [null, null], "sot": [2, 2], "corners": [null, null], "xg": [null, null] },
+      "absences": { "苏格兰": ["吉尔莫(膝,整届报销)", "麦肯纳(小腿)"] },
+      "our_pred": { "main": "0-1 苏格兰", "alt": "1-1", "status": "exact" },
+      "tags": ["稳健0-1小胜验证", "苏格兰首战拉胯魔咒未应验(这次拿下)", "麦金抢点补射(二点球)", "海地控球占优但缺转化"],
+      "lesson": "主预测0-1精确命中。赛前担心的'苏格兰出线魔咒/首战拉胯'这次没应验,务实小胜剧本走通;海地控球56%占优却射正仅2、转化不足。",
+      "_gaps": ["海地/苏格兰射门数、xG待补"]
+    },
+    {
+      "id": "20260612-MEX-RSA",
+      "date": "2026-06-12", "group": "A", "round": 1, "flag": "揭幕战",
+      "home": "墨西哥", "away": "南非",
+      "ft": [2, 0], "ht": [0, 0],
+      "goals": [
+        { "team": "墨西哥", "scorer": null, "min": null, "type": "open" },
+        { "team": "墨西哥", "scorer": null, "min": null, "type": "open" }
+      ],
+      "stats": { "poss": [null, null], "shots": [null, null], "sot": [null, null], "corners": [null, null], "xg": [null, null] },
+      "absences": {},
+      "our_pred": { "main": "2-0 墨西哥", "alt": "2-1 墨西哥", "status": "exact" },
+      "tags": ["东道主揭幕战赢球规律", "高原体能差60-75'兑现", "南非锋无力"],
+      "lesson": "三条信号叠加给出干净2-0,剧本完全走通(上半场胶着→南非体能崩点→连下两城)。精确命中。",
+      "_gaps": ["进球人/时间待补", "全部高阶数据待补"]
+    },
+    {
+      "id": "20260612-KOR-CZE",
+      "date": "2026-06-12", "group": "A", "round": 1,
+      "home": "韩国", "away": "捷克",
+      "ft": [2, 1], "ht": [null, null],
+      "goals": [
+        { "team": "韩国", "scorer": null, "min": null, "type": "open" },
+        { "team": "韩国", "scorer": null, "min": null, "type": "open" },
+        { "team": "捷克", "scorer": null, "min": null, "type": "open" }
+      ],
+      "stats": { "poss": [null, null], "shots": [null, null], "sot": [null, null], "corners": [null, null], "xg": [null, null] },
+      "absences": {},
+      "our_pred": { "main": "1-1", "alt": "2-1 韩国", "status": "alt" },
+      "tags": ["魔咒被硬实力打破(韩国三届首战不胜)", "单兵质量(孙兴慜/李刚仁)", "替补打开局面"],
+      "lesson": "魔咒别压过单兵质量差;次选博方向兜住了这场。下半场韩国拿下。",
+      "_gaps": ["进球人/时间待补", "全部高阶数据待补"]
+    },
+    {
+      "id": "20260613-CAN-BIH",
+      "date": "2026-06-13", "group": "B", "round": 1,
+      "home": "加拿大", "away": "波黑",
+      "ft": [1, 1], "ht": [null, null],
+      "goals": [
+        { "team": "波黑", "scorer": "卢基奇", "min": null, "type": "open" },
+        { "team": "加拿大", "scorer": "拉林", "min": 78, "type": "open" }
+      ],
+      "stats": { "poss": [null, null], "shots": [null, null], "sot": [null, null], "corners": [null, null], "xg": [null, null] },
+      "absences": {},
+      "our_pred": { "main": "1-0 加拿大", "alt": "1-1", "status": "alt" },
+      "tags": ["加拿大首战乏力魔咒部分应验(先丢球)", "替补建功", "锋线残缺比边路残缺致命(方向对)"],
+      "lesson": "次选命中;主预测该直接放1-1而非1-0。加拿大队史世界杯首分。",
+      "_gaps": ["波黑首球时间待补", "全部高阶数据待补"]
+    },
+    {
+      "id": "20260613-USA-PAR",
+      "date": "2026-06-13", "group": "D", "round": 1,
+      "home": "美国", "away": "巴拉圭",
+      "ft": [4, 1], "ht": [3, 0],
+      "goals": [
+        { "team": "美国", "scorer": "博巴迪利亚(乌龙)", "min": 7, "type": "og" },
+        { "team": "美国", "scorer": "巴洛贡", "min": 31, "type": "open" },
+        { "team": "美国", "scorer": "巴洛贡", "min": 50, "type": "open" },
+        { "team": "巴拉圭", "scorer": "M·博巴迪利亚", "min": 73, "type": "open" },
+        { "team": "美国", "scorer": "雷纳", "min": 98, "type": "gt" }
+      ],
+      "stats": { "poss": [null, null], "shots": [null, null], "sot": [null, null], "corners": [null, null], "xg": [null, null] },
+      "absences": { "巴拉圭": ["恩西索(肌肉拉伤)"] },
+      "our_pred": { "main": "2-1 美国", "alt": "1-0 美国", "status": "direction" },
+      "tags": ["强队也会丢球读法验证(美国未零封)", "残阵→大球样本+1", "早乌龙滚雪球", "垃圾时间灌水"],
+      "lesson": "方向+丢球形态对,分差低估两球(含98'垃圾球)。剔除变异后真实状态贴近2-1/3-1。",
+      "_gaps": ["巴洛贡第二球确切补时(45+5或50)待核", "全部高阶数据待补"]
+    },
+    {
+      "id": "20260614-QAT-SUI",
+      "date": "2026-06-14", "group": "B", "round": 1,
+      "home": "卡塔尔", "away": "瑞士",
+      "ft": [1, 1], "ht": [0, 1],
+      "goals": [
+        { "team": "瑞士", "scorer": "恩博洛", "min": 17, "type": "pk" },
+        { "team": "卡塔尔", "scorer": "穆海姆(乌龙)", "min": 94, "type": "og" }
+      ],
+      "stats": { "poss": [32, 68], "shots": [4, 14], "sot": [3, 7], "corners": [3, 10], "xg": [null, 2.27] },
+      "absences": {},
+      "our_pred": { "main": "0-2 瑞士", "alt": "0-1 瑞士", "status": "miss" },
+      "tags": ["控得住≠攻得破(欧洲队进攻便秘)", "数据碾压杀不死比赛", "亚盘sharp让2读对场面", "94'乌龙=尾部偶然", "恩博洛点球功能正常"],
+      "lesson": "thesis全对(瑞士68%控球/xG2.27碾压)、账面方向错(94'乌龙绝平)。输在临门一脚+尾部偶然,非读盘失误。",
+      "_gaps": ["卡塔尔xG待补"]
+    },
+    {
+      "id": "20260614-BRA-MAR",
+      "date": "2026-06-14", "group": "C", "round": 1,
+      "home": "巴西", "away": "摩洛哥",
+      "ft": [1, 1], "ht": [0, 1],
+      "goals": [
+        { "team": "摩洛哥", "scorer": "沙巴利", "min": null, "type": "open" },
+        { "team": "巴西", "scorer": "维尼修斯", "min": null, "type": "open" }
+      ],
+      "stats": { "poss": [null, null], "shots": [null, null], "sot": [null, null], "corners": [null, null], "xg": [null, null] },
+      "absences": { "巴西": ["内马尔(小腿伤,未进名单)"], "摩洛哥": ["阿圭尔德"] },
+      "our_pred": { "main": "2-1 巴西", "alt": "2-0 巴西", "status": "miss" },
+      "tags": ["巴西实力被名气高估", "破不了密防", "中前场组织慢于摩洛哥", "盘口纠偏首次实战兑现(退盘+小球)", "残阵→大球证伪", "内马尔非关键先生"],
+      "lesson": "实力误判(巴西被高估、破不了密防)+流程失误(盘口退盘+转小球三连喊话没敢下修)叠加。只在摩洛哥下半场收缩后才有机会。",
+      "_gaps": ["进球时间待补", "全部高阶数据待补"]
+    }
+  ]
+}

@@ -48,6 +48,32 @@ const WORLDCUP_DATA = {
   /* ---------- 赛事预测记录（新比赛往最前面加） ---------- */
   matches: [
     {
+      date: "2026-06-15 04:00（北京时间）",
+      sortKey: "2026-06-15 04:00",
+      group: "F组",
+      home: { flag: "🇳🇱", name: "荷兰" },
+      away: { flag: "🇯🇵", name: "日本" },
+      mainPred: "2-1 荷兰",
+      altPred: "1-1",
+      actual: null,
+      status: "pending",
+      report: "世界杯小组赛预测_荷兰vs日本.html",
+      note: "阿灵顿AT&T · 浅盘(荷兰+100)+亚盘仅让-0.5且sharp偏日本不败+日本三核心(三笘/南野/町田)伤缺。收口纪律→主2-1不押3-1;亚盘偏日本→次选1-1权重抬高。移动盘往日本走则下修1-1"
+    },
+    {
+      date: "2026-06-15 01:00（北京时间）",
+      sortKey: "2026-06-15 01:00",
+      group: "E组",
+      home: { flag: "🇩🇪", name: "德国" },
+      away: { flag: "🇨🇼", name: "库拉索" },
+      mainPred: "3-0 德国",
+      altPred: "2-0 德国",
+      actual: null,
+      status: "pending",
+      report: "世界杯小组赛预测_德国vs库拉索.html",
+      note: "休斯顿NRG · 身价36倍鸿沟,德国必胜。亚盘sharp让3球(-3)深盘+库拉索近5场失11→主预测上调3-0(亚盘硬信号优先于收口先验,同0613瑞士让2教训),次选2-0"
+    },
+    {
       date: "2026-06-14 12:00（北京时间）",
       sortKey: "2026-06-14 12:00",
       group: "D组",
@@ -68,10 +94,10 @@ const WORLDCUP_DATA = {
       away: { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "苏格兰" },
       mainPred: "0-1 苏格兰",
       altPred: "1-1",
-      actual: null,
-      status: "pending",
+      actual: "0-1 苏格兰胜",
+      status: "exact",
       report: "世界杯小组赛预测_海地vs苏格兰.html",
-      note: "波士顿Gillette · 苏格兰背负出线魔咒，海地52年重返+加勒比准主场声浪"
+      note: "主预测0-1精确命中！麦金28'抢点补射(亚当斯被扑后哈姆斯长传策动)。海地控球56%略占优但射正2-2、缺转化；苏格兰'首战拉胯魔咒'这次未应验，务实小胜剧本走通"
     },
     {
       date: "2026-06-14 06:00（北京时间）",
@@ -81,10 +107,10 @@ const WORLDCUP_DATA = {
       away: { flag: "🇲🇦", name: "摩洛哥" },
       mainPred: "2-1 巴西",
       altPred: "2-0 巴西",
-      actual: null,
-      status: "pending",
-      report: "世界杯小组赛预测_巴西vs摩洛哥.html",
-      note: "新泽西MetLife重头戏 · 摩洛哥阿圭尔德伤缺(残阵→大球试验场)，2023曾2-1掀翻巴西"
+      actual: "1-1 平",
+      status: "miss",
+      report: "世界杯复盘_巴西vs摩洛哥.html",
+      note: "方向未中：摩洛哥沙巴利先进，维尼修斯扳平1-1。实力误判(内马尔非关键先生,巴西中前场被摩洛哥压住、破不了密防)+流程失误(盘口退盘+转小球三连喊话没敢下修)。点击看复盘"
     },
     {
       date: "2026-06-14 03:00（北京时间）",
@@ -94,10 +120,10 @@ const WORLDCUP_DATA = {
       away: { flag: "🇨🇭", name: "瑞士" },
       mainPred: "0-2 瑞士",
       altPred: "0-1 瑞士",
-      actual: null,
-      status: "pending",
-      report: "世界杯小组赛预测_卡塔尔vs瑞士.html",
-      note: "湾区Levi's · 瑞士-334大热控制局，周日四场最一边倒盘口"
+      actual: "1-1 平",
+      status: "miss",
+      report: "世界杯复盘_卡塔尔vs瑞士.html",
+      note: "方向未中(被绝平)：瑞士控球68%/射正7-3/xG2.27全程压制,恩博洛17'点球0-1领先到94',穆海姆94'乌龙绝平。thesis(瑞士碾压)对,亚盘sharp让2也对,只是没赢透+终场前偶然回吐。点击看复盘"
     },
     {
       date: "2026-06-13 09:00（北京时间）",
