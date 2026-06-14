@@ -20,7 +20,6 @@
 - **🌍 小组积分榜**：从已完赛结果实时计算 赛/胜/平/负/净胜/积分，每组前 2 标绿（出线区）。
 - **📊 单场预测报告**：五维评判 + 比分概率分布 + 关键先生 + 最终评判 + 盘口（欧盘/亚盘）+ 资料来源。
 - **⚖ 赛后复盘**：对值得复盘的场次做差距拆解（判断误差 vs 临场变故），沉淀进复盘台账。
-- **🔎 SEO / 分享卡**：全站 Open Graph/Twitter 卡 + 中英双语 meta + sitemap + robots，转发显示带图预览。
 - **🌙/☀️ 暗/亮主题**切换（localStorage 记忆）。
 
 ## 预测方法论
@@ -55,10 +54,7 @@
 │   ├── matches.json        #   真相源：每场硬数据(比分/进球/控球/xG/缺阵/预测对错)
 │   ├── team_profiles.md    #   定性层：每队 进攻/防守评分 + 主帅 + 画像 + 下轮注意
 │   └── README.md           #   数据中心 schema 与录入流程
-├── robots.txt, sitemap.xml # SEO
-├── og.jpg                  # 1200×630 分享配图
-├── _headers, _redirects    # Cloudflare Pages：缓存/安全头、Google验证文件200直出
-├── googlebb581cf5fc82feea.html  # Google Search Console 验证文件
+├── _headers                # Cloudflare Pages：边缘缓存 + 安全响应头
 └── deploy.sh               # Cloudflare Pages 发布脚本（data.js 版本戳防缓存）
 ```
 
@@ -74,8 +70,7 @@ git add -A && git commit -m "..." && git push origin main
 bash deploy.sh
 ```
 
-> - `deploy.sh` **只发** index/data/theme/reports + robots/sitemap/og/_headers/_redirects/Google验证文件；
->   **不发** `复盘台账.md`、`临场追踪.md`、`stats/`——这些只靠 GitHub 留存。
+> - `deploy.sh` 发 index/data/theme/reports/_headers；**不发** `复盘台账.md`、`临场追踪.md`、`stats/`（只靠 GitHub 留存）。
 > - Pages 与 GitHub 无自动联动；`index.html` 每次回源校验、`data.js` 带部署时间戳，静态资源走边缘缓存。
 
 ## 每日更新流程
