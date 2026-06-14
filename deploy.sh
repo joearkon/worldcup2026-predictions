@@ -6,7 +6,7 @@ cd "$(dirname "$0")"
 rm -rf .deploy-dist
 mkdir -p .deploy-dist/reports
 cp index.html data.js theme.css theme.js .deploy-dist/
-cp robots.txt sitemap.xml og.jpg _headers .deploy-dist/
+cp robots.txt sitemap.xml og.jpg _headers googlebb581cf5fc82feea.html .deploy-dist/
 cp reports/*.html .deploy-dist/reports/
 # 给 data.js 引用追加部署时间戳，绕过浏览器对 data.js 的 4h 缓存
 # （index.html 本身 max-age=0 每次回源校验，所以新戳能立刻生效，访客无需强刷）
