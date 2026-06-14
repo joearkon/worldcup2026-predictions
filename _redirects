@@ -1,0 +1,2 @@
+# 让 Google 验证文件在 .html 确切地址直接 200 返回(绕过 Pages 的 .html→无扩展名 308 跳转)
+/googlebb581cf5fc82feea.html  /googlebb581cf5fc82feea  200
