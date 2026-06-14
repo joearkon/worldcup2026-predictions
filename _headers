@@ -1,0 +1,31 @@
+# Cloudflare Pages _headers · 缓存 + 安全响应头
+# 路径匹配按路径(忽略query);同一header更具体路径优先
+
+# —— 静态资源:边缘长缓存(带 ?v= 版本号,内容改了换号即失效) ——
+/theme.css
+  Cache-Control: public, max-age=604800
+/theme.js
+  Cache-Control: public, max-age=604800
+/data.js
+  Cache-Control: public, max-age=86400
+/og.jpg
+  Cache-Control: public, max-age=2592000
+/favicon.ico
+  Cache-Control: public, max-age=2592000
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+/robots.txt
+  Cache-Control: public, max-age=3600
+
+# —— HTML / 首页:保持回源校验,赛后更新即时生效(不长缓存) ——
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# —— 全站安全响应头 ——
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
