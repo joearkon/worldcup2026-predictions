@@ -48,6 +48,32 @@ const WORLDCUP_DATA = {
   /* ---------- 赛事预测记录（新比赛往最前面加） ---------- */
   matches: [
     {
+      date: "2026-06-15 10:00（北京时间）",
+      sortKey: "2026-06-15 10:00",
+      group: "F组",
+      home: { flag: "🇸🇪", name: "瑞典" },
+      away: { flag: "🇹🇳", name: "突尼斯" },
+      mainPred: "1-0 瑞典",
+      altPred: "1-1",
+      actual: null,
+      status: "pending",
+      report: "世界杯小组赛预测_瑞典vs突尼斯.html",
+      note: "墨西哥蒙特雷 · 伊萨克+約克雷斯双枪(但进攻慢/低效) vs 突尼斯铁桶(9胜1平)。瑞典世界杯6/8场小球+浅盘→收口1-0小胜,次选1-1兜便秘冷平"
+    },
+    {
+      date: "2026-06-15 07:00（北京时间）",
+      sortKey: "2026-06-15 07:00",
+      group: "E组",
+      home: { flag: "🇨🇮", name: "科特迪瓦" },
+      away: { flag: "🇪🇨", name: "厄瓜多尔" },
+      mainPred: "1-1",
+      altPred: "0-1 厄瓜多尔",
+      actual: null,
+      status: "pending",
+      report: "世界杯小组赛预测_科特迪瓦vs厄瓜多尔.html",
+      note: "费城 · 非洲冠军(阿勒/佩佩/阿丁格拉)vs防守极硬+平局成性的厄瓜多尔(19场平11)。双防强+浅盘+低分→主锚1-1,次选0-1厄小胜"
+    },
+    {
       date: "2026-06-15 04:00（北京时间）",
       sortKey: "2026-06-15 04:00",
       group: "F组",
