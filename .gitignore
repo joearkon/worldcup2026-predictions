@@ -5,3 +5,10 @@ desktop.ini
 .deploy-dist/
 wordcup_dash.cloudflare.com.jpeg
 *.cloudflare.com.jpeg
+
+# SEO/搜索引擎验证类文件:本地保留+照常部署,不入 git(deploy.sh 存在才复制)
+robots.txt
+sitemap.xml
+og.jpg
+_redirects
+googlebb581cf5fc82feea.html
