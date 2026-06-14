@@ -107,10 +107,10 @@ const WORLDCUP_DATA = {
       away: { flag: "🇹🇷", name: "土耳其" },
       mainPred: "1-2 土耳其",
       altPred: "1-1",
-      actual: null,
-      status: "pending",
-      report: "世界杯小组赛预测_澳大利亚vs土耳其.html",
-      note: "温哥华BC Place · 土耳其黄金一代五连胜 vs 澳式铁桶，冷门系数最高的一场"
+      actual: "2-0 澳大利亚胜",
+      status: "miss",
+      report: "世界杯复盘_澳大利亚vs土耳其.html",
+      note: "方向完全押反！土耳其全场30脚射门0进球(控得住≠攻得破第3例)，澳洲三中卫铁桶+稳守突击：伊兰昆达26'、梅特卡夫74'远射。我方五维⑤软性本就标澳占优，却被'土天赋+盘口firm'盖过=教训。点击看复盘"
     },
     {
       date: "2026-06-14 09:00（北京时间）",
