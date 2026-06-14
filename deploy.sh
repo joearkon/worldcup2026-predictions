@@ -14,10 +14,10 @@ cp reports/*.html .deploy-dist/reports/
 # 给每个报告注入"创建/最后更新"时间(从 git 历史取,只注入部署副本,不污染源文件)
 for distf in .deploy-dist/reports/*.html; do
   base=$(basename "$distf")
-  created=$(git log --diff-filter=A --date=short --format=%ad -- "reports/$base" | tail -1)
-  updated=$(git log -1 --date=short --format=%ad -- "reports/$base")
-  [ -z "$created" ] && created=$(date +%F)
-  [ -z "$updated" ] && updated=$(date +%F)
+  created=$(git log --diff-filter=A --date=format-local:'%Y-%m-%d %H:%M:%S' --format=%ad -- "reports/$base" | tail -1)
+  updated=$(git log -1 --date=format-local:'%Y-%m-%d %H:%M:%S' --format=%ad -- "reports/$base")
+  [ -z "$created" ] && created=$(date '+%Y-%m-%d %H:%M:%S')
+  [ -z "$updated" ] && updated=$(date '+%Y-%m-%d %H:%M:%S')
   stamp="<div style=\"text-align:center;font-size:11px;color:#666;margin:-14px 0 20px\">📅 创建 $created　·　🔄 最后更新 $updated</div>"
   awk -v s="$stamp" '/class="sub"/ && !d {print; print s; d=1; next} {print}' "$distf" > "$distf.t" && mv "$distf.t" "$distf"
 done
