@@ -10,9 +10,64 @@
     "tags": "可复用的球队/规律标签",
     "lesson": "本场对预测框架的一句话教训"
   },
-  "_updated": "2026-06-14",
+  "_updated": "2026-06-15",
   "_round1_pending": [],
   "matches": [
+    {
+      "id": "20260615-GER-CUW",
+      "date": "2026-06-15", "group": "E", "round": 1,
+      "home": "德国", "away": "库拉索",
+      "ft": [7, 1], "ht": [null, null],
+      "goals": [
+        { "team": "德国", "scorer": "哈弗茨", "min": null, "type": "open" },
+        { "team": "德国", "scorer": "哈弗茨", "min": null, "type": "open" },
+        { "team": "德国", "scorer": "内梅查", "min": null, "type": "open" },
+        { "team": "德国", "scorer": "施洛特贝克", "min": null, "type": "open" },
+        { "team": "德国", "scorer": "穆夏拉", "min": null, "type": "open" },
+        { "team": "德国", "scorer": "纳撒尼尔·布朗", "min": null, "type": "open" },
+        { "team": "德国", "scorer": "翁达夫", "min": null, "type": "open" },
+        { "team": "库拉索", "scorer": "科梅嫩西亚", "min": 21, "type": "open" }
+      ],
+      "stats": { "poss": [null, null], "shots": [null, null], "sot": [null, null], "corners": [null, null], "xg": [null, null] },
+      "absences": {},
+      "our_pred": { "main": "3-0 德国", "alt": "4-0 德国", "status": "direction" },
+      "tags": ["强队屠鱼腩净胜球系统性低估(押净胜3-4实际6)", "库拉索会漏球鱼腩+首届首球(科梅嫩西亚21')", "德国7球7人哈弗茨双响", "Nagelsmann德国进攻流火力全开"],
+      "lesson": "方向对(德国必胜)但比分极度低估。押3-0/4-0夹净胜3-4、实际7-1净胜6,且押0失球却被库拉索21'破门。鱼腩崩盘场的净胜球天花板要敢往上提。",
+      "_gaps": ["各进球分钟、控球/射门/xG待补"]
+    },
+    {
+      "id": "20260615-NED-JPN",
+      "date": "2026-06-15", "group": "F", "round": 1,
+      "home": "荷兰", "away": "日本",
+      "ft": [2, 2], "ht": [null, null],
+      "goals": [
+        { "team": "荷兰", "scorer": "范戴克", "min": null, "type": "open" },
+        { "team": "荷兰", "scorer": "萨默维尔", "min": null, "type": "open" },
+        { "team": "日本", "scorer": "中村敬斗", "min": null, "type": "open" },
+        { "team": "日本", "scorer": "镰田大地", "min": 88, "type": "open" }
+      ],
+      "stats": { "poss": [null, null], "shots": [null, null], "sot": [null, null], "corners": [null, null], "xg": [null, null] },
+      "absences": { "日本": ["三笘薫(伤)", "南野拓实(伤)", "町田浩树(伤)"] },
+      "our_pred": { "main": "2-1 荷兰", "alt": "1-1", "status": "direction" },
+      "tags": ["次选押平命中方向(1-1→实际2-2,比分读小)", "日本三核心伤缺仍逼平荷兰(韧性)", "荷兰两次领先被扳平(2次掉链)", "sharp偏日本不败盘口读法验证", "镰田88'绝平"],
+      "lesson": "次选1-1抓对'日本不败/平局'方向,但主预测2-1荷兰错且比分读小(2-2)。赛前盘口sharp偏日本不败的读法对了——纪律上该把1-1提为主预测而非压在次选。",
+      "_gaps": ["范戴克/萨默维尔/中村进球分钟、半场比分、控球/射门/xG待补"]
+    },
+    {
+      "id": "20260615-CIV-ECU",
+      "date": "2026-06-15", "group": "E", "round": 1,
+      "home": "科特迪瓦", "away": "厄瓜多尔",
+      "ft": [1, 0], "ht": [0, 0],
+      "goals": [
+        { "team": "科特迪瓦", "scorer": "阿马德·迪亚洛", "min": 90, "type": "open" }
+      ],
+      "stats": { "poss": [null, null], "shots": [null, null], "sot": [null, null], "corners": [null, null], "xg": [null, null] },
+      "absences": {},
+      "our_pred": { "main": "1-1", "alt": "0-1 厄瓜多尔", "status": "miss" },
+      "tags": ["赢家押反(押厄瓜多尔/平,科特迪瓦补时绝杀)", "低分形态对(1-0)但选错赢家", "非洲冠军主场绝杀厄瓜多尔", "阿马德·迪亚洛补时左脚低射", "厄瓜多尔平局成性这次被绝杀没兑现"],
+      "lesson": "押反赢家。把厄瓜多尔'防守硬+平局成性'权重给太高、押平/厄小胜,低估科特迪瓦(非洲冠军)主场冲击;低分判断对(1-0)但赢家选错,绝杀来自阿马德·迪亚洛补时。",
+      "_gaps": ["绝杀精确分钟(90+?)、控球/射门/xG待补"]
+    },
     {
       "id": "20260614-AUS-TUR",
       "date": "2026-06-14", "group": "D", "round": 1,

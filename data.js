@@ -68,8 +68,8 @@ const WORLDCUP_DATA = {
       away: { flag: "🇪🇨", name: "厄瓜多尔" },
       mainPred: "1-1",
       altPred: "0-1 厄瓜多尔",
-      actual: null,
-      status: "pending",
+      actual: "1-0 科特迪瓦胜",
+      status: "miss",
       report: "世界杯小组赛预测_科特迪瓦vs厄瓜多尔.html",
       note: "费城 · 非洲冠军(阿勒/佩佩/阿丁格拉)vs防守极硬+平局成性的厄瓜多尔(19场平11)。双防强+浅盘+低分→主锚1-1,次选0-1厄小胜"
     },
@@ -81,8 +81,8 @@ const WORLDCUP_DATA = {
       away: { flag: "🇯🇵", name: "日本" },
       mainPred: "2-1 荷兰",
       altPred: "1-1",
-      actual: null,
-      status: "pending",
+      actual: "2-2 平",
+      status: "direction",
       report: "世界杯小组赛预测_荷兰vs日本.html",
       note: "阿灵顿AT&T · 浅盘(荷兰+100)+亚盘仅让-0.5且sharp偏日本不败+日本三核心(三笘/南野/町田)伤缺。收口纪律→主2-1不押3-1;亚盘偏日本→次选1-1权重抬高。移动盘往日本走则下修1-1"
     },
@@ -94,8 +94,8 @@ const WORLDCUP_DATA = {
       away: { flag: "🇨🇼", name: "库拉索" },
       mainPred: "3-0 德国",
       altPred: "4-0 德国",
-      actual: null,
-      status: "pending",
+      actual: "7-1 德国胜",
+      status: "direction",
       report: "世界杯小组赛预测_德国vs库拉索.html",
       note: "休斯顿NRG · 身价36倍鸿沟,德国必胜。06-15盘口加深:亚盘-3.5+大小球4.5,市场重心净胜3-4。次选由2-0上调4-0,夹住3-0/4-0(库拉索是会漏的鱼腩非铁桶,便秘教训不适用)"
     },
