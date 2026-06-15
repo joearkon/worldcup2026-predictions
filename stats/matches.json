@@ -14,6 +14,26 @@
   "_round1_pending": [],
   "matches": [
     {
+      "id": "20260615-SWE-TUN",
+      "date": "2026-06-15", "group": "F", "round": 1,
+      "home": "瑞典", "away": "突尼斯",
+      "ft": [5, 1], "ht": [null, null],
+      "goals": [
+        { "team": "瑞典", "scorer": "伊萨克", "min": 30, "type": "open" },
+        { "team": "瑞典", "scorer": "约克雷斯", "min": 59, "type": "open" },
+        { "team": "瑞典", "scorer": "斯万贝里", "min": 84, "type": "open" },
+        { "team": "瑞典", "scorer": null, "min": null, "type": "open" },
+        { "team": "瑞典", "scorer": null, "min": null, "type": "open" },
+        { "team": "突尼斯", "scorer": null, "min": null, "type": "open" }
+      ],
+      "stats": { "poss": [null, null], "shots": [null, null], "sot": [null, null], "corners": [null, null], "xg": [null, null] },
+      "absences": {},
+      "our_pred": { "main": "1-0 瑞典", "alt": "1-1", "status": "direction" },
+      "tags": ["净胜球低估第3例(押净胜1实际4;美国/德国/瑞典连犯)", "瑞典双枪伊萨克+约克雷斯火力兑现(非小球)", "突尼斯铁桶被打穿(赛前9胜1平防守神话破)", "斯万贝里替补登场12秒破门=世界杯替补最快进球纪录", "瑞典世界杯小球魔咒(6/8场小球)这次失效"],
+      "lesson": "方向对(瑞典胜)但比分大幅低估。押1-0/次1-1、实际5-1;'突尼斯铁桶+瑞典小球'两个先验全失效。鱼腩防守崩盘场净胜球封顶在1太保守(净胜球低估第3例;小组赛暂不设规则,标记累积)。",
+      "_gaps": ["瑞典第4/5球射手与分钟、突尼斯射手(搜索疑误报Ayari待核)、半场比分、控球/射门/xG待补"]
+    },
+    {
       "id": "20260615-GER-CUW",
       "date": "2026-06-15", "group": "E", "round": 1,
       "home": "德国", "away": "库拉索",
