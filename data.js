@@ -68,8 +68,8 @@ const WORLDCUP_DATA = {
       away: { flag: "🇺🇾", name: "乌拉圭" },
       mainPred: "0-1 乌拉圭",
       altPred: "0-2 乌拉圭",
-      actual: null,
-      status: "pending",
+      actual: "1-1",
+      status: "miss",
       report: "世界杯小组赛预测_沙特vs乌拉圭.html",
       note: "迈阿密 · 乌拉圭-200浅盘(让-1),市场押2-0。但乌缺德阿拉斯卡埃塔(创造中枢)+阿劳霍+迈阿密高温雷暴+沙特铁桶→低分小胜。落地'天赋队别押大':主0-1/次0-2乌拉圭。沙特2022掀翻阿根廷的爆冷基因→不败是live尾部。"
     },
@@ -81,8 +81,8 @@ const WORLDCUP_DATA = {
       away: { flag: "🇪🇬", name: "埃及" },
       mainPred: "1-0 比利时",
       altPred: "1-1",
-      actual: null,
-      status: "pending",
+      actual: "1-1",
+      status: "alt",
       report: "世界杯小组赛预测_比利时vs埃及.html",
       note: "西雅图 · 比利时-150浅盘(非深盘),市场最可能比分比利时1-0。比利时黄金一代老化+卢卡库伤缺无正牌9号(德凯特拉雷顶),埃及有萨拉赫+马尔穆什会进球→低分小胜,埃及不败是live次选。落地'天赋队别押大'(澳土/巴西教训)+firm≠确认:主1-0/次1-1。临场若移动盘偏埃及→按新规把1-1扶正为主。"
     },
@@ -94,8 +94,8 @@ const WORLDCUP_DATA = {
       away: { flag: "🇨🇻", name: "佛得角" },
       mainPred: "3-0 西班牙",
       altPred: "2-0 西班牙",
-      actual: null,
-      status: "pending",
+      actual: "0-0",
+      status: "miss",
       report: "世界杯小组赛预测_西班牙vs佛得角.html",
       note: "亚特兰大 · 西班牙1/10碾压(让-2.5/-3深盘),佛得角首届新军摆铁桶。盘口sharp深盘→按新规不收口、敢押2球净胜;但西班牙传控'控得住≠攻得破'风险在→主3-0(下半场拉开)/次2-0,上半场破不开密防则1-0为尾部。亚马尔/N.威廉斯替补待命=破僵局变量。"
     },
