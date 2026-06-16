@@ -14,6 +14,24 @@
   "_round1_pending": [],
   "matches": [
     {
+      "id": "20260616-IRN-NZL",
+      "date": "2026-06-16", "group": "G", "round": 1,
+      "home": "伊朗", "away": "新西兰",
+      "ft": [2, 2], "ht": [null, null],
+      "goals": [
+        { "team": "伊朗", "scorer": null, "min": null, "type": "open" },
+        { "team": "伊朗", "scorer": null, "min": null, "type": "open" },
+        { "team": "新西兰", "scorer": null, "min": null, "type": "open" },
+        { "team": "新西兰", "scorer": null, "min": null, "type": "open" }
+      ],
+      "stats": { "poss": [null, null], "shots": [null, null], "sot": [null, null], "corners": [null, null], "xg": [null, null] },
+      "absences": { "伊朗": ["阿兹蒙(纪律弃用)"] },
+      "our_pred": { "main": "1-0 伊朗", "alt": "1-1", "status": "direction" },
+      "tags": ["次选押平命中方向(1-1→实际2-2,比分读小,同荷兰2-2日本)", "极浅盘(-118)平局兑现=浅盘紧局靠谱(区别于深盘大热翻车)", "新西兰逼平基因延续(2010三平+本场)", "伊朗塔雷米单箭头·便秘标签部分被打破(进2)", "双方各进2=两队都非铁桶、开放对攻"],
+      "lesson": "次选1-1抓对平局方向但比分读小(2-2),同荷兰日本场。极浅盘-118+平+250 live→盘口本就预期紧局,平局非爆冷=浅盘可信(对照深盘大热全翻车)。临场规则'极浅盘+对手不败基因→扶正1-1为主'本该执行。",
+      "_gaps": ["四个进球射手与分钟、半场比分、控球/射门/xG待补"]
+    },
+    {
       "id": "20260616-ESP-CPV",
       "date": "2026-06-16", "group": "H", "round": 1,
       "home": "西班牙", "away": "佛得角",

@@ -107,8 +107,8 @@ const WORLDCUP_DATA = {
       away: { flag: "🇳🇿", name: "新西兰" },
       mainPred: "1-0 伊朗",
       altPred: "1-1",
-      actual: null,
-      status: "pending",
+      actual: "2-2",
+      status: "direction",
       report: "世界杯小组赛预测_伊朗vs新西兰.html",
       note: "洛杉矶SoFi · 伊朗-118极浅盘(平+250/27%很live)。两队务实低分+伊朗便秘+阿兹蒙因纪律被弃用(塔雷米单箭头),新西兰逼平基因(2010三平)。按新规:极浅盘+对手不败基因→平是live次选。主1-0伊朗(塔雷米一击)/次1-1,临场移动盘偏新西兰则扶正1-1为主。"
     },
