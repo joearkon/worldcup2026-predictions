@@ -91,7 +91,7 @@ const WORLDCUP_DATA = {
       sortKey: "2026-06-18 01:00",
       group: "K组",
       home: { flag: "🇵🇹", name: "葡萄牙" },
-      away: { flag: "🇨🇩", name: "刚果(金)" },
+      away: { flag: "🇨🇩", name: "刚果（金）" },
       mainPred: "2-0 葡萄牙",
       altPred: "3-1 葡萄牙",
       actual: null,
