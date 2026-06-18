@@ -273,7 +273,7 @@ html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;colo
   var STATUS_TXT = {
     exact:     { cls:"s-exact",     txt:"✅ 精确命中" },
     alt:       { cls:"s-alt",       txt:"🟡 次选命中" },
-    direction: { cls:"s-direction", txt:"🔵 方向命中" },
+    direction: { cls:"s-direction", txt:"🔵 胜负命中" },
     miss:      { cls:"s-miss",      txt:"❌ 未命中" },
     pending:   { cls:"s-pending",   txt:"⏳ 已预测" }
   };
@@ -302,7 +302,7 @@ html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;colo
   // 比分命中口径（核心，比分为王）：预测比分与实际完全一致 —— 主预测(精确)或次选命中才算
   var scoreHit = exact + alt;
   var scoreRate = settled.length ? Math.round(scoreHit/settled.length*100) : 0;
-  // 方向命中口径（辅助）：胜平负方向对即可，精确/次选/方向任一档都算方向对
+  // 胜负命中口径（辅助）：胜平负对即可，精确/次选/胜负任一档都算胜负对
   var dirHit = settled.filter(function(m){
     return m.status==="exact"||m.status==="alt"||m.status==="direction";
   }).length;
@@ -312,7 +312,7 @@ html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;colo
   document.getElementById("statsGrid").innerHTML =
     statCard(total, "已预测场次", settled.length+" 场已开赛 / "+(total-settled.length)+" 场待验证") +
     statCard(scoreRate+"<small>%</small>", "比分命中率", "已开赛 "+settled.length+" 场中 "+scoreHit+" 场比分完全命中 · 比分为王") +
-    statCard(dirRate+"<small>%</small>", "方向命中率", settled.length+" 场中 "+dirHit+" 场胜平负方向对（含比分未中）") +
+    statCard(dirRate+"<small>%</small>", "胜负命中率", settled.length+" 场中 "+dirHit+" 场胜平负对（含比分未中）") +
     statCard(exact+" <small>/</small> "+alt, "精确 / 次选", "主预测全中 "+exact+" 场 / 次选命中 "+alt+" 场") +
     statCard(covered+"<small>/72</small>", "小组赛覆盖", "已对 "+covered+" 场小组赛出具预测");
 
@@ -323,7 +323,7 @@ html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;colo
   }
 
   /* ---- 战绩流水：只显示已开赛场次（track record），最近在前，超出折叠 ---- */
-  var SHORT_TXT = { exact:"精确命中", alt:"次选命中", direction:"方向命中", miss:"未命中" };
+  var SHORT_TXT = { exact:"精确命中", alt:"次选命中", direction:"胜负命中", miss:"未命中" };
   var COLLAPSE_N = 6;                         // 默认显示最近几场
   // settled 来自上方，M 已按 sortKey 时间倒序 → settled 天然最近在前
   function scoreOnly(s){ var p = parseScore(s); return p ? p[0]+"-"+p[1] : (s||"—"); }
