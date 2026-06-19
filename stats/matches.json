@@ -10,9 +10,121 @@
     "tags": "可复用的球队/规律标签",
     "lesson": "本场对预测框架的一句话教训"
   },
-  "_updated": "2026-06-18",
+  "_updated": "2026-06-19",
   "_round1_pending": [],
   "matches": [
+    {
+      "id": "20260619-MEX-KOR",
+      "date": "2026-06-19",
+      "group": "A",
+      "round": 2,
+      "home": "墨西哥",
+      "away": "韩国",
+      "ft": [1, 0],
+      "ht": [0, 0],
+      "goals": [
+        { "team": "墨西哥", "scorer": "罗莫", "min": 50, "type": "open" }
+      ],
+      "stats": {
+        "poss": [null, null],
+        "shots": [null, null],
+        "sot": [null, null],
+        "corners": [null, null],
+        "xg": [null, null]
+      },
+      "absences": {},
+      "our_pred": { "main": "1-1", "alt": "2-1 墨西哥", "status": "direction" },
+      "tags": ["墨西哥主场效率型", "浅盘紧局低分兑现", "韩国连续被零封·攻不破", "墨西哥率先出线"],
+      "lesson": "浅盘紧局如期低分,但'可live平'没兑现——东道主主场效率压过求稳,罗莫50'抓门将脱手一击制胜;押次选方向(墨胜)对、比分1-0未中。",
+      "_gaps": ["全部高阶数据待补"]
+    },
+    {
+      "id": "20260619-CAN-QAT",
+      "date": "2026-06-19",
+      "group": "B",
+      "round": 2,
+      "home": "加拿大",
+      "away": "卡塔尔",
+      "ft": [6, 0],
+      "ht": [3, 0],
+      "goals": [
+        { "team": "加拿大", "scorer": "拉林", "min": 16, "type": "open" },
+        { "team": "加拿大", "scorer": "乔纳森·戴维", "min": 29, "type": "open" },
+        { "team": "加拿大", "scorer": "乔纳森·戴维", "min": 45, "type": "open" },
+        { "team": "加拿大", "scorer": "萨利巴", "min": 64, "type": "fk" },
+        { "team": "加拿大", "scorer": "马奈(乌龙·沙费尔伯格制造)", "min": 75, "type": "og" },
+        { "team": "加拿大", "scorer": "乔纳森·戴维", "min": 90, "type": "open" }
+      ],
+      "stats": {
+        "poss": [null, null],
+        "shots": [null, null],
+        "sot": [null, null],
+        "corners": [null, null],
+        "xg": [null, null]
+      },
+      "absences": {},
+      "our_pred": { "main": "2-0 加拿大", "alt": "1-0 加拿大", "status": "direction" },
+      "tags": ["净胜球史诗级低估(押2实际6)", "卡塔尔减员崩盘", "戴维帽子戏法", "Concacaf单场进球纪录", "加拿大世界杯首胜"],
+      "lesson": "胜负对(加胜),但'加拿大慢热+卡塔尔铁桶=低分小胜'完全失真——卡塔尔33'/53'两红剩9人后大溃败,铁桶根本没立住。净胜球低估这次最夸张。",
+      "_gaps": ["全部高阶数据待补"],
+      "cards": ["卡塔尔 阿尔阿明 33' 红牌(VAR·剥夺单刀)", "卡塔尔 马迪博 53' 红牌(VAR)"]
+    },
+    {
+      "id": "20260619-SUI-BIH",
+      "date": "2026-06-19",
+      "group": "B",
+      "round": 2,
+      "home": "瑞士",
+      "away": "波黑",
+      "ft": [4, 1],
+      "ht": [0, 0],
+      "goals": [
+        { "team": "瑞士", "scorer": "曼藏比", "min": 74, "type": "open" },
+        { "team": "瑞士", "scorer": "巴尔加斯", "min": 84, "type": "open" },
+        { "team": "瑞士", "scorer": "曼藏比", "min": 90, "type": "open" },
+        { "team": "波黑", "scorer": "马赫米奇", "min": 93, "type": "open" },
+        { "team": "瑞士", "scorer": "扎卡", "min": 97, "type": "pk" }
+      ],
+      "stats": {
+        "poss": [null, null],
+        "shots": [null, null],
+        "sot": [null, null],
+        "corners": [null, null],
+        "xg": [null, null]
+      },
+      "absences": {},
+      "our_pred": { "main": "2-1 瑞士", "alt": "1-1", "status": "direction" },
+      "tags": ["净胜球低估(押1实际3)", "替补曼藏比改变比赛", "对手红牌后残阵崩盘", "瑞士'别押大胜'被推翻", "上半场仍是控得住≠攻得破"],
+      "lesson": "上半场0-0仍是瑞士'控得住≠攻得破'剧本;但波黑80'红牌+瑞士换人后5分钟内连灌把比分撑爆。我此前'瑞士别押大胜'判读被推翻——残阵会放大分差。",
+      "_gaps": ["全部高阶数据待补"],
+      "cards": ["波黑 穆哈雷莫维奇 80' 直红→10人"]
+    },
+    {
+      "id": "20260619-CZE-RSA",
+      "date": "2026-06-19",
+      "group": "A",
+      "round": 2,
+      "home": "捷克",
+      "away": "南非",
+      "ft": [1, 1],
+      "ht": [1, 0],
+      "goals": [
+        { "team": "捷克", "scorer": "萨迪莱克", "min": 6, "type": "open" },
+        { "team": "南非", "scorer": "莫科埃纳", "min": 83, "type": "pk" }
+      ],
+      "stats": {
+        "poss": [null, null],
+        "shots": [null, null],
+        "sot": [null, null],
+        "corners": [null, null],
+        "xg": [null, null]
+      },
+      "absences": {},
+      "our_pred": { "main": "2-0 捷克", "alt": "1-0 捷克", "status": "miss" },
+      "tags": ["控得住≠攻得破第6例", "捷克浪费机会·生死战没拿下", "南非队史本届首分", "净胜球这次反而高估(押2实际0)", "A组双弱缠斗"],
+      "lesson": "押2-0/1-0捷克全错——6'闪电领先后捷克控场却把握不住,83'被点球(马塞科射门打中苏尔茨手臂)绝平。'强队碾压软对手'便秘风险常在;临场担心的南非中场减员没成破绽,反靠点球抢分。",
+      "_gaps": ["全部高阶数据待补"]
+    },
     {
       "id": "20260618-UZB-COL",
       "date": "2026-06-18",
