@@ -7,7 +7,7 @@ rm -rf .deploy-dist
 mkdir -p .deploy-dist/reports
 cp index.html bracket.html data.js theme.css theme.js _headers .deploy-dist/
 # SEO/验证类文件不入 git（本地保留）；存在才复制，避免 fresh clone 时部署中断
-for f in robots.txt sitemap.xml og.jpg _redirects googlebb581cf5fc82feea.html; do
+for f in robots.txt sitemap.xml og.jpg _redirects googlebb581cf5fc82feea.html favicon.png apple-touch-icon.png share-thumb.png; do
   [ -f "$f" ] && cp "$f" .deploy-dist/
 done
 cp reports/*.html .deploy-dist/reports/
