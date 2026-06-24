@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=3">
+<title>2026世界杯 · 完整晋级图（淘汰赛对阵树）</title>
+<meta name="description" content="2026世界杯淘汰赛完整对阵树·32强到冠军·上下半区·每场关联五维预测报告 · powered by 坤桑">
+<link rel="stylesheet" href="theme.css">
+<script src="theme.js"></script>
+<style>
+:root{--bk-ln:#33312c;--bk-card:#111;--bk-cardbd:#1e1e1e;--bk-nm:#cfcfcf;--bk-bg:#0d0d0d}
+html[data-theme="light"]{--bk-ln:#d8cfba;--bk-card:#fff;--bk-cardbd:#e6e1d6;--bk-nm:#444;--bk-bg:#f6f4ef}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bk-bg);color:#d4d4d4;font-family:'PingFang SC','Microsoft YaHei',sans-serif;padding:18px 0}
+html[data-theme="light"] body{color:#3a3a3a}
+.wrap{max-width:1700px;margin:0 auto;padding:0 16px}
+h1{font-size:20px;color:#fff;text-align:center}
+html[data-theme="light"] h1{color:#1a1a1a}
+.sub{text-align:center;font-size:12px;color:#777;margin:4px 0 12px}
+.bk-banner{font-size:12px;color:#e8b84b;background:rgba(232,184,75,.08);border:1px solid rgba(232,184,75,.3);border-radius:9px;padding:10px 14px;margin:4px 0 10px;line-height:1.6}
+html[data-theme="light"] .bk-banner{color:#a07d1c;background:rgba(184,134,11,.07);border-color:rgba(184,134,11,.3)}
+.bk-legend{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-size:11px;color:#999;margin-bottom:8px}
+.bk-tip{text-align:center;font-size:11px;color:#e8b84b;margin-bottom:12px}
+html[data-theme="light"] .bk-tip{color:#a07d1c}
+.bk-scaler{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+.bk-bracket{display:flex;align-items:stretch;width:100%;min-width:1120px;min-height:880px}
+.bk-half{display:flex;flex:1}
+.bk-round{display:flex;flex-direction:column;flex:1;min-width:118px;padding:0 7px;position:relative}
+.bk-round::before{content:attr(data-r);position:sticky;top:0;text-align:center;font-size:10px;color:#e8b84b;letter-spacing:.12em;background:var(--bk-bg);padding:4px 0 5px;margin-bottom:2px;z-index:6;border-bottom:1px solid var(--bk-cardbd);flex:0 0 auto}
+html[data-theme="light"] .bk-round::before{color:#a07d1c}
+.bk-match{flex:1 1 0;display:flex;flex-direction:column;justify-content:center;position:relative}
+.bk-match.clickable{cursor:pointer}
+.bk-mhead{display:flex;justify-content:space-between;align-items:center;background:var(--bk-card);border:1px solid var(--bk-cardbd);border-bottom:none;border-radius:8px 8px 0 0;padding:3px 8px}
+.bk-match.clickable:hover .bk-mhead,.bk-match.clickable:hover .bk-slot{border-color:rgba(232,184,75,.5)}
+.bk-badge{font-size:9px;padding:0 5px;border-radius:3px;font-weight:700;background:rgba(120,120,120,.16);color:#aaa;border:1px solid #444}
+html[data-theme="light"] .bk-badge{background:#efeadf;color:#888;border-color:#ddd4c0}
+.bk-sc{font-size:10px;color:#777;font-weight:700}
+.bk-sc.link{color:#5a8abf}
+.bk-slot{display:flex;align-items:center;gap:5px;padding:4px 6px;font-size:11.5px;background:var(--bk-card);border-left:1px solid var(--bk-cardbd);border-right:1px solid var(--bk-cardbd)}
+.bk-slot:last-child{border-bottom:1px solid var(--bk-cardbd);border-radius:0 0 8px 8px}
+.bk-mk{width:14px;height:16px;flex:none;border-radius:3px 3px 5px 5px;background:#2a2a2a;border:1px solid #3a3a3a}
+html[data-theme="light"] .bk-mk{background:#e4dfd3;border-color:#d8cfba}
+.bk-fl{font-size:14px;flex:none;width:18px;text-align:center}
+.bk-nm{color:var(--bk-nm);font-weight:700}
+/* 连线：flex:1 等高 + nth-child 边框法 */
+.bk-half.L .bk-round:not(.last) .bk-match::after{content:'';position:absolute;left:100%;width:11px}
+.bk-half.L .bk-round:not(.last) .bk-match:nth-child(odd)::after{top:50%;bottom:0;border-top:2px solid var(--bk-ln);border-right:2px solid var(--bk-ln)}
+.bk-half.L .bk-round:not(.last) .bk-match:nth-child(even)::after{top:0;bottom:50%;border-bottom:2px solid var(--bk-ln);border-right:2px solid var(--bk-ln)}
+.bk-half.L .bk-round:not(:first-child) .bk-match::before{content:'';position:absolute;right:100%;top:50%;width:11px;height:2px;background:var(--bk-ln)}
+.bk-half.R .bk-round:not(.last) .bk-match::after{content:'';position:absolute;right:100%;width:11px}
+.bk-half.R .bk-round:not(.last) .bk-match:nth-child(odd)::after{top:50%;bottom:0;border-top:2px solid var(--bk-ln);border-left:2px solid var(--bk-ln)}
+.bk-half.R .bk-round:not(.last) .bk-match:nth-child(even)::after{top:0;bottom:50%;border-bottom:2px solid var(--bk-ln);border-left:2px solid var(--bk-ln)}
+.bk-half.R .bk-round:not(:last-child) .bk-match::before{content:'';position:absolute;left:100%;top:50%;width:11px;height:2px;background:var(--bk-ln)}
+.bk-final-col{display:flex;flex-direction:column;justify-content:center;align-items:center;min-width:150px;padding:0 4px}
+.bk-cup{width:66px;height:auto;filter:drop-shadow(0 3px 8px rgba(232,184,75,.4))}
+.bk-final-label{font-size:12px;color:#e8b84b;letter-spacing:.25em;margin:6px 0 10px;font-weight:800}
+html[data-theme="light"] .bk-final-label{color:#a07d1c}
+.bk-match.final{flex:0 0 auto;min-width:138px}
+.bk-match.final .bk-mhead{border-color:rgba(232,184,75,.55);background:linear-gradient(135deg,rgba(232,184,75,.14),var(--bk-card))}
+.bk-match.final .bk-slot{border-color:rgba(232,184,75,.5)}
+.bk-champ-tag{margin-top:14px;font-size:12px;color:#e8b84b;text-align:center;border:1px dashed rgba(232,184,75,.6);border-radius:9px;padding:9px 16px;line-height:1.7}
+.bk-champ-tag b{font-size:15px;color:#e8b84b}
+html[data-theme="light"] .bk-champ-tag,html[data-theme="light"] .bk-champ-tag b{color:#a07d1c;border-color:rgba(160,125,28,.5)}
+.bk-third{margin-top:18px;width:100%;display:flex;flex-direction:column;align-items:center}
+.bk-third-label{font-size:11px;color:#888;letter-spacing:.18em;font-weight:700;margin-bottom:5px}
+.bk-third .bk-match{flex:0 0 auto;min-width:138px;width:138px}
+.footer{text-align:center;font-size:11px;color:#555;margin-top:18px}
+.footer b{color:#e8b84b}
+</style>
+</head>
+<body>
+<a class="home-btn" href="index.html" title="返回主页">🏠</a>
+<div class="wrap">
+<h1>🏆 完整晋级图 · 2026世界杯淘汰赛对阵树</h1>
+<div class="sub">32强 → 冠军 · 上半区左 / 下半区右 / 决赛居中 · 每场锁定后关联五维预测报告</div>
+<div class="bk-banner" id="bkBanner"></div>
+<div class="bk-legend">
+  <span>位置码：A1=A组第一 · B2=B组第二 · A3/B3/…=最佳第三名(可能来源组)</span>
+  <span>第2场胜者=对应场次的晋级方</span>
+  <span>右上角 🌙/☀️ 切日夜</span>
+</div>
+<div class="bk-tip">← 手机端左右滑动查看完整对阵树 · 轮次标题吸顶 · 可双指缩放 · 点比赛看预测 →</div>
+<div class="bk-scaler"><div class="bk-bracket" id="bkBracket"></div></div>
+<div class="footer">⚽ 2026 FIFA World Cup 晋级图 · 娱乐向，不构成投注建议 · powered by <b>坤桑</b></div>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  var KO = WORLDCUP_DATA.ko, BN = KO && KO.byNo, T = KO && KO.tree;
+  if(!KO){ document.getElementById('bkBracket').innerHTML='<div style="padding:30px;color:#888">暂无淘汰赛数据</div>'; return; }
+  function seq(no){return no-72;}
+  function fmtCode(c){
+    if(c.indexOf('3rd:')===0) return c.slice(4).split('').map(function(g){return g+'3';}).join('/');
+    // 仅"W/L+真实场号(≥73)"才是晋级位；L1/L2 等单数字是组别位置码(L组第一/二)，原样显示
+    if((c.charAt(0)==='W'||c.charAt(0)==='L') && /^\d+$/.test(c.slice(1)) && +c.slice(1)>=73)
+      return '第'+seq(+c.slice(1))+'场'+(c.charAt(0)==='W'?'胜者':'负者');
+    return c;
+  }
+  function slot(code){
+    var t = KO.teams && KO.teams[code];
+    if(t) return '<div class="bk-slot"><span class="bk-fl">'+t.f+'</span><span class="bk-nm">'+t.n+'</span></div>';
+    return '<div class="bk-slot"><span class="bk-mk"></span><span class="bk-nm">'+fmtCode(code)+'</span></div>';
+  }
+  function matchEl(no, isFinal){
+    var m = BN[String(no)]; if(!m) return '';
+    var rep = m.report;
+    var rt = rep ? '<span class="bk-sc link">查看›</span>' : '<span class="bk-sc">未预测</span>';
+    var cls = 'bk-match'+(isFinal?' final':'')+(rep?' clickable':'');
+    var attr = rep ? ' onclick="location.href=\'reports/'+rep+'\'"' : '';
+    return '<div class="'+cls+'"'+attr+'>'+
+      '<div class="bk-mhead"><span class="bk-badge">第'+seq(no)+'场</span>'+rt+'</div>'+
+      slot(m.a)+slot(m.b)+'</div>';
+  }
+  function roundEl(nos, label, isLast){
+    return '<div class="bk-round'+(isLast?' last':'')+'" data-r="'+label+'">'+
+      nos.map(function(n){ return matchEl(n,false); }).join('') + '</div>';
+  }
+  var L = roundEl(T.leftR32,'1/16',false)+roundEl(T.leftR16,'1/8',false)+roundEl(T.leftQF,'1/4',false)+roundEl(T.leftSF,'半决赛',true);
+  var R = roundEl(T.rightSF,'半决赛',true)+roundEl(T.rightQF,'1/4',false)+roundEl(T.rightR16,'1/8',false)+roundEl(T.rightR32,'1/16',false);
+  var fin = '<div class="bk-final-col">'+
+    '<img class="bk-cup" src="assets/trophy.png" alt="大力神杯">'+
+    '<div class="bk-final-label">决 赛</div>'+ matchEl(T.final,true)+
+    '<div class="bk-champ-tag">🏆 冠军<br><b>待揭晓</b></div>'+
+    '<div class="bk-third"><div class="bk-third-label">🥉 季军赛</div>'+matchEl(103,false)+'</div></div>';
+  document.getElementById('bkBracket').innerHTML = '<div class="bk-half L">'+L+'</div>'+fin+'<div class="bk-half R">'+R+'</div>';
+  document.getElementById('bkBanner').textContent = '🧩 '+KO.note;
+})();
+</script>
+</body>
+</html>

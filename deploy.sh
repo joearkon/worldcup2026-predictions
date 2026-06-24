@@ -5,12 +5,14 @@ set -e
 cd "$(dirname "$0")"
 rm -rf .deploy-dist
 mkdir -p .deploy-dist/reports
-cp index.html data.js theme.css theme.js _headers .deploy-dist/
+cp index.html bracket.html data.js theme.css theme.js _headers .deploy-dist/
 # SEO/验证类文件不入 git（本地保留）；存在才复制，避免 fresh clone 时部署中断
 for f in robots.txt sitemap.xml og.jpg _redirects googlebb581cf5fc82feea.html; do
   [ -f "$f" ] && cp "$f" .deploy-dist/
 done
 cp reports/*.html .deploy-dist/reports/
+# 静态资源（晋级图大力神杯等图片）
+[ -d assets ] && mkdir -p .deploy-dist/assets && cp -r assets/* .deploy-dist/assets/
 # 给每个报告注入"创建/最后更新"时间(从 git 历史取,只注入部署副本,不污染源文件)
 for distf in .deploy-dist/reports/*.html; do
   base=$(basename "$distf")

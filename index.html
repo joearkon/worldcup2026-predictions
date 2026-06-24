@@ -206,6 +206,28 @@ html[data-theme="light"] .st-row.hl .gname{color:#b8860b}
 html[data-theme="light"] .footer{color:#999}
 html[data-theme="light"] .footer b{color:#a07d1c}
 html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;color:#b8860b;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+
+/* ===== 淘汰赛：晋级图入口 + KO时间轴列表 ===== */
+.ko-bracket-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:6px 0 4px;padding:13px 16px;background:linear-gradient(135deg,rgba(232,184,75,.16),rgba(17,17,17,.9));border:1px solid rgba(232,184,75,.45);border-radius:11px;text-decoration:none;color:#e8b84b;font-size:14px;font-weight:800}
+.ko-bracket-btn span{font-size:11px;color:#9a8a5a;font-weight:600}
+.ko-bracket-btn:hover{border-color:rgba(232,184,75,.8)}
+html[data-theme="light"] .ko-bracket-btn{background:linear-gradient(135deg,rgba(184,134,11,.12),#fff);color:#a07d1c;border-color:rgba(184,134,11,.4)}
+html[data-theme="light"] .ko-bracket-btn span{color:#b0a06a}
+.ko-note2{font-size:11px;color:#777;margin:8px 0 6px;line-height:1.6}
+/* 外层阶段标识框（32强/16强/8强…），内部复刻小组赛时间轴 */
+.ko-stage-box{border:1px solid #222;border-radius:12px;padding:4px 14px 10px;margin:16px 0}
+html[data-theme="light"] .ko-stage-box{border-color:#e6e1d6}
+.ko-stage-box.fin{border-color:rgba(232,184,75,.5);background:linear-gradient(180deg,rgba(232,184,75,.05),transparent)}
+.ko-stage-hd{display:flex;align-items:center;gap:10px;padding:11px 2px 8px;border-bottom:1px solid #222;margin-bottom:6px}
+.ko-stage-hd .num{font-size:17px;font-weight:900;color:#e8b84b}
+.ko-stage-hd .nm{font-size:13px;font-weight:800;color:#fff}
+.ko-stage-hd .ct{font-size:11px;color:#888;margin-left:auto}
+html[data-theme="light"] .ko-stage-hd{border-bottom-color:#e6e1d6}
+html[data-theme="light"] .ko-stage-hd .num{color:#a07d1c}
+html[data-theme="light"] .ko-stage-hd .nm{color:#1a1a1a}
+/* 位置码占位盾牌（嵌在复用的 .fx-team 里，替代国旗）*/
+.kol-mk{display:inline-block;width:16px;height:18px;flex:none;border-radius:3px 3px 6px 6px;background:#2a2a2a;border:1px solid #3a3a3a}
+html[data-theme="light"] .kol-mk{background:#e4dfd3;border-color:#d8cfba}
 </style>
 </head>
 <body>
@@ -230,17 +252,11 @@ html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;colo
 <div class="section-title">📅 小组赛赛程时间轴（全 72 场 · 北京时间）· 已预测场次可点击查看报告</div>
 <div id="timeline"></div>
 
-<!-- 淘汰赛占位（对阵待小组赛结束揭晓） -->
-<div class="section-title">🏆 淘汰赛阶段 · 敬请期待</div>
-<div class="ko-wrap">
-  <div class="ko-stage"><span class="ko-icon">🔒</span><span class="ko-name">1/16决赛（32强）</span><span class="ko-date">约6月29日~7月4日</span><span class="ko-hint">16场 · 对阵待小组赛揭晓</span></div>
-  <div class="ko-stage"><span class="ko-icon">🔒</span><span class="ko-name">1/8决赛（16强）</span><span class="ko-date">约7月5日~7月8日</span><span class="ko-hint">8场</span></div>
-  <div class="ko-stage"><span class="ko-icon">🔒</span><span class="ko-name">1/4决赛（8强）</span><span class="ko-date">约7月10日~7月12日</span><span class="ko-hint">4场</span></div>
-  <div class="ko-stage"><span class="ko-icon">🔒</span><span class="ko-name">半决赛</span><span class="ko-date">约7月15日~7月16日</span><span class="ko-hint">2场</span></div>
-  <div class="ko-stage"><span class="ko-icon">🔒</span><span class="ko-name">季军赛</span><span class="ko-date">约7月19日</span><span class="ko-hint">1场</span></div>
-  <div class="ko-stage ko-final"><span class="ko-icon">👑</span><span class="ko-name">决赛</span><span class="ko-date">约7月20日</span><span class="ko-hint">新泽西 MetLife球场 · 五维预测必到场</span></div>
-  <div class="ko-note">⏳ 对阵与精确开球时间（北京时间）将在小组赛结束后自动填入本时间轴 · 敬请期待</div>
-</div>
+<!-- 淘汰赛阶段：晋级图入口 + KO时间轴列表 -->
+<div class="section-title">🏆 淘汰赛阶段 · 对阵待小组赛收官锁定</div>
+<a class="ko-bracket-btn" href="bracket.html">🏆 查看完整晋级图（对阵树）<span>32强→冠军 · 上下半区 ›</span></a>
+<div class="ko-note2" id="koNote"></div>
+<div id="koTimeline"></div>
 
 <!-- 小组积分榜（实时按已完赛结果计算） -->
 <div class="section-title">🌍 小组赛积分榜 · 实时按已完赛结果计算</div>
@@ -510,6 +526,60 @@ html[data-theme="light"] .theme-toggle{background:#fff;border-color:#e0dacb;colo
       '<table class="stand"><thead><tr><th class="t">队</th><th>赛</th><th>胜</th><th>平</th><th>负</th><th>净</th><th>分</th></tr></thead>'+
       '<tbody>'+rows+'</tbody></table></div>';
   }).join("");
+})();
+
+/* ============ 淘汰赛 KO 时间轴（复刻小组赛时间轴样式 + 外层阶段标识框）============ */
+(function(){
+  var KO = WORLDCUP_DATA.ko; if(!KO || !document.getElementById('koTimeline')) return;
+  var WEEK=["周日","周一","周二","周三","周四","周五","周六"];
+  function pad2(n){return(n<10?"0":"")+n;}
+  function ymd(d){return d.getFullYear()+"-"+pad2(d.getMonth()+1)+"-"+pad2(d.getDate());}
+  var now=new Date(), todayStr=ymd(now);
+  var tmr=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1), tomorrowStr=ymd(tmr);
+  function dateHeader(ds){
+    var p=ds.split("-"); var d=new Date(+p[0],+p[1]-1,+p[2]);
+    var label=(+p[1])+"月"+(+p[2])+"日 "+WEEK[d.getDay()];
+    if(ds===todayStr) return '<span class="badge">今天</span>'+label;
+    if(ds===tomorrowStr) return '<span class="badge tmr">明天</span>'+label;
+    return label;
+  }
+  function seq(no){return no-72;}
+  function fmtCode(c){
+    if(c.indexOf('3rd:')===0) return c.slice(4).split('').map(function(g){return g+'3';}).join('/');
+    // 仅"W/L+真实场号(≥73)"才是晋级位；L1/L2 等单数字是组别位置码(L组第一/二)，原样显示
+    if((c.charAt(0)==='W'||c.charAt(0)==='L') && /^\d+$/.test(c.slice(1)) && +c.slice(1)>=73)
+      return '第'+seq(+c.slice(1))+'场'+(c.charAt(0)==='W'?'胜者':'负者');
+    return c;
+  }
+  function teamRow(code){
+    var t = KO.teams && KO.teams[code];
+    if(t) return '<div class="fx-team"><span class="fflag">'+t.f+'</span><span>'+t.n+'</span></div>';
+    return '<div class="fx-team"><span class="kol-mk"></span><span>'+fmtCode(code)+'</span></div>';
+  }
+  function rowHtml(m){
+    var rep=m.report;
+    var right = rep ? '<span class="fx-status s-pending">已出预测</span><br><span class="fx-arrow">报告 →</span>'
+                    : '<span class="fx-status s-none">未预测</span>';
+    var inner='<div class="fx-left"><div class="fx-time">'+m.time+'</div><div class="fx-meta">第'+seq(m.no)+'场</div></div>'+
+      '<div class="fx-mid"><div class="fx-teams">'+teamRow(m.a)+teamRow(m.b)+'</div><div class="fx-score na"><div>-</div><div>-</div></div></div>'+
+      '<div class="fx-right">'+right+'</div>';
+    if(rep) return '<a class="fx-row" href="'+encodeURI("reports/"+rep)+'">'+inner+'</a>';
+    return '<div class="fx-row">'+inner+'</div>';
+  }
+  var ROUNDS=[['1/16决赛','32强',16],['1/8决赛','16强',8],['1/4决赛','8强',4],['半决赛','4强',2],['季军赛','季军',1],['决赛','冠军',1]];
+  var byRound={}; KO.fixtures.forEach(function(m){(byRound[m.rd]=byRound[m.rd]||[]).push(m);});
+  var html='';
+  ROUNDS.forEach(function(r){
+    var arr=byRound[r[0]]; if(!arr) return;
+    var days=[]; arr.forEach(function(m){ if(!days.length||days[days.length-1].date!==m.date) days.push({date:m.date,list:[]}); days[days.length-1].list.push(m); });
+    var inner=days.map(function(day){
+      var past=day.date<todayStr;
+      return '<div class="tl-day'+(past?' past':'')+'" data-date="'+day.date+'"><div class="tl-date">'+dateHeader(day.date)+'</div>'+day.list.map(rowHtml).join('')+'</div>';
+    }).join('');
+    html+='<div class="ko-stage-box'+(r[0]==='决赛'?' fin':'')+'"><div class="ko-stage-hd"><span class="num">'+r[1]+'</span><span class="nm">'+r[0]+'</span><span class="ct">'+r[2]+'场</span></div>'+inner+'</div>';
+  });
+  document.getElementById('koTimeline').innerHTML=html;
+  var note=document.getElementById('koNote'); if(note) note.textContent='🧩 '+KO.note;
 })();
 </script>
 
