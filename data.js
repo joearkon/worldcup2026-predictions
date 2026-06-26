@@ -53,11 +53,11 @@ const WORLDCUP_DATA = {
       group: "G组",
       home: { flag: "🇳🇿", name: "新西兰" },
       away: { flag: "🇧🇪", name: "比利时" },
-      mainPred: "2-0 比利时（比须赢出线）",
-      altPred: "2-1 比利时",
+      mainPred: "0-2 比利时（比须赢出线）",
+      altPred: "1-2 比利时",
       actual: null,
       status: "pending",
-      report: "世界杯预测_20260627_GHI组末轮六场.html",
+      report: "世界杯小组赛预测_新西兰vs比利时.html",
       note: "【末轮·比须赢出线/新3%搏一把】比利时无9号攻坚乏力(两场运动战0进球),但新西兰非铁桶会漏→须赢压上应能打开;主2-0比/次2-1比。The One Risk=比利时控得住攻不破老毛病复发被新西兰不败韧性逼平→爆冷出局(本场最大冷门点)。"
     },
     {
@@ -70,7 +70,7 @@ const WORLDCUP_DATA = {
       altPred: "1-0 埃及",
       actual: null,
       status: "pending",
-      report: "世界杯预测_20260627_GHI组末轮六场.html",
+      report: "世界杯小组赛预测_埃及vs伊朗.html",
       note: "【末轮·埃不败即出线/伊须赢】两防守硬队·埃及求稳+伊朗攻坚乏力(塔雷米单箭头)→低分闷平;主1-1/次1-0埃(萨拉赫单点)。The One Risk=伊朗压上被萨拉赫反击1-2,或埃及被定位球偷1球。"
     },
     {
@@ -79,11 +79,11 @@ const WORLDCUP_DATA = {
       group: "H组",
       home: { flag: "🇺🇾", name: "乌拉圭" },
       away: { flag: "🇪🇸", name: "西班牙" },
-      mainPred: "2-1 西班牙（乌须赢压上被反击）",
+      mainPred: "1-2 西班牙（乌须赢压上被反击）",
       altPred: "1-1 平",
       actual: null,
       status: "pending",
-      report: "世界杯预测_20260627_GHI组末轮六场.html",
+      report: "世界杯小组赛预测_乌拉圭vs西班牙.html",
       note: "【末轮·西不败即出线/乌须赢】乌天赋转化差+须赢压上露身后→西班牙快攻/亚马尔反击,乌咬1球;主2-1西/次1-1平。The One Risk=西大轮换留力+乌死拼→闷平或乌偷胜。临场盯西轮换。"
     },
     {
@@ -96,7 +96,7 @@ const WORLDCUP_DATA = {
       altPred: "2-1 佛得角",
       actual: null,
       status: "pending",
-      report: "世界杯预测_20260627_GHI组末轮六场.html",
+      report: "世界杯小组赛预测_佛得角vs沙特阿拉伯.html",
       note: "【末轮·生死战·都想赢即出线】佛得角铁桶+门神+反击(黑马),沙特门将型伪铁桶须压上→正撞佛反击;主1-0佛/次2-1佛。The One Risk=沙特门将封神+佛逢强逼平惯性→1-1,或沙孤注压上反被大比分。"
     },
     {
@@ -109,7 +109,7 @@ const WORLDCUP_DATA = {
       altPred: "2-0 塞内加尔",
       actual: null,
       status: "pending",
-      report: "世界杯预测_20260627_GHI组末轮六场.html",
+      report: "世界杯小组赛预测_塞内加尔vs伊拉克.html",
       note: "【末轮·榜尾·伊已出局/塞须大胜搏最佳第三】塞净-3须大胜+伊拉克会漏鱼腩(两场失7)→按对会漏队往上够;主3-0塞/次2-0塞。The One Risk=塞终结转化差只小胜,最佳第三泡汤;或伊free hit偷1球。"
     },
     {
@@ -118,11 +118,11 @@ const WORLDCUP_DATA = {
       group: "I组",
       home: { flag: "🇳🇴", name: "挪威" },
       away: { flag: "🇫🇷", name: "法国" },
-      mainPred: "2-1 法国（争头名+质量）",
+      mainPred: "1-2 法国（争头名+质量）",
       altPred: "1-1 平",
       actual: null,
       status: "pending",
-      report: "世界杯预测_20260627_GHI组末轮六场.html",
+      report: "世界杯小组赛预测_挪威vs法国.html",
       note: "【末轮·两队均已出线·争头名】法国不输即头名→坐守反击;挪威须赢压上,高空杀招对法国防空+迈尼昂打折→被姆巴佩反击;主2-1法/次1-1平。The One Risk=双轮换留力踢默契平(末轮都出线未必死拼),或挪威高空偷头名。临场盯轮换。"
     },
     {
