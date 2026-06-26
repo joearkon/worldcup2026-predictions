@@ -167,8 +167,8 @@ M.append(dict(
  hf="🇳🇴",hn="挪威",ht="进攻8·高空杀招·防线一般遇对攻丢球",
  af="🇫🇷",an="法国",at="进攻9·姆巴佩单核·迈尼昂顶级门将",
  score="1 : 2",score_label="最可能比分（次选 1-1 平）· 法国胜",win="胜负：法国胜（次选：平·争头名意愿不强）",
- odds_title="偏法国·两强直接对话·都已出线",
- odds_body='<b style="color:#ddd">初盘</b>：法国 <b style="color:#e8c860">ML偏热</b>、平居中、挪威客胜 = 偏法国。两队均6分<b>已锁出线</b>。<br><b style="color:#ddd">处境</b>：法国净+5、挪威净+4，<b>法国不输即头名</b>(可坐守反击)；挪威须赢才能反超夺头名→须压上。<br><b style="color:#ddd">数据</b>：法国天赋碾压档·姆巴佩单核carry(WC16球)·迈尼昂顶级；挪威哈兰德+厄德高，<b>杀招=高空/定位球但对法国防空+迈尼昂要打折</b>，防线一般遇对攻会丢球。<br><b style="color:#e8b84b">checklist</b>：① 法国质量更高+只需平→稳 ② 挪威须赢压上→给姆巴佩反击空间 ③ 都已出线+淘汰赛在即→轮换留力风险(低分)。',
+ odds_title='偏法国·法-154·亚盘法国-1·O/U2.5偏Over',
+ odds_body='<b style="color:#ddd">欧盘ML</b>：法国 <b style="color:#e8c860">-154~-182(约65%)</b> · 平 +350 · 挪威 +350~+410。<br><b style="color:#ddd">亚盘</b>：法国 <b>-1</b>(-116·赢2球全收/赢1球退款)。<br><b style="color:#ddd">大小球</b>：O/U <b>2.5·偏Over</b>(-150~-167·法国近11场全Over)。RotoWire预测3-1法国。<br><b style="color:#ddd">处境</b>：两队均6分已锁出线争头名;法国不输即头名(坐守反击)、挪威须赢反超。<br><b style="color:#ddd">预计阵容</b>：🇫🇷 迈尼昂;孔德/萨利巴/于帕梅卡诺/特奥;琼阿梅尼/拉比奥/登贝莱/奥利塞/杜埃;姆巴佩(主力·非轮换)。🇳🇴 纽兰;佩德森/阿耶尔/厄斯蒂高/沃尔夫;厄德高/贝里/奥斯内斯;索尔洛特/哈兰德/努萨。<br><b style="color:#e8b84b">checklist</b>：① 阵容主力=法国想要头名非留力·天赋档信盘口锚 ② 挪须赢压上→给姆巴佩反击空间 ③ Over盘+两队都能进→给挪威进球档(#6强强未必闷)。',
  win_rel='<b style="color:#e8b84b">主=法国胜(1-2)</b>——挪威压上被姆巴佩反击、挪高空咬1球；<b>次=1-1平</b>，双方轮换留力踢默契、争头名意愿不强。',
  dims=[("① 阵容硬实力","lean-b","法国更强","法国天赋+板凳深度更高;挪威靠哈兰德/厄德高双核。"),
        ("② 状态与打法","lean-b","法transition vs 挪高空","法国靠个人能力+反击;挪威杀招高空对法国防空打折。"),
@@ -182,7 +182,7 @@ M.append(dict(
  verdict_title="胜负=法国胜 · 比分 1-2（次选 1-1 平）",
  verdict_body='<p><b>胜负关系</b>：<b style="color:#e8b84b">主=法国胜(1-2)</b>——法质量更高+挪威须赢压上被姆巴佩反击,挪高空咬1球;<b>次=1-1平</b>——两队均已出线、淘汰赛在即轮换留力踢默契。</p><p><b>比分锚</b>：1-2法主、1-1平次;法国争头名(避强敌)动机在,但别押大胜。</p>',
  risk='<b>都已出线+淘汰赛在即→双双大轮换踢成低强度平局</b>(末轮"都出线未必死拼"反复出现);或挪威高空真打穿法国轮换防线→对攻2-2甚至挪偷头名。临场盯两队首发轮换幅度。',
- srcs=SRC,
+ srcs=[('Racing Post · 盘口/team news','https://www.racingpost.com/sport/football-tips/world-cup-2026/norway-vs-france-world-cup-prediction-team-news-odds-betting-tips-and-bet-builder-aMxIm1b66uT1/'),('RotoWire · 预测/best bets','https://www.rotowire.com/soccer/article/norway-vs-france-picks-tips-odds-best-bets-2026-world-cup-group-i-119764'),('FanDuel · picks/阵容','https://www.fanduel.com/research/norway-vs-france-prediction-picks-lineups-preview-and-best-bets-world-cup-2026-group-i'),('Sports Interaction · odds','https://news.sportsinteraction.com/soccer/fifa-world-cup/story/norway-vs-france-odds-prediction-062626-217245'),('Lineups · 阵容/preview','https://www.lineups.com/betting/norway-vs-france-world-cup-match-preview-picks-odds-for-friday-june-26-2026/'),('SportsGambler · lineups','https://www.sportsgambler.com/betting-tips/football/norway-vs-france-prediction-lineups-odds-2026-06-26/')],
 ))
 
 # ===== 2. 塞内加尔 vs 伊拉克 =====
@@ -195,8 +195,8 @@ M.append(dict(
  hf="🇸🇳",hn="塞内加尔",ht="进攻7·萨尔状态回暖·须大胜",
  af="🇮🇶",an="伊拉克",at="进攻4·会漏鱼腩·防空软·已出局",
  score="3 : 0",score_label="最可能比分（次选 2-0 塞）· 塞内加尔胜",win="胜负：塞内加尔胜（须大胜刷净胜球）",
- odds_title="深盘偏塞·须大胜·打会漏鱼腩",
- odds_body='<b style="color:#ddd">初盘</b>：塞内加尔 <b style="color:#e8c860">深盘大热</b>、伊拉克客胜赔率高。<br><b style="color:#ddd">处境</b>：双双0分。<b>伊拉克净-6已出局</b>(free hit)；<b>塞内加尔净-3须大胜</b>刷净胜球，才有"最佳小组第三"一线希望→动机拉满。<br><b style="color:#ddd">数据</b>：塞内加尔萨尔状态回暖(上轮双响)·反击有威胁但终结仍不稳；伊拉克<b>会漏鱼腩坐实</b>(两场失7)·防空软+门将哈桑负资产。<br><b style="color:#e8b84b">checklist</b>：① 塞须大胜+伊会漏→按"对会漏队往上够"押大净胜 ② 塞终结转化差是封顶变量 ③ 伊已出局free hit→偶尔放开偷球。',
+ odds_title='深盘偏塞·塞-450·亚盘塞-2·O/U3.5',
+ odds_body='<b style="color:#ddd">欧盘ML</b>：塞内加尔 <b style="color:#e8c860">-450</b> · 平 +550 · 伊拉克 +1200。<br><b style="color:#ddd">亚盘</b>：塞 <b>-1</b>(4/6)、塞 <b>-2</b>(+102)=市场认可大胜。<br><b style="color:#ddd">大小球</b>：O/U <b>3.5</b>(Over -164/Under +131)=高总进球预期。<br><b style="color:#ddd">处境</b>：双双0分;伊拉克净-6已出局(free hit)、塞净-3须大胜刷净胜球搏最佳第三→动机拉满。<br><b style="color:#ddd">预计阵容</b>：🇸🇳 M.迪奥;迪亚塔/库利巴利/尼亚卡特/迪乌夫;I.盖耶/P.盖耶/卡马拉;萨尔/杰克逊/马内(门迪伤缺)。🇮🇶 法迪尔;侯赛因·阿里/塔赫辛/哈希姆;扎伊丹·伊克巴尔;贾西姆/A.哈马迪/A.侯赛因。<br><b style="color:#e8b84b">checklist</b>：① #2对会漏鱼腩往上够(亚盘-2+O/U3.5印证) ② 塞终结转化差=封顶变量 ③ 伊free hit偶尔偷球。',
  win_rel='<b style="color:#e8b84b">主=塞内加尔胜(3-0)</b>——打会漏鱼腩+须大胜动机;<b>次=2-0塞</b>，塞终结不稳没刷到3+。',
  dims=[("① 阵容硬实力","lean-a","塞内加尔强","塞整体质量高于已出局的伊拉克一档。"),
        ("② 状态与打法","lean-a","塞反击 vs 伊会漏","塞萨尔回暖;伊防空软、门将隐患、整体会漏。"),
@@ -210,7 +210,7 @@ M.append(dict(
  verdict_title="胜负=塞内加尔胜 · 比分 3-0（次选 2-0 塞）",
  verdict_body='<p><b>胜负关系</b>：<b style="color:#e8b84b">主=塞内加尔胜(3-0)</b>——打会漏鱼腩伊拉克+须大胜动机,按"对会漏队往上够"押大净胜;<b>次=2-0塞</b>——塞终结转化差,控制但没刷到3+。</p><p><b>比分锚</b>：3-0主、2-0次,偏大球;胜负无悬念,焦点是净胜球够不够最佳第三。</p>',
  risk='<b>塞内加尔"该进没进"转化差复发→只1-0/2-1小胜,最佳第三泡汤</b>;或伊拉克free hit放开偷1球破零封。萨尔的终结效率=刷净胜球的关键。',
- srcs=SRC,
+ srcs=[('Racing Post · 盘口/team news','https://www.racingpost.com/sport/football-tips/world-cup-2026/senegal-vs-iraq-world-cup-prediction-team-news-odds-betting-tips-and-bet-builder-abzLt2O2GKan/'),('SportsLine · 预测','https://www.sportsline.com/insiders/senegal-vs-iraq-odds-predictions-2026-world-cup-picks-from-proven-soccer-expert/'),('FOX Sports · picks','https://www.foxsports.com/stories/soccer/2026-world-cup-senegal-iraq-odds-prediction-picks'),('Yahoo · picks/阵容','https://sports.yahoo.com/articles/senegal-vs-iraq-predictions-picks-130200779.html'),('Lineups · odds/阵容','https://www.lineups.com/betting/senegal-vs-iraq-world-cup-match-preview-picks-odds-for-friday-june-26-2026/'),('Goal · 预测','https://www.goal.com/en-in/betting/world-cup/senegal-vs-iraq-predictions-27-06-2026/A%3Ablt930b5e6bf9be0bdb')],
 ))
 
 # ===== 3. 佛得角 vs 沙特 =====
@@ -223,8 +223,8 @@ M.append(dict(
  hf="🇨🇻",hn="佛得角",ht="防守7·铁桶+门神+反击·本届黑马",
  af="🇸🇦",an="沙特阿拉伯",at="进攻4.5·门将型伪铁桶·须赢压上",
  score="1 : 0",score_label="最可能比分（次选 2-1 佛）· 佛得角胜",win="胜负：佛得角胜（次选：对攻 2-1 佛）",
- odds_title="浅盘·生死战·两队都想赢",
- odds_body='<b style="color:#ddd">初盘</b>：浅盘小球倾向(两队进攻都有限)。<br><b style="color:#ddd">处境</b>：佛得角2分、沙特1分——<b>都想赢即基本锁前二</b>。佛赢=出线；沙特须赢才有戏。<br><b style="color:#ddd">数据</b>：佛得角<b>本届最大黑马</b>(铁桶+门神Vozinha+反击，连平西班牙0-0/乌拉圭2-2)；沙特<b>门将型伪铁桶</b>(0-4崩过西班牙)·防线遇火力会漏·须赢→压上露身后。<br><b style="color:#e8b84b">checklist</b>：① 沙特须赢压上→正撞佛得角铁桶+反击 ② 佛"逢强逼平"惯性是平局尾部 ③ 双方须赢→未必踢得保守。',
+ odds_title='浅盘·佛+165微favorite·佛-0.25·O/U2.5偏Under',
+ odds_body='<b style="color:#ddd">欧盘ML</b>：佛得角 <b style="color:#e8c860">+165</b> · 平 +215 · 沙特 +180(佛微favorite)。<br><b style="color:#ddd">亚盘</b>：佛得角 <b>-0.25</b>(+123·平退半)。<br><b style="color:#ddd">大小球</b>：O/U <b>2.5·偏Under</b>(-127·两队进攻有限)。SportsLine选佛得角胜+135。<br><b style="color:#ddd">处境</b>：佛2分、沙特1分=生死战;佛赢即出线、沙特须赢。<br><b style="color:#ddd">预计阵容</b>：🇨🇻 Vozinha;S.莫雷拉/R.洛佩斯/D.博尔赫斯/J.保罗;K.莱尼尼/杜阿尔特/R.门德斯;蒙泰罗/G.罗德里格斯/本希莫尔。🇸🇦 Al-Owais;阿姆里/拉贾米/Al-Tambakti/阿卜杜勒哈米德;M.Al-Harbi/卡诺/Abu Al-Shamat;N.Al-Dawsari/S.Al-Dawsari/Al-Buraikan。<br><b style="color:#e8b84b">checklist</b>：① 沙须赢压上→正撞佛铁桶+反击(末轮须赢方露身后) ② Under盘+浅盘=低分 ③ 佛逢强逼平惯性=平局尾部(佛-0.25退半)。',
  win_rel='<b style="color:#e8b84b">主=佛得角胜(1-0)</b>——沙特压上被佛反击偷一球,低分符合佛画像;<b>次=2-1佛</b>，沙压上对攻打开、佛反击得手但被咬1。',
  dims=[("① 阵容硬实力","lean-even","半斤八两","两队均中下游;佛防守更硬、沙靠门将。"),
        ("② 状态与打法","lean-a","佛铁桶反击 vs 沙压上","佛铁桶+反击;沙须赢压上=正给佛反击空间。"),
@@ -238,7 +238,7 @@ M.append(dict(
  verdict_title="胜负=佛得角胜 · 比分 1-0（次选 2-1 佛）",
  verdict_body='<p><b>胜负关系</b>：<b style="color:#e8b84b">主=佛得角胜(1-0)</b>——沙特须赢压上→正撞佛得角铁桶+反击,被偷一球;低分符合佛"别押大胜"画像;<b>次=2-1佛</b>——沙压上对攻打开、佛反击得手被咬1球。</p><p><b>比分锚</b>：1-0主、2-1次,偏小;胜者基本出线。</p>',
  risk='<b>沙特门将再封神+佛得角"逢强就逼平"惯性→1-1</b>(但双方须赢、未必踢保守);或沙特孤注一掷压上反被佛反击打成2-0/2-1佛。',
- srcs=SRC,
+ srcs=[('ESPN · 盘口','https://www.espn.com/soccer/odds/_/gameId/760478'),('Racing Post · 盘口/team news','https://www.racingpost.com/sport/football-tips/world-cup-2026/cape-verde-vs-saudi-arabia-world-cup-prediction-team-news-odds-betting-tips-and-bet-builder-aSUNw3n9bZIi/'),('Squawka · 预测/stats','https://www.squawka.com/en/news/world-cup/cape-verde-vs-saudi-arabia-predictions-betting-tips/'),('SportsLine · picks','https://www.sportsline.com/insiders/cape-verde-vs-saudi-arabia-odds-picks-2026-world-cup-predictions-from-proven-expert/'),('Yahoo · best bets/阵容','https://sports.yahoo.com/articles/cape-verde-vs-saudi-arabia-103500617.html'),('SportsGambler · lineups','https://www.sportsgambler.com/betting-tips/football/cape-verde-vs-saudi-arabia-prediction-lineups-odds-2026-06-26/')],
 ))
 
 # ===== 4. 乌拉圭 vs 西班牙 =====
@@ -251,8 +251,8 @@ M.append(dict(
  hf="🇺🇾",hn="乌拉圭",ht="进攻6.5·转化差·两场全平·须赢压上",
  af="🇪🇸",an="西班牙",at="进攻8·亚马尔效率开关·不败即出线",
  score="1 : 2",score_label="最可能比分（次选 1-1 平）· 西班牙胜",win="胜负：西班牙胜（次选：平·西轮换达成出线）",
- odds_title="偏西班牙·西不败即可·乌须赢",
- odds_body='<b style="color:#ddd">初盘</b>：西班牙 <b style="color:#e8c860">ML偏热</b>、平居中、乌主胜赔率高。<br><b style="color:#ddd">处境</b>：<b>西班牙4分不败即出线</b>(基本锁头名,可半留力)；<b>乌拉圭2分必须赢</b>(两连平、输则大概率出局)→压上露身后。<br><b style="color:#ddd">数据</b>：西班牙对会漏队火力顶级(4-0沙特)·亚马尔=效率开关；乌拉圭天赋队<b>转化差</b>(两场全平未胜)·缺创造中枢·非铁桶会漏。<br><b style="color:#e8b84b">checklist</b>：① 乌须赢压上露身后→西快攻/亚马尔反击 ② 西只需不败→可能轮换留力踢低强度 ③ 乌转化差=自己难赢透。',
+ odds_title='偏西·西-200·Opta62.2%·亚盘西-1.5',
+ odds_body='<b style="color:#ddd">欧盘ML</b>：西班牙 <b style="color:#e8c860">-200~-220</b> · 平 +320~+330 · 乌拉圭 +600~+650。<br><b style="color:#ddd">Opta超算</b>：西 <b>62.2%</b> / 平 22.1% / 乌 15.8%。<br><b style="color:#ddd">亚盘</b>：西 <b>-1.5</b>(+135·对应2-0)。<br><b style="color:#ddd">大小球</b>：O/U 2.5(Over -115~-118/Under -105~+107)。<br><b style="color:#ddd">处境</b>：西4分不败即出线(可半留力)、乌2分必须赢→压上露身后。<br><b style="color:#ddd">预计阵容</b>：🇺🇾 穆斯莱拉;巴雷拉/J.希门尼斯/阿劳霍/M.奥利维拉;巴尔韦德/乌加特/本坦库尔;佩利斯特里/达尔文·努涅斯/德阿拉斯卡埃塔。🇪🇸 乌奈·西蒙;波罗/库瓦尔西/拉波尔特/库库雷利亚;罗德里/苏比门迪/佩德里;亚马尔/奥亚萨瓦尔/N.威廉姆斯。<br><b style="color:#e8b84b">checklist</b>：① #9会漏队敢押大(西4-0沙特先例)·乌转化差(28射进1) ② 乌须赢压上露身后→西快攻/亚马尔反击 ③ 西只需不败→轮换留力风险(平的尾部)。',
  win_rel='<b style="color:#e8b84b">主=西班牙胜(1-2)</b>——乌压上被西反击、乌天赋咬1球;<b>次=1-1平</b>，西轮换留力(不败即可)+乌死拼→西达成出线踢平。',
  dims=[("① 阵容硬实力","lean-b","西班牙更强","西整体质量+爆点(亚马尔)更高;乌靠老将+反击。"),
        ("② 状态与打法","lean-b","西火力 vs 乌转化差","西对会漏队敢押大;乌28射进1的转化顽疾。"),
@@ -266,7 +266,7 @@ M.append(dict(
  verdict_title="胜负=西班牙胜 · 比分 1-2（次选 1-1 平）",
  verdict_body='<p><b>胜负关系</b>：<b style="color:#e8b84b">主=西班牙胜(1-2)</b>——乌拉圭须赢压上露身后→西班牙快攻/亚马尔反击,乌天赋咬回1球;<b>次=1-1平</b>——西班牙轮换留力(不败即可)+乌主场死拼→西达成出线目的踢平。</p><p><b>比分锚</b>：1-2西主、1-1平次;西争头名也想赢,但只需不败=别盲目押大。</p>',
  risk='<b>西班牙大轮换留力(只需平)+乌拉圭死拼→乌偷胜或闷平</b>;反向=亚马尔首发打开火力→西0-2/1-3大胜。临场盯西班牙轮换名单。',
- srcs=SRC,
+ srcs=[('Al Jazeera · 预测/阵容','https://www.aljazeera.com/sports/2026/6/25/world-cup-2026-uruguay-vs-spain-knockouts-prediction-lineups'),('RotoWire · Opta超算/best bets','https://www.rotowire.com/soccer/article/uruguay-vs-spain-picks-tips-odds-best-bets-2026-world-cup-group-h-119769'),('Racing Post · 盘口/team news','https://www.racingpost.com/sport/football-tips/world-cup-2026/uruguay-vs-spain-world-cup-prediction-team-news-odds-betting-tips-and-bet-builder-af11j2h7nZPv/'),('SportsLine · 预测','https://www.sportsline.com/insiders/spain-vs-uruguay-odds-predictions-2026-world-cup-picks-from-proven-soccer-expert/'),('Sports Interaction · odds','https://news.sportsinteraction.com/soccer/fifa-world-cup/story/uruguay-vs-spain-odds-prediction-062726-217252'),('OneFootball · preview','https://onefootball.com/en/news/uruguay-vs-spain-prediction-world-cup-2026-preview-best-bets-43046378')],
 ))
 
 # ===== 5. 埃及 vs 伊朗 =====
@@ -279,8 +279,8 @@ M.append(dict(
  hf="🇪🇬",hn="埃及",ht="进攻6·萨拉赫单点·不败韧性·只需平",
  af="🇮🇷",an="伊朗",at="防守6·对手越强越铁桶·须赢但攻坚乏力",
  score="1 : 1",score_label="最可能比分（次选 1-0 埃）· 平",win="胜负：平（次选：埃及小胜 1-0）",
- odds_title="浅盘小球·两防守硬队·低分倾向",
- odds_body='<b style="color:#ddd">初盘</b>：浅盘、O/U偏小(两队进攻都有限)。<br><b style="color:#ddd">处境</b>：<b>埃及4分不败即出线</b>(可求稳)；<b>伊朗2分须赢</b>才稳出线(平则看比利时脸色)。<br><b style="color:#ddd">数据</b>：埃及能先进球的硬队·萨拉赫单点·不败韧性，<b>只需平→会踢得收着</b>；伊朗<b>弹性防线·对手越强越铁桶</b>·塔雷米单箭头进攻有限·低分逼平常态。<br><b style="color:#e8b84b">checklist</b>：① 两防守硬队→低分基本确定 ② 埃求稳+伊攻坚乏力→闷平概率高 ③ 萨拉赫/塔雷米单点定胜负。',
+ odds_title='埃+143微favorite·埃-0.25·O/U1.5极低',
+ odds_body='<b style="color:#ddd">欧盘ML</b>：埃及 <b style="color:#e8c860">+143~+145</b> · 平 +160 · 伊朗 +295。<br><b style="color:#ddd">亚盘</b>：埃及 <b>-0.25</b>(-105·平退半)。<br><b style="color:#ddd">大小球</b>：O/U <b>1.5(极低)·偏Under</b>=市场强烈预期低总进球。<br><b style="color:#ddd">处境</b>：埃4分不败即出线(可求稳)、伊须赢才稳出线(平看比利时)。<br><b style="color:#ddd">预计阵容</b>：🇪🇬 舒贝尔;哈尼/易卜拉欣/拉比亚/法图;阿提亚/拉欣;Zika/萨拉赫/阿舒尔;马尔穆什。🇮🇷 贝兰万德;雷扎伊安/卡纳尼/哈利勒扎德/内马蒂/哈吉萨菲;贾汉巴赫什/戈杜斯/埃扎托拉希/莫赫比;塔雷米(单箭头·5-4-1)。<br><b style="color:#e8b84b">checklist</b>：① 伊朗画像=对强队铁桶·低分逼平常态+埃只需平求稳→框架指向低分平 ② O/U1.5=低分基本确定 ③ 萨拉赫/塔雷米单点定胜负(别因埃微favorite盲从盘口翻成埃胜)。',
  win_rel='<b style="color:#e8b84b">主=平(1-1)</b>——埃求稳不败+伊须赢但攻坚有限,各靠单点;<b>次=埃及小胜(1-0)</b>，萨拉赫破局后控住。',
  dims=[("① 阵容硬实力","lean-even","半斤八两","两队中游、各有单点(萨拉赫/塔雷米),整体接近。"),
        ("② 状态与打法","lean-even","双防守硬·低分","埃能先进球硬队;伊弹性防线、低分逼平常态。"),
@@ -294,7 +294,7 @@ M.append(dict(
  verdict_title="胜负=平 · 比分 1-1（次选 埃及小胜 1-0）",
  verdict_body='<p><b>胜负关系</b>：<b style="color:#e8b84b">主=平(1-1)</b>——两防守硬队·埃及求稳不败+伊朗须赢但攻坚有限→低分闷平,各靠单点/定位球;<b>次=埃及小胜(1-0)</b>——萨拉赫单点破局后埃及控住,达成出线。</p><p><b>比分锚</b>：1-1主、1-0埃次,低分;胜负看萨拉赫/塔雷米单点。</p>',
  risk='<b>伊朗须赢压上→铁桶变进攻反被埃及萨拉赫反击(1-2伊朗输)</b>;或埃及过度求稳被伊朗定位球偷1球。低分基本确定,单点效率是胜负手。',
- srcs=SRC,
+ srcs=[('Racing Post · 盘口/team news','https://www.racingpost.com/sport/football-tips/world-cup-2026/egypt-vs-iran-world-cup-prediction-team-news-odds-betting-tips-and-bet-builder-aARLl2s6c96X/'),('SportsLine · 预测','https://www.sportsline.com/insiders/egypt-vs-iran-odds-predictions-time-2026-world-cup-picks-from-elite-soccer-expert/'),('Squawka · stats','https://www.squawka.com/en/news/world-cup/egypt-vs-iran-predictions-betting-tips/'),('Yahoo · picks','https://sports.yahoo.com/articles/egypt-vs-iran-predictions-picks-180000348.html'),('SportsGambler · lineups/阵容','https://www.sportsgambler.com/betting-tips/football/egypt-vs-iran-prediction-lineups-odds-2026-06-26/'),('TotalFootballAnalysis · 预测','https://totalfootballanalysis.com/competitions/fifa-world-cup-2026/egypt-v-iran-predictions')],
 ))
 
 # ===== 6. 新西兰 vs 比利时 =====
@@ -307,8 +307,8 @@ M.append(dict(
  hf="🇳🇿",hn="新西兰",ht="防守4.5·不败韧性强·攻防都不稳会漏",
  af="🇧🇪",an="比利时",at="进攻6·无9号攻坚乏力(两场0运动战进球)·须赢",
  score="0 : 2",score_label="最可能比分（次选 1-2 比）· 比利时胜",win="胜负：比利时胜（次选：新咬1球 1-2 比）",
- odds_title="偏比利时·比须赢·新非铁桶会漏",
- odds_body='<b style="color:#ddd">初盘</b>：比利时 <b style="color:#e8c860">ML偏热</b>(firm盘连续不兑现需警惕)、新西兰客胜赔率高。<br><b style="color:#ddd">处境</b>：<b>比利时2分必须赢</b>才出线(两连平、压力山大)→压上；<b>新西兰1分仅3%出线</b>(需大胜+埃及赢伊朗)→搏一把。<br><b style="color:#ddd">数据</b>：比利时<b>无正牌9号·攻坚乏力是结构性</b>(两场运动战0进球,唯一进球是乌龙)·德布劳内钝；新西兰不败韧性强(别押完败)·但<b>攻防都不稳、非铁桶=会漏球</b>。<br><b style="color:#e8b84b">checklist</b>：① 比须赢压上+新非铁桶会漏→比应能打开(≠对伊朗铁桶0-0) ② 但比无9号便秘是结构隐患 ③ 新不败韧性=逼平尾部。',
+ odds_title='深盘偏比·比1/5·亚盘比-2·O/U2.5偏Under',
+ odds_body='<b style="color:#ddd">欧盘ML</b>：比利时 <b style="color:#e8c860">1/5(约-500)</b> · 平 15/2 · 新西兰 18/1。<br><b style="color:#ddd">亚盘</b>：比利时 <b>-2</b>(1.6·让两球)。<br><b style="color:#ddd">大小球</b>：O/U <b>2.5·偏Under</b>(7/4)·BTTS No 4/7(比利时低效)。卢卡库anytime 8/11。<br><b style="color:#ddd">处境</b>：比利时2分必须赢出线(两连平·压力山大)、新西兰1分仅3%出线搏一把。<br><b style="color:#ddd">预计阵容</b>：🇧🇪 库尔图瓦;德古伊佩/梅赫莱/泰特/默尼耶;蒂勒曼斯/奥纳纳;多库/德布劳内/特罗萨德;卢卡库(首发)。🇳🇿 克罗孔布;佩恩/瑟曼/宾登/卡卡切;贝尔/斯塔梅尼奇/贾斯特;麦考瓦特/兰德尔/伍德。<br><b style="color:#e8b84b">checklist</b>：① #1只对真铁桶发作·新非铁桶会漏→比可破(亚盘-2) ② 但比无9号便秘(2场1球·0运动战)+firm盘连续不兑现=The One Risk重权 ③ Under盘+BTTS No=低分零封型。',
  win_rel='<b style="color:#e8b84b">主=比利时胜(0-2)</b>——须赢压上+新会漏防线被打开;<b>次=1-2比</b>，新对攻咬回1球但比质量更高赢下。',
  dims=[("① 阵容硬实力","lean-b","比利时更强","比纸面质量(德布劳内/卢卡库)远高;新靠整体韧性。"),
        ("② 状态与打法","lean-even","比攻坚乏力 vs 新会漏","比无9号便秘 vs 新非铁桶会漏=对冲,看谁先破。"),
@@ -322,7 +322,7 @@ M.append(dict(
  verdict_title="胜负=比利时胜 · 比分 0-2（次选 1-2 比）",
  verdict_body='<p><b>胜负关系</b>：<b style="color:#e8b84b">主=比利时胜(0-2)</b>——须赢压上+新西兰非铁桶会漏→比利时终于打开(对会漏队≠对伊朗铁桶);<b>次=1-2比</b>——新西兰对攻咬回1球,但比利时质量更高赢下。</p><p><b>比分锚</b>：0-2主、1-2次;别押比大胜(攻坚乏力仍在)。</p>',
  risk='<b>比利时"控得住≠攻得破/无9号便秘"老毛病复发→又闷平、被新西兰不败韧性逼平→比利时爆冷出局</b>(本场最大冷门点·firm盘连续不兑现的延续)。卢卡库首发能否解攻坚荒是关键。',
- srcs=SRC,
+ srcs=[('SI · 预测/阵容','https://www.si.com/soccer/new-zealand-vs-belgium-world-cup-preview-predictions-lineups-6-26-26'),('Sports Mole · team news','https://www.sportsmole.co.uk/football/belgium/world-cup-2026/preview/new-zealand-vs-belgium-prediction-team-news-lineups_599916.html'),('RotoWire · lineups/tactical','https://www.rotowire.com/soccer/article/new-zealand-vs-belgium-preview-predicted-lineups-team-news-tactical-analysis-2026-world-cup-group-g-119636'),('Racing Post · 盘口/team news','https://www.racingpost.com/sport/football-tips/world-cup-2026/new-zealand-vs-belgium-world-cup-prediction-team-news-odds-betting-tips-and-bet-builder-aOJiz5Q9Q7Fk/'),('TotalFootballAnalysis · 预测','https://totalfootballanalysis.com/competitions/fifa-world-cup-2026/new-zealand-v-belgium-predictions'),('Yahoo · best bets','https://sports.yahoo.com/articles/zealand-vs-belgium-prediction-world-082000552.html')],
 ))
 
 if __name__ == "__main__":
