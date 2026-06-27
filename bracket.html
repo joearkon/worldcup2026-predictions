@@ -95,6 +95,17 @@ html[data-theme="light"] .bk-champ-tag,html[data-theme="light"] .bk-champ-tag b{
 (function(){
   var KO = WORLDCUP_DATA.ko, BN = KO && KO.byNo, T = KO && KO.tree;
   if(!KO){ document.getElementById('bkBracket').innerHTML='<div style="padding:30px;color:#888">暂无淘汰赛数据</div>'; return; }
+  var KM = WORLDCUP_DATA.matches || [];
+  /* 报告不在 fixture 上而在 matches —— 用 ko.teams 解析队名后按名字匹配预测记录 */
+  function koReport(m){
+    var ta=KO.teams&&KO.teams[m.a], tb=KO.teams&&KO.teams[m.b];
+    if(!ta||!tb) return null;
+    for(var i=0;i<KM.length;i++){
+      var x=KM[i]; if(!x.report||!x.home||!x.away) continue;
+      if((x.home.name===ta.n&&x.away.name===tb.n)||(x.home.name===tb.n&&x.away.name===ta.n)) return x;
+    }
+    return null;
+  }
   function seq(no){return no-72;}
   function fmtCode(c){
     if(c.indexOf('3rd:')===0) return c.slice(4).split('').map(function(g){return g+'3';}).join('/');
@@ -110,10 +121,10 @@ html[data-theme="light"] .bk-champ-tag,html[data-theme="light"] .bk-champ-tag b{
   }
   function matchEl(no, isFinal){
     var m = BN[String(no)]; if(!m) return '';
-    var rep = m.report;
-    var rt = rep ? '<span class="bk-sc link">查看›</span>' : '<span class="bk-sc">未预测</span>';
+    var pred = koReport(m), rep = pred ? pred.report : null;
+    var rt = rep ? '<span class="bk-sc link">⏳ 已预测 ›</span>' : '<span class="bk-sc">未预测</span>';
     var cls = 'bk-match'+(isFinal?' final':'')+(rep?' clickable':'');
-    var attr = rep ? ' onclick="location.href=\'reports/'+rep+'\'"' : '';
+    var attr = rep ? ' onclick="location.href=\''+encodeURI('reports/'+rep)+'\'"' : '';
     return '<div class="'+cls+'"'+attr+'>'+
       '<div class="bk-mhead"><span class="bk-badge">第'+seq(no)+'场</span>'+rt+'</div>'+
       slot(m.a)+slot(m.b)+'</div>';

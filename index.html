@@ -603,8 +603,15 @@ html[data-theme="light"] .kol-mk{background:#e4dfd3;border-color:#d8cfba}
   }
   function rowHtml(m){
     var pred=koReport(m), rep=pred?pred.report:null;
-    var right = rep ? '<span class="fx-status s-pending">已出预测</span><br><span class="fx-arrow">报告 →</span>'
-                    : '<span class="fx-status s-none">未预测</span>';
+    var right;
+    if(pred){
+      right = '<span class="fx-status s-pending">⏳ 已预测</span>';
+      var ps = pred.mainPred && pred.mainPred.match(/(\d+)\s*[-:]\s*(\d+)/);
+      if(ps) right += '<br><span class="fx-pred">预测 '+ps[1]+'-'+ps[2]+'</span>';
+      if(rep) right += '<br><span class="fx-arrow">报告 →</span>';
+    } else {
+      right = '<span class="fx-status s-none">未预测</span>';
+    }
     var inner='<div class="fx-left"><div class="fx-time">'+m.time+'</div><div class="fx-meta">第'+seq(m.no)+'场</div></div>'+
       '<div class="fx-mid"><div class="fx-teams">'+teamRow(m.a)+teamRow(m.b)+'</div><div class="fx-score na"><div>-</div><div>-</div></div></div>'+
       '<div class="fx-right">'+right+'</div>';
