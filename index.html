@@ -565,6 +565,7 @@ html[data-theme="light"] .kol-mk{background:#e4dfd3;border-color:#d8cfba}
 /* ============ 淘汰赛 KO 时间轴（复刻小组赛时间轴样式 + 外层阶段标识框）============ */
 (function(){
   var KO = WORLDCUP_DATA.ko; if(!KO || !document.getElementById('koTimeline')) return;
+  var KM = WORLDCUP_DATA.matches || [];
   var WEEK=["周日","周一","周二","周三","周四","周五","周六"];
   function pad2(n){return(n<10?"0":"")+n;}
   function ymd(d){return d.getFullYear()+"-"+pad2(d.getMonth()+1)+"-"+pad2(d.getDate());}
@@ -590,8 +591,18 @@ html[data-theme="light"] .kol-mk{background:#e4dfd3;border-color:#d8cfba}
     if(t) return '<div class="fx-team"><span class="fflag">'+t.f+'</span><span>'+t.n+'</span></div>';
     return '<div class="fx-team"><span class="kol-mk"></span><span>'+fmtCode(code)+'</span></div>';
   }
+  /* 报告不在 fixture 上，而在 WORLDCUP_DATA.matches —— 用 ko.teams 解析双方队名后按名字匹配预测记录 */
+  function koReport(m){
+    var ta=KO.teams&&KO.teams[m.a], tb=KO.teams&&KO.teams[m.b];
+    if(!ta||!tb) return null;
+    for(var i=0;i<KM.length;i++){
+      var x=KM[i]; if(!x.report||!x.home||!x.away) continue;
+      if((x.home.name===ta.n&&x.away.name===tb.n)||(x.home.name===tb.n&&x.away.name===ta.n)) return x;
+    }
+    return null;
+  }
   function rowHtml(m){
-    var rep=m.report;
+    var pred=koReport(m), rep=pred?pred.report:null;
     var right = rep ? '<span class="fx-status s-pending">已出预测</span><br><span class="fx-arrow">报告 →</span>'
                     : '<span class="fx-status s-none">未预测</span>';
     var inner='<div class="fx-left"><div class="fx-time">'+m.time+'</div><div class="fx-meta">第'+seq(m.no)+'场</div></div>'+
