@@ -19,15 +19,25 @@
  *   mainPred : 主预测比分（站在 home 视角，如 "2-0"）
  *   altPred  : 次选比分
  *   actual   : 实际比分，未赛完填 null
- *   status   : 战绩三档口径 ——
+ *   status   : 战绩口径 ——
  *              "exact"   ✅ 精确命中（主预测比分全对）
  *              "alt"     🟡 次选命中（次选比分对）
- *              "direction" 🔵 胜负命中（仅胜平负对）
+ *              "direction" 🔵 胜负命中（小组赛=仅胜平负对；淘汰赛=比分没中但晋级方对）
  *              "miss"    ❌ 未命中
  *              "pending" ⏳ 待验证
  *   report   : reports/ 目录下的文件名（中文名直接写，渲染时 encodeURI）
  *              没出报告的场次填 null
  *   note     : 一句话备注，可空字符串
+ *
+ *   —— 淘汰赛(KO)专用字段（小组赛场次不写这些）——
+ *   phase       : "ko"，标记该场为淘汰赛（战绩看板据此拆「小组赛/淘汰赛」双桶）
+ *   advancePred : 预测晋级方队名（KO 真正的胜负预测，无平局）
+ *   advance     : 实际晋级方队名，赛后填，未赛 null
+ *   decidedBy   : 晋级方式 "reg"(常规90′)/"et"(加时)/"pens"(点球)，赛后填，未赛 null
+ *   actual      : KO 场存「常规+加时(120′)最终比分」，点球大战不计入比分
+ *                 （故 1-1 点球摩晋级 → actual 记 "1-1"、advance 记 "摩洛哥"、decidedBy "pens"）
+ *   KO 的 status 语义：exact=主预测比分中 / alt=次选比分中 /
+ *                      direction=比分没中但晋级方对 / miss=晋级方也错
  *
  * fixtures 字段说明（静态赛程，主页时间轴的骨架）：
  *   date  : 北京时间日期 "YYYY-MM-DD"
@@ -47,6 +57,23 @@ const WORLDCUP_DATA = {
 
   /* ---------- 赛事预测记录（新比赛往最前面加） ---------- */
   matches: [
+    {
+      date: "2026-06-30 09:00（北京时间）",
+      sortKey: "2026-06-30 09:00",
+      group: "32强·1/16决赛",
+      phase: "ko",
+      home: { flag: "🇳🇱", name: "荷兰" },
+      away: { flag: "🇲🇦", name: "摩洛哥" },
+      mainPred: "1-1（120′·点球摩晋级）",
+      altPred: "0-1 摩洛哥",
+      advancePred: "摩洛哥",
+      advance: null,
+      decidedBy: null,
+      actual: null,
+      status: "pending",
+      report: "世界杯32强预测_荷兰vs摩洛哥.html",
+      note: "【KO·历史沉淀逆盘口】荷兰天赋/90′盘口占优,但⑥维(荷三场全丢球vs摩防守顶级)+⑦维KO成色(摩2022连点淘汰西葡)同向压向摩洛哥晋级。120′主1-1拖点球摩胜/次0-1摩反击;荷兰常规90′打疯带走=The One Risk。"
+    },
     {
       date: "2026-06-27 11:00（北京时间）",
       sortKey: "2026-06-27 11:00",

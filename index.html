@@ -34,10 +34,12 @@ h1 .ball{font-size:22px}
 .section-title::after{content:"";flex:1;height:1px;background:#1e1e1e}
 
 /* ===== 战绩看板 ===== */
-.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 @media(max-width:820px){.stats-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:520px){.stats-grid{grid-template-columns:1fr 1fr}}
 .stat-card{background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:16px 14px;text-align:center}
+.stat-card.tone-grp{border-top:2px solid rgba(90,138,191,.55)}
+.stat-card.tone-ko{border-top:2px solid rgba(232,184,75,.65);background:linear-gradient(180deg,rgba(232,184,75,.04),#111)}
 .stat-num{font-size:34px;font-weight:900;color:#e8b84b;font-variant-numeric:tabular-nums;line-height:1.2}
 .stat-num small{font-size:16px}
 .stat-label{font-size:11px;color:#777;margin-top:4px}
@@ -154,6 +156,8 @@ html[data-theme="light"] .sub{color:#999}
 html[data-theme="light"] .section-title{color:#a07d1c}
 html[data-theme="light"] .section-title::after{background:#e4dfd3}
 html[data-theme="light"] .stat-card{background:#fff;border-color:#e6e1d6}
+html[data-theme="light"] .stat-card.tone-grp{border-top:2px solid rgba(70,110,170,.5)}
+html[data-theme="light"] .stat-card.tone-ko{border-top:2px solid rgba(184,134,11,.6);background:linear-gradient(180deg,rgba(184,134,11,.05),#fff)}
 html[data-theme="light"] .stat-num{color:#bf8c12}
 html[data-theme="light"] .stat-hint{color:#aaa}
 html[data-theme="light"] .results-line{background:#fbfaf7;border-color:#e9e4d9;color:#666}
@@ -319,30 +323,57 @@ html[data-theme="light"] .kol-mk{background:#e4dfd3;border-color:#d8cfba}
     return mm ? [mm[1], mm[2]] : null;
   }
 
-  /* ---- 1. 战绩看板 ---- */
-  var total = M.length;
-  var exact = M.filter(function(m){return m.status==="exact";}).length;
-  var alt   = M.filter(function(m){return m.status==="alt";}).length;
+  /* ---- 1. 战绩看板（小组赛 / 淘汰赛 双桶）---- */
+  // 复用统一口径：比分命中=exact+alt；胜负/晋级命中=exact+alt+direction
+  //   小组赛 direction = 胜平负对；淘汰赛 direction = 比分没中但晋级方对
+  var total   = M.length;
   var settled = M.filter(function(m){return m.status!=="pending";});
-  // 比分命中口径（核心，比分为王）：预测比分与实际完全一致 —— 主预测(精确)或次选命中才算
-  var scoreHit = exact + alt;
-  var scoreRate = settled.length ? Math.round(scoreHit/settled.length*100) : 0;
-  // 胜负命中口径（辅助）：胜平负对即可，精确/次选/胜负任一档都算胜负对
-  var dirHit = settled.filter(function(m){
-    return m.status==="exact"||m.status==="alt"||m.status==="direction";
-  }).length;
-  var dirRate = settled.length ? Math.round(dirHit/settled.length*100) : 0;
-  var covered = F.filter(function(f){ return !!findMatch(f); }).length;
+  function isKO(m){ return m.phase==="ko"; }
+
+  // 桶统计工具：传入一组已开赛场次，算出比分命中/胜负(晋级)命中数与率
+  function tally(arr){
+    var sHit = arr.filter(function(m){return m.status==="exact"||m.status==="alt";}).length;
+    var dHit = arr.filter(function(m){return m.status==="exact"||m.status==="alt"||m.status==="direction";}).length;
+    return {
+      n:arr.length, sHit:sHit, dHit:dHit,
+      sRate: arr.length ? Math.round(sHit/arr.length*100) : 0,
+      dRate: arr.length ? Math.round(dHit/arr.length*100) : 0
+    };
+  }
+
+  // —— 小组赛桶 ——
+  var grpSettled = settled.filter(function(m){return !isKO(m);});
+  var grp = tally(grpSettled);
+  var grpCovered = F.filter(function(f){ return !!findMatch(f); }).length;   // 小组赛覆盖（基于 72 场赛程）
+
+  // —— 淘汰赛桶 ——
+  var koSettled = settled.filter(isKO);
+  var ko = tally(koSettled);
+  var koCovered = M.filter(isKO).length;     // 已出具淘汰赛预测的场次（满额 32 场）
+  var koHasResult = ko.n > 0;
+  var koScoreHint = koHasResult ? ("已开赛 "+ko.n+" 场中 "+ko.sHit+" 场比分命中 · 含加时,点球不计")
+                                : (koCovered ? ("淘汰赛未开打 · 已预测 "+koCovered+" 场待验证") : "淘汰赛尚未开始");
+  var koAdvHint   = koHasResult ? (ko.n+" 场中 "+ko.dHit+" 场晋级方押对（无平局）")
+                                : (koCovered ? ("淘汰赛未开打 · 晋级命中待验证") : "淘汰赛尚未开始");
 
   document.getElementById("statsGrid").innerHTML =
-    statCard(total, "已预测场次", settled.length+" 场已开赛 / "+(total-settled.length)+" 场待验证") +
-    statCard(scoreRate+"<small>%</small>", "比分命中率", "已开赛 "+settled.length+" 场中 "+scoreHit+" 场比分完全命中 · 比分为王") +
-    statCard(dirRate+"<small>%</small>", "胜负命中率", settled.length+" 场中 "+dirHit+" 场胜平负对（含比分未中）") +
-    statCard(exact+" <small>/</small> "+alt, "精确 / 次选", "主预测全中 "+exact+" 场 / 次选命中 "+alt+" 场") +
-    statCard(covered+"<small>/72</small>", "小组赛覆盖", "已对 "+covered+" 场小组赛出具预测");
+    statCard(total, "已预测场次", settled.length+" 场已开赛 / "+(total-settled.length)+" 场待验证", "") +
+    // 小组赛三张
+    statCard(grp.sRate+"<small>%</small>", "比分命中率 · 小组赛", "已开赛 "+grp.n+" 场中 "+grp.sHit+" 场比分完全命中 · 比分为王", "grp") +
+    statCard(grp.dRate+"<small>%</small>", "胜负命中率 · 小组赛", grp.n+" 场中 "+grp.dHit+" 场胜平负对（含比分未中）", "grp") +
+    statCard(grpCovered+"<small>/72</small>", "小组赛覆盖", "已对 "+grpCovered+" 场小组赛出具预测", "grp") +
+    // 淘汰赛三张
+    statCard(ko.sRate+"<small>%</small>", "比分命中率 · 淘汰赛", koScoreHint, "ko") +
+    statCard(ko.dRate+"<small>%</small>", "晋级命中率 · 淘汰赛", koAdvHint, "ko") +
+    statCard(koCovered+"<small>/32</small>", "淘汰赛覆盖", "已对 "+koCovered+" 场淘汰赛出具预测", "ko");
 
-  function statCard(num,label,hint){
-    return '<div class="stat-card"><div class="stat-num">'+num+'</div>'+
+  // 给战绩流水复用的总比分命中率（小组赛+淘汰赛合并）
+  var settledAll = tally(settled);
+  var scoreRate = settledAll.sRate;
+
+  function statCard(num,label,hint,tone){
+    var cls = "stat-card" + (tone ? (" tone-"+tone) : "");
+    return '<div class="'+cls+'"><div class="stat-num">'+num+'</div>'+
            '<div class="stat-label">'+label+'</div>'+
            '<div class="stat-hint">'+hint+'</div></div>';
   }
