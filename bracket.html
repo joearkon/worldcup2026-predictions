@@ -125,9 +125,17 @@ html[data-theme="light"] .bk-champ-tag,html[data-theme="light"] .bk-champ-tag b{
     var rt = rep ? '<span class="bk-sc link">⏳ 已预测 ›</span>' : '<span class="bk-sc">未预测</span>';
     var cls = 'bk-match'+(isFinal?' final':'')+(rep?' clickable':'');
     var attr = rep ? ' onclick="location.href=\''+encodeURI('reports/'+rep)+'\'"' : '';
+    var pf = '';
+    if(pred){
+      var bs = pred.mainPred && pred.mainPred.match(/(\d+)\s*[-:]\s*(\d+)/);
+      var parts = [];
+      if(bs) parts.push('预测 '+bs[1]+'-'+bs[2]);
+      if(pred.advancePred) parts.push('晋级 '+pred.advancePred);
+      if(parts.length) pf = '<div style="font-size:9px;color:#e8b84b;font-weight:700;text-align:center;padding-top:3px;margin-top:3px;border-top:1px solid #222">'+parts.join(' · ')+'</div>';
+    }
     return '<div class="'+cls+'"'+attr+'>'+
       '<div class="bk-mhead"><span class="bk-badge">第'+seq(no)+'场</span>'+rt+'</div>'+
-      slot(m.a)+slot(m.b)+'</div>';
+      slot(m.a)+slot(m.b)+pf+'</div>';
   }
   function roundEl(nos, label, isLast){
     return '<div class="bk-round'+(isLast?' last':'')+'" data-r="'+label+'">'+

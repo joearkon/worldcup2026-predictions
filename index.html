@@ -608,6 +608,7 @@ html[data-theme="light"] .kol-mk{background:#e4dfd3;border-color:#d8cfba}
       right = '<span class="fx-status s-pending">⏳ 已预测</span>';
       var ps = pred.mainPred && pred.mainPred.match(/(\d+)\s*[-:]\s*(\d+)/);
       if(ps) right += '<br><span class="fx-pred">预测 '+ps[1]+'-'+ps[2]+'</span>';
+      if(pred.advancePred) right += '<br><span class="fx-pred" style="color:#e8b84b">晋级 '+pred.advancePred+'</span>';
       if(rep) right += '<br><span class="fx-arrow">报告 →</span>';
     } else {
       right = '<span class="fx-status s-none">未预测</span>';
