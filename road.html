@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>我的世界杯夺冠之路 · 2026世界杯预测中心</title>
+<meta name="description" content="挑一支你看好的球队，填上你预测的淘汰赛比分，一键生成专属「夺冠之路」海报（带二维码可分享）· powered by 坤桑">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="theme.css?v=2">
+<script src="theme.js?v=2"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0d0d;color:#d4d4d4;font-family:'PingFang SC','Microsoft YaHei',sans-serif;padding:24px 16px;max-width:760px;margin:0 auto;line-height:1.6}
+.home-btn{position:fixed;top:14px;right:14px;font-size:20px;text-decoration:none;background:#1a1a1a;border:1px solid #333;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;z-index:10}
+h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
+.sub{text-align:center;font-size:12px;color:#777;margin-bottom:8px}
+.back{text-align:center;margin-bottom:18px}
+.back a{font-size:12.5px;color:#5a8abf;text-decoration:none;font-weight:700}
+.step-h{font-size:13px;font-weight:800;color:#e8b84b;letter-spacing:.06em;margin:20px 0 10px;padding-left:8px;border-left:3px solid #e8b84b}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+.tcard{background:#141414;border:1px solid #262626;border-radius:9px;padding:10px 6px;text-align:center;cursor:pointer;transition:.12s}
+.tcard:hover{border-color:#555}
+.tcard.on{border-color:#e8b84b;background:rgba(232,184,75,.12)}
+.tcard .f{font-size:26px}
+.tcard .n{font-size:12px;color:#ddd;margin-top:3px;font-weight:700}
+.locked{opacity:.32;cursor:not-allowed;pointer-events:none}
+#pathBox{display:none;margin-top:8px}
+.pick-row{display:flex;align-items:center;gap:10px;background:#111;border:1px solid #1e1e1e;border-radius:9px;padding:10px 12px;margin-bottom:8px;flex-wrap:wrap}
+.pick-rd{font-size:12px;font-weight:800;color:#e8b84b;min-width:64px}
+.pick-opp{font-size:12.5px;color:#bbb;flex:1;min-width:150px}
+.pick-opp .vs{color:#666;margin-right:5px}
+.pick-opp select{background:#0a0a0a;color:#ddd;border:1px solid #333;border-radius:6px;padding:3px 6px;font-size:12px;max-width:150px}
+.sc-in{display:flex;align-items:center;gap:6px}
+.sc-in input{width:42px;text-align:center;background:#0a0a0a;color:#fff;border:1px solid #333;border-radius:6px;padding:6px 4px;font-size:15px;font-weight:800}
+.sc-in .dash{color:#666}
+.pk{font-size:11px;color:#888;margin-top:5px;width:100%;display:none}
+.pk label{margin-right:10px;cursor:pointer}
+.pk.show{display:block}
+.namebox{margin:12px 0}
+.namebox input{width:100%;background:#0a0a0a;color:#fff;border:1px solid #333;border-radius:8px;padding:9px 12px;font-size:13px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.btn{flex:1;min-width:130px;text-align:center;padding:12px;border-radius:10px;font-size:13.5px;font-weight:800;cursor:pointer;border:none}
+.btn-main{background:linear-gradient(135deg,#e8b84b,#c8941f);color:#1a1a1a}
+.btn-sec{background:#1a1a1a;color:#e8b84b;border:1px solid rgba(232,184,75,.4)}
+.tip{font-size:11px;color:#666;text-align:center;margin-top:4px}
+/* ===== 海报本体（固定暗金风，不随主题变，保证导出一致） ===== */
+#posterWrap{margin-top:18px}
+#poster{width:480px;max-width:100%;margin:0 auto;background:linear-gradient(160deg,#15110a,#0b0b0b 55%,#120f08);border:1px solid rgba(232,184,75,.35);border-radius:16px;padding:26px 24px;color:#e9e3d3}
+.p-title{text-align:center;font-size:17px;font-weight:900;color:#e8b84b;letter-spacing:.04em}
+.p-team{text-align:center;margin:14px 0 6px}
+.p-flag{font-size:54px;line-height:1}
+.p-name{font-size:24px;font-weight:900;color:#fff;margin-top:2px}
+.p-hr{height:1px;background:linear-gradient(90deg,transparent,rgba(232,184,75,.5),transparent);margin:12px 0}
+.p-row{display:flex;align-items:center;padding:7px 2px;border-bottom:1px dashed rgba(255,255,255,.06)}
+.p-row:last-child{border-bottom:none}
+.p-rd{font-size:12px;font-weight:800;color:#e8b84b;min-width:62px}
+.p-opp{font-size:13px;color:#cfc7b4;flex:1}
+.p-opp .vs{color:#7a7363;font-size:11px;margin-right:4px}
+.p-sc{font-size:16px;font-weight:900;color:#fff;font-variant-numeric:tabular-nums;letter-spacing:1px}
+.p-sc .pk{font-size:10px;color:#e8b84b;font-weight:700}
+.p-champ{margin-left:6px}
+.p-foot{margin-top:14px}
+.p-by{font-size:12px;color:#b9b09a;text-align:center;margin-bottom:10px}
+.p-brand{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid rgba(232,184,75,.2);padding-top:12px}
+#qrbox{width:64px;height:64px;background:#fff;padding:4px;border-radius:6px;flex:none}
+#qrbox img,#qrbox canvas{display:block;width:56px!important;height:56px!important}
+.p-brandtxt{text-align:right;font-size:11px;color:#9a917b;line-height:1.5}
+.p-brandtxt b{color:#e8b84b}
+#outImg{display:none;width:480px;max-width:100%;margin:14px auto 0;border-radius:16px}
+#outImg.show{display:block}
+.outtip{display:none;font-size:12px;color:#e8b84b;text-align:center;margin-top:8px}
+.outtip.show{display:block}
+.footer{text-align:center;font-size:11px;color:#444;margin-top:30px}
+.footer b{color:#e8b84b}
+</style>
+</head>
+<body>
+<a class="home-btn" href="index.html" title="返回主页">🏠</a>
+
+<h1>🛣️ 我的世界杯夺冠之路</h1>
+<div class="sub">挑一支你看好的队 · 填上你预测的淘汰赛比分 · 生成专属海报（可扫码分享）</div>
+<div class="back"><a href="index.html">🏠 返回主页</a> · <a href="bracket.html">🏆 看完整晋级图</a></div>
+
+<div class="step-h">① 选一支你看好的球队</div>
+<div class="team-grid" id="teamGrid"></div>
+<div class="tip" id="lockTip"></div>
+
+<div id="pathBox">
+  <div class="step-h">② 预测它的夺冠之路（每轮填你看好的比分）</div>
+  <div id="rounds"></div>
+  <div class="namebox"><input id="predName" maxlength="16" placeholder="✍️ 写上你的名字（会印在海报上，可不填）"></div>
+  <div class="actions">
+    <button class="btn btn-main" id="genBtn">🎨 生成海报</button>
+    <button class="btn btn-sec" id="copyBtn">🔗 复制分享链接</button>
+    <button class="btn btn-sec" id="shareBtn" style="display:none">📤 分享</button>
+  </div>
+  <div class="tip">海报生成后：电脑右键另存 / 手机长按保存；扫海报二维码可还原这张预测</div>
+
+  <div id="posterWrap">
+    <div id="poster">
+      <div class="p-title">🏆 我的世界杯夺冠之路</div>
+      <div class="p-team"><div class="p-flag" id="pFlag">🏆</div><div class="p-name" id="pName">—</div></div>
+      <div class="p-hr"></div>
+      <div id="pRows"></div>
+      <div class="p-foot">
+        <div class="p-by" id="pBy"></div>
+        <div class="p-brand">
+          <div id="qrbox"></div>
+          <div class="p-brandtxt">powered by <b>坤桑</b><br>worldcup2026.kunkun1023.xyz<br>2026 FIFA World Cup</div>
+        </div>
+      </div>
+    </div>
+    <img id="outImg" alt="夺冠之路海报">
+    <div class="outtip" id="outTip">✅ 海报已生成 —— 长按/右键保存图片</div>
+  </div>
+</div>
+
+<div class="footer">⚽ 2026 FIFA World Cup · 娱乐向，不构成投注建议 · powered by <b>坤桑</b></div>
+<div style="text-align:center;font-size:10px;margin-top:10px;padding-bottom:8px"><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" style="color:#666;text-decoration:none">沪ICP备2025153381号-1</a></div>
+
+<script src="data.js"></script>
+<script src="vendor/html2canvas.min.js"></script>
+<script src="vendor/qrcode.min.js"></script>
+<script>
+(function(){
+  var KO = WORLDCUP_DATA && WORLDCUP_DATA.ko;
+  if(!KO || !KO.teams){ document.getElementById('teamGrid').innerHTML='<div style="color:#888;padding:20px">淘汰赛数据未就绪</div>'; return; }
+  var TEAMS = KO.teams, FX = KO.fixtures, RDFULL=['1/16决赛','1/8决赛','1/4决赛','半决赛','决赛'];
+  function seq(no){return no-72;}
+
+  /* 把位置码解析成展示名 */
+  function codeName(code){
+    if(!code) return '待定';
+    var t = TEAMS[code];
+    if(t) return t.f+' '+t.n;
+    if(code.indexOf('3rd:')===0) return '🏳️ 待定·最佳第三';
+    if(code.charAt(0)==='W' && /^\d+$/.test(code.slice(1))) return '第'+seq(+code.slice(1))+'场胜者';
+    return '待定';
+  }
+  /* 给定队伍 code，顺着 W{场号} 链追出 5 轮路径 */
+  function buildPath(teamCode){
+    var rounds=[], cur=null, myToken=teamCode, g=0;
+    for(var i=0;i<FX.length;i++){ if(FX[i].rd==='1/16决赛' && (FX[i].a===teamCode||FX[i].b===teamCode)){ cur=FX[i]; break; } }
+    if(!cur) return null;
+    while(cur && g++<8){
+      var opp = (cur.a===myToken)? cur.b : cur.a;
+      rounds.push({rd:cur.rd, no:cur.no, opp:opp});
+      if(cur.rd==='决赛') break;
+      var win='W'+cur.no, nx=null;
+      for(var j=0;j<FX.length;j++){ if(FX[j].rd!=='季军赛' && (FX[j].a===win||FX[j].b===win)){ nx=FX[j]; break; } }
+      myToken=win; cur=nx;
+    }
+    return rounds;
+  }
+
+  /* 全部已锁球队名（给自选对手下拉用） */
+  var allNames = Object.keys(TEAMS).map(function(c){return TEAMS[c];})
+    .map(function(t){return t.f+' '+t.n;});
+
+  var teamGrid=document.getElementById('teamGrid');
+  var codes = Object.keys(TEAMS);
+  // 已能进入 R32 路径的队（其 R32 fixture 存在）才可选
+  function hasPath(code){ for(var i=0;i<FX.length;i++){ if(FX[i].rd==='1/16决赛'&&(FX[i].a===code||FX[i].b===code)) return true; } return false; }
+  var pickable = codes.filter(hasPath);
+  document.getElementById('lockTip').textContent =
+    '已锁定 '+pickable.length+' 支 · 其余待 6/28 小组赛收官+最佳第三名分配后自动开放';
+
+  var STATE = { t:null, path:null, o:[], s:[], pk:[], name:'' };
+
+  teamGrid.innerHTML = pickable.map(function(c){
+    var t=TEAMS[c];
+    return '<div class="tcard" data-c="'+c+'"><div class="f">'+t.f+'</div><div class="n">'+t.n+'</div></div>';
+  }).join('') || '<div style="color:#888;padding:16px">暂无已锁定球队，请待小组赛收官</div>';
+
+  teamGrid.addEventListener('click', function(e){
+    var card=e.target.closest('.tcard'); if(!card) return;
+    var c=card.getAttribute('data-c');
+    [].forEach.call(teamGrid.querySelectorAll('.tcard'), function(x){x.classList.toggle('on', x===card);});
+    selectTeam(c);
+  });
+
+  function selectTeam(code, preset){
+    var path=buildPath(code); if(!path) return;
+    STATE.t=code; STATE.path=path;
+    STATE.o = path.map(function(r,i){ return (preset&&preset.o&&preset.o[i])||''; });
+    STATE.s = path.map(function(r,i){ return (preset&&preset.s&&preset.s[i])||['','']; });
+    STATE.pk= path.map(function(r,i){ return (preset&&preset.pk&&preset.pk[i])||''; });
+    renderRounds();
+    document.getElementById('pathBox').style.display='block';
+    if(preset && preset.name){ document.getElementById('predName').value=preset.name; STATE.name=preset.name; }
+  }
+
+  function renderRounds(){
+    var box=document.getElementById('rounds');
+    box.innerHTML = STATE.path.map(function(r,i){
+      var def=codeName(r.opp);
+      var oppSel = '<select data-i="'+i+'" class="oppSel"><option value="">'+def+'</option>'+
+        allNames.map(function(n){ var sel=(STATE.o[i]===n)?' selected':''; return '<option value="'+n+'"'+sel+'>'+n+'</option>'; }).join('')+'</select>';
+      var rdShort = r.rd;
+      return '<div class="pick-row">'+
+        '<span class="pick-rd">'+rdShort+'</span>'+
+        '<span class="pick-opp"><span class="vs">vs</span>'+oppSel+'</span>'+
+        '<span class="sc-in"><input type="number" min="0" max="20" class="scMe" data-i="'+i+'" value="'+(STATE.s[i][0])+'"><span class="dash">-</span><input type="number" min="0" max="20" class="scOp" data-i="'+i+'" value="'+(STATE.s[i][1])+'"></span>'+
+        '<span class="pk" data-i="'+i+'"><b style="color:#e8b84b">平局→点球：</b>'+
+          '<label><input type="radio" name="pk'+i+'" value="me"'+(STATE.pk[i]==='me'?' checked':'')+'> 我方过</label>'+
+          '<label><input type="radio" name="pk'+i+'" value="opp"'+(STATE.pk[i]==='opp'?' checked':'')+'> 对方过</label>'+
+        '</span>'+
+      '</div>';
+    }).join('');
+    [].forEach.call(box.querySelectorAll('.scMe,.scOp'), function(inp){ inp.addEventListener('input', syncPk); });
+    [].forEach.call(box.querySelectorAll('.oppSel'), function(s){ s.addEventListener('change', function(){ STATE.o[+s.getAttribute('data-i')]=s.value; }); });
+    box.addEventListener('change', function(e){ if(e.target.type==='radio'){ var i=+e.target.name.replace('pk',''); STATE.pk[i]=e.target.value; } });
+    syncPk();
+  }
+  function syncPk(){
+    var box=document.getElementById('rounds');
+    [].forEach.call(box.querySelectorAll('.pick-row'), function(row,i){
+      var me=row.querySelector('.scMe').value, op=row.querySelector('.scOp').value;
+      STATE.s[i]=[me,op];
+      var tie = me!==''&&op!==''&&(+me===+op);
+      row.querySelector('.pk').classList.toggle('show', tie);
+    });
+  }
+
+  /* ---- URL 编解码（unicode 安全 base64）---- */
+  function enc(o){ return btoa(unescape(encodeURIComponent(JSON.stringify(o)))); }
+  function dec(s){ try{ return JSON.parse(decodeURIComponent(escape(atob(s)))); }catch(e){ return null; } }
+  function shareURL(){
+    STATE.name=document.getElementById('predName').value.trim();
+    var payload={ t:STATE.t, o:STATE.o, s:STATE.s, pk:STATE.pk, name:STATE.name };
+    return location.origin+location.pathname+'?p='+enc(payload);
+  }
+
+  /* ---- 渲染海报 DOM + 二维码，再 html2canvas ---- */
+  function buildPoster(){
+    var t=TEAMS[STATE.t];
+    document.getElementById('pFlag').textContent=t.f;
+    document.getElementById('pName').textContent=t.n;
+    var url=shareURL();
+    var rowsHtml=STATE.path.map(function(r,i){
+      var opp = STATE.o[i] || codeName(r.opp);
+      var me=STATE.s[i][0], op=STATE.s[i][1];
+      var scoreTxt = (me===''||op==='')? '— -—' : (me+' - '+op);
+      var tie=(me!==''&&op!==''&&(+me===+op));
+      var pkTxt = tie ? ' <span class="pk">('+(STATE.pk[i]==='me'?'点球过':STATE.pk[i]==='opp'?'点球负':'点球')+')</span>' : '';
+      var champ='';
+      if(r.rd==='决赛' && me!==''&&op!==''){
+        var win=(+me>+op)||(tie&&STATE.pk[i]==='me');
+        if(win) champ=' <span class="p-champ">🏆</span>';
+      }
+      return '<div class="p-row"><span class="p-rd">'+r.rd+'</span>'+
+        '<span class="p-opp"><span class="vs">vs</span>'+opp+'</span>'+
+        '<span class="p-sc">'+scoreTxt+pkTxt+champ+'</span></div>';
+    }).join('');
+    document.getElementById('pRows').innerHTML=rowsHtml;
+    var nm=STATE.name||'匿名球迷';
+    var d=new Date();
+    document.getElementById('pBy').textContent='预测人：'+nm+'　·　'+d.getFullYear()+'.'+(d.getMonth()+1)+'.'+d.getDate();
+    // 二维码
+    var qb=document.getElementById('qrbox'); qb.innerHTML='';
+    try{ new QRCode(qb,{text:url,width:56,height:56,colorDark:'#000',colorLight:'#fff',correctLevel:QRCode.CorrectLevel.M}); }catch(e){}
+    return url;
+  }
+
+  function generate(){
+    if(!STATE.t){ alert('先选一支球队'); return; }
+    buildPoster();
+    var poster=document.getElementById('poster');
+    setTimeout(function(){
+      html2canvas(poster,{backgroundColor:'#0b0b0b',scale:2,useCORS:true}).then(function(canvas){
+        var img=document.getElementById('outImg');
+        img.src=canvas.toDataURL('image/png');
+        img.classList.add('show');
+        document.getElementById('outTip').classList.add('show');
+        // 提供下载
+        img.onclick=function(){ var a=document.createElement('a'); a.href=img.src; a.download='我的夺冠之路_'+TEAMS[STATE.t].n+'.png'; a.click(); };
+        img.scrollIntoView({behavior:'smooth',block:'center'});
+      }).catch(function(err){ alert('海报生成失败：'+err); });
+    }, 120); // 等二维码渲染
+  }
+
+  document.getElementById('genBtn').addEventListener('click', generate);
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    if(!STATE.t){ alert('先选一支球队'); return; }
+    var url=shareURL();
+    if(navigator.clipboard){ navigator.clipboard.writeText(url).then(function(){ alert('分享链接已复制！发给朋友即可还原你的预测'); }, function(){ prompt('复制此链接分享：', url); }); }
+    else prompt('复制此链接分享：', url);
+  });
+  // Web Share API（移动端）
+  if(navigator.share){
+    var sb=document.getElementById('shareBtn'); sb.style.display='';
+    sb.addEventListener('click', function(){ if(!STATE.t){alert('先选一支球队');return;} navigator.share({title:'我的世界杯夺冠之路',url:shareURL()}).catch(function(){}); });
+  }
+
+  /* ---- 载入分享链接 ?p= ---- */
+  (function(){
+    var m=location.search.match(/[?&]p=([^&]+)/); if(!m) return;
+    var o=dec(decodeURIComponent(m[1])); if(!o||!o.t||!TEAMS[o.t]) return;
+    var card=teamGrid.querySelector('[data-c="'+o.t+'"]'); if(card) card.classList.add('on');
+    selectTeam(o.t, o);
+    setTimeout(generate, 400);
+  })();
+})();
+</script>
+</body>
+</html>
