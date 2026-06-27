@@ -58,23 +58,6 @@ const WORLDCUP_DATA = {
   /* ---------- 赛事预测记录（新比赛往最前面加） ---------- */
   matches: [
     {
-      date: "2026-06-30 09:00（北京时间）",
-      sortKey: "2026-06-30 09:00",
-      group: "32强·1/16决赛",
-      phase: "ko",
-      home: { flag: "🇳🇱", name: "荷兰" },
-      away: { flag: "🇲🇦", name: "摩洛哥" },
-      mainPred: "1-1（120′·点球摩晋级）",
-      altPred: "0-1 摩洛哥",
-      advancePred: "摩洛哥",
-      advance: null,
-      decidedBy: null,
-      actual: null,
-      status: "pending",
-      report: "世界杯32强预测_荷兰vs摩洛哥.html",
-      note: "【KO·历史沉淀逆盘口】荷兰天赋/90′盘口占优,但⑥维(荷三场全丢球vs摩防守顶级)+⑦维KO成色(摩2022连点淘汰西葡)同向压向摩洛哥晋级。120′主1-1拖点球摩胜/次0-1摩反击;荷兰常规90′打疯带走=The One Risk。"
-    },
-    {
       date: "2026-06-27 11:00（北京时间）",
       sortKey: "2026-06-27 11:00",
       group: "G组",
