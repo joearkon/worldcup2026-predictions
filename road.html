@@ -45,7 +45,7 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
 .tip{font-size:11px;color:#666;text-align:center;margin-top:4px}
 /* ===== 海报本体（固定暗金风，不随主题变，保证导出一致） ===== */
 #posterWrap{margin-top:18px}
-#poster{width:480px;max-width:100%;margin:0 auto;background:linear-gradient(160deg,#15110a,#0b0b0b 55%,#120f08);border:1px solid rgba(232,184,75,.35);border-radius:16px;padding:26px 24px;color:#e9e3d3}
+#poster{position:absolute;left:-9999px;top:0;width:480px;background:#0b0b0b;padding:20px;color:#e9e3d3}
 .p-title{text-align:center;font-size:17px;font-weight:900;color:#e8b84b;letter-spacing:.04em}
 .p-team{text-align:center;margin:14px 0 6px}
 .p-flag{font-size:54px;line-height:1}
@@ -66,7 +66,7 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
 #qrbox img,#qrbox canvas{display:block;width:56px!important;height:56px!important}
 .p-brandtxt{text-align:right;font-size:11px;color:#9a917b;line-height:1.5}
 .p-brandtxt b{color:#e8b84b}
-#outImg{display:none;width:480px;max-width:100%;margin:14px auto 0;border-radius:16px}
+#outImg{display:none;width:auto;max-width:min(360px,100%);margin:14px auto 0;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.5)}
 #outImg.show{display:block}
 .outtip{display:none;font-size:12px;color:#e8b84b;text-align:center;margin-top:8px}
 .outtip.show{display:block}
@@ -91,6 +91,7 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
   <div class="namebox"><input id="predName" maxlength="16" placeholder="✍️ 写上你的名字（会印在海报上，可不填）"></div>
   <div class="actions">
     <button class="btn btn-main" id="genBtn">🎨 生成海报</button>
+    <button class="btn btn-sec" id="dlBtn" style="display:none">⬇️ 下载海报</button>
     <button class="btn btn-sec" id="copyBtn">🔗 复制分享链接</button>
     <button class="btn btn-sec" id="shareBtn" style="display:none">📤 分享</button>
   </div>
@@ -125,7 +126,27 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
   var KO = WORLDCUP_DATA && WORLDCUP_DATA.ko;
   if(!KO || !KO.teams){ document.getElementById('teamGrid').innerHTML='<div style="color:#888;padding:20px">淘汰赛数据未就绪</div>'; return; }
   var TEAMS = KO.teams, FX = KO.fixtures, RDFULL=['1/16决赛','1/8决赛','1/4决赛','半决赛','决赛'];
+  var BG=new Image(); var bgOK=false; BG.onload=function(){bgOK=true;}; BG.src='assets/poster-bg.png';
+  var lastDataURL='';
   function seq(no){return no-72;}
+  function byNo(no){ for(var i=0;i<FX.length;i++){ if(FX[i].no===no) return FX[i]; } return null; }
+  /* 严格对阵树：某对手槽位真正可能出现的队（顺 W{场号} 递归到 R32 叶子）*/
+  function candidateCodes(code, acc, d){
+    if(!code || d>9){ return; }
+    if(TEAMS[code]){ acc.teams[code]=1; return; }
+    if(code.indexOf('3rd:')===0){ acc.unknown=true; return; }
+    if(code.charAt(0)==='W' && /^\d+$/.test(code.slice(1))){
+      var fx=byNo(+code.slice(1)); if(!fx){ acc.unknown=true; return; }
+      candidateCodes(fx.a,acc,d+1); candidateCodes(fx.b,acc,d+1); return;
+    }
+    acc.unknown=true; /* 未锁位置码(G1/3rd 等待定) */
+  }
+  function oppCandidates(oppCode){
+    var acc={teams:{},unknown:false}; candidateCodes(oppCode,acc,0);
+    var names=Object.keys(acc.teams).filter(function(c){return c!==STATE.t;})
+      .map(function(c){return TEAMS[c].f+' '+TEAMS[c].n;});
+    return { names:names, unknown:acc.unknown };
+  }
 
   /* 把位置码解析成展示名 */
   function codeName(code){
@@ -193,8 +214,10 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
     var box=document.getElementById('rounds');
     box.innerHTML = STATE.path.map(function(r,i){
       var def=codeName(r.opp);
-      var oppSel = '<select data-i="'+i+'" class="oppSel"><option value="">'+def+'</option>'+
-        allNames.map(function(n){ var sel=(STATE.o[i]===n)?' selected':''; return '<option value="'+n+'"'+sel+'>'+n+'</option>'; }).join('')+'</select>';
+      var cand=oppCandidates(r.opp);
+      var defLabel = def + (cand.names.length? '（可选↓）' : (cand.unknown? '（对手待定）':''));
+      var oppSel = '<select data-i="'+i+'" class="oppSel"><option value="">'+defLabel+'</option>'+
+        cand.names.map(function(n){ var sel=(STATE.o[i]===n)?' selected':''; return '<option value="'+n+'"'+sel+'>'+n+'</option>'; }).join('')+'</select>';
       var rdShort = r.rd;
       return '<div class="pick-row">'+
         '<span class="pick-rd">'+rdShort+'</span>'+
@@ -257,7 +280,7 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
     document.getElementById('pBy').textContent='预测人：'+nm+'　·　'+d.getFullYear()+'.'+(d.getMonth()+1)+'.'+d.getDate();
     // 二维码
     var qb=document.getElementById('qrbox'); qb.innerHTML='';
-    try{ new QRCode(qb,{text:url,width:56,height:56,colorDark:'#000',colorLight:'#fff',correctLevel:QRCode.CorrectLevel.M}); }catch(e){}
+    try{ new QRCode(qb,{text:url,width:72,height:72,colorDark:'#000',colorLight:'#fff',correctLevel:QRCode.CorrectLevel.M}); }catch(e){}
     return url;
   }
 
@@ -265,59 +288,89 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
   var FONT='"PingFang SC","Microsoft YaHei","Segoe UI Emoji","Noto Color Emoji",sans-serif';
   function roundRect(ctx,x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
   function drawCanvas(){
-    var rows=STATE.path, n=rows.length, t=TEAMS[STATE.t], W=480, P=26;
-    var top=24,titleH=28,flagH=64,nameH=30,gap1=18,rowH=32,gap2=28,brandGap=16,qr=64,bot=24;
-    var rowsTop=top+titleH+flagH+nameH+gap1, afterRows=rowsTop+n*rowH;
-    var byY=afterRows+gap2, brandY=byY+brandGap, qy=brandY+12, H=qy+qr+bot;
+    var rows=STATE.path, n=rows.length, t=TEAMS[STATE.t], W=540;
+    var titleY=60, flagY=152, nameY=206, panelTop=242, panelPad=18, rowH=42;
+    var panelH=panelPad*2+n*rowH, panelBot=panelTop+panelH;
+    var byY=panelBot+36, brandY=byY+22, qr=72, H=brandY+qr+30;
     var dpr=Math.min(window.devicePixelRatio||1,2);
     var cv=document.createElement('canvas'); cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
     var ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
-    var g=ctx.createLinearGradient(0,0,W,H); g.addColorStop(0,'#15110a'); g.addColorStop(.55,'#0b0b0b'); g.addColorStop(1,'#120f08');
-    roundRect(ctx,0,0,W,H,16); ctx.fillStyle=g; ctx.fill();
-    ctx.lineWidth=1; ctx.strokeStyle='rgba(232,184,75,.35)'; roundRect(ctx,.5,.5,W-1,H-1,16); ctx.stroke();
+    /* 球场夜景背景 cover-fit + 压暗 */
+    if(bgOK && BG.naturalWidth){
+      var s=Math.max(W/BG.naturalWidth, H/BG.naturalHeight), dw=BG.naturalWidth*s, dh=BG.naturalHeight*s;
+      ctx.drawImage(BG,(W-dw)/2,(H-dh)/2,dw,dh);
+    } else { ctx.fillStyle='#0c1320'; ctx.fillRect(0,0,W,H); }
+    var og=ctx.createLinearGradient(0,0,0,H);
+    og.addColorStop(0,'rgba(6,8,14,.74)'); og.addColorStop(.5,'rgba(6,8,14,.56)'); og.addColorStop(1,'rgba(6,8,14,.82)');
+    ctx.fillStyle=og; ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle='rgba(232,184,75,.55)'; ctx.lineWidth=2; roundRect(ctx,8,8,W-16,H-16,18); ctx.stroke();
     ctx.textBaseline='alphabetic'; ctx.textAlign='center';
-    ctx.fillStyle='#e8b84b'; ctx.font='900 17px '+FONT; ctx.fillText('🏆 我的世界杯夺冠之路', W/2, top+20);
-    ctx.font='52px '+FONT; ctx.fillText(t.f, W/2, top+titleH+52);
-    ctx.fillStyle='#fff'; ctx.font='900 23px '+FONT; ctx.fillText(t.n, W/2, top+titleH+flagH+24);
-    var hrY=top+titleH+flagH+nameH+8; ctx.strokeStyle='rgba(232,184,75,.4)'; ctx.beginPath(); ctx.moveTo(P,hrY); ctx.lineTo(W-P,hrY); ctx.stroke();
+    ctx.fillStyle='#e8b84b'; ctx.font='900 21px '+FONT; ctx.fillText('🏆 我的世界杯夺冠之路', W/2, titleY);
+    ctx.font='62px '+FONT; ctx.fillText(t.f, W/2, flagY);
+    ctx.fillStyle='#fff'; ctx.font='900 31px '+FONT; ctx.fillText(t.n, W/2, nameY);
+    /* 毛玻璃内容面板 */
+    ctx.fillStyle='rgba(10,11,16,.72)'; roundRect(ctx,26,panelTop,W-52,panelH,14); ctx.fill();
+    ctx.strokeStyle='rgba(232,184,75,.35)'; ctx.lineWidth=1; roundRect(ctx,26,panelTop,W-52,panelH,14); ctx.stroke();
+    var rx=46, rxEnd=W-46;
     rows.forEach(function(r,i){
-      var ry=rowsTop+i*rowH+20;
-      ctx.textAlign='left'; ctx.fillStyle='#e8b84b'; ctx.font='800 12px '+FONT; ctx.fillText(r.rd, P, ry);
+      var ry=panelTop+panelPad+i*rowH+rowH/2+5;
+      ctx.textAlign='left'; ctx.fillStyle='#e8b84b'; ctx.font='800 13px '+FONT; ctx.fillText(r.rd, rx, ry);
       var opp=STATE.o[i]||codeName(r.opp);
-      ctx.fillStyle='#cfc7b4'; ctx.font='13px '+FONT; ctx.fillText('vs '+opp, P+62, ry);
+      ctx.fillStyle='#d8d0bd'; ctx.font='14px '+FONT; ctx.fillText('vs '+opp, rx+70, ry);
       var me=STATE.s[i][0], op=STATE.s[i][1], tie=(me!==''&&op!==''&&(+me===+op));
       var sc=(me===''||op==='')?'– –':(me+' - '+op);
       if(tie) sc+=' ('+(STATE.pk[i]==='me'?'点球过':STATE.pk[i]==='opp'?'点球负':'点球')+')';
       if(r.rd==='决赛'&&me!==''&&op!==''&&((+me>+op)||(tie&&STATE.pk[i]==='me'))) sc+=' 🏆';
-      ctx.textAlign='right'; ctx.fillStyle='#fff'; ctx.font='900 15px '+FONT; ctx.fillText(sc, W-P, ry);
-      ctx.strokeStyle='rgba(255,255,255,.06)'; ctx.beginPath(); ctx.moveTo(P,rowsTop+i*rowH+rowH-1); ctx.lineTo(W-P,rowsTop+i*rowH+rowH-1); ctx.stroke();
+      ctx.textAlign='right'; ctx.fillStyle='#fff'; ctx.font='900 16px '+FONT; ctx.fillText(sc, rxEnd, ry);
+      if(i<n-1){ ctx.strokeStyle='rgba(255,255,255,.07)'; ctx.beginPath(); ctx.moveTo(rx,panelTop+panelPad+(i+1)*rowH); ctx.lineTo(rxEnd,panelTop+panelPad+(i+1)*rowH); ctx.stroke(); }
     });
-    ctx.textAlign='center'; ctx.fillStyle='#b9b09a'; ctx.font='12px '+FONT;
+    ctx.textAlign='center'; ctx.fillStyle='#cabfa6'; ctx.font='13px '+FONT;
     var nm=STATE.name||'匿名球迷', d=new Date();
     ctx.fillText('预测人：'+nm+'　·　'+d.getFullYear()+'.'+(d.getMonth()+1)+'.'+d.getDate(), W/2, byY);
-    ctx.strokeStyle='rgba(232,184,75,.2)'; ctx.beginPath(); ctx.moveTo(P,brandY); ctx.lineTo(W-P,brandY); ctx.stroke();
     var qrEl=document.getElementById('qrbox').querySelector('canvas')||document.getElementById('qrbox').querySelector('img');
-    if(qrEl){ ctx.fillStyle='#fff'; roundRect(ctx,P,qy,64,64,6); ctx.fill(); try{ ctx.drawImage(qrEl,P+4,qy+4,56,56); }catch(e){} }
-    ctx.textAlign='right'; ctx.fillStyle='#e8b84b'; ctx.font='700 12px '+FONT; ctx.fillText('powered by 坤桑', W-P, qy+20);
-    ctx.fillStyle='#9a917b'; ctx.font='11px '+FONT;
-    ctx.fillText('worldcup2026.kunkun1023.xyz', W-P, qy+38); ctx.fillText('2026 FIFA World Cup', W-P, qy+54);
+    var qx=40;
+    if(qrEl){ ctx.fillStyle='#fff'; roundRect(ctx,qx,brandY,qr,qr,8); ctx.fill(); try{ ctx.drawImage(qrEl,qx+5,brandY+5,qr-10,qr-10); }catch(e){} }
+    ctx.textAlign='right'; ctx.fillStyle='#e8b84b'; ctx.font='700 14px '+FONT; ctx.fillText('powered by 坤桑', W-40, brandY+26);
+    ctx.fillStyle='#cabfa6'; ctx.font='12px '+FONT;
+    ctx.fillText('worldcup2026.kunkun1023.xyz', W-40, brandY+46); ctx.fillText('2026 FIFA World Cup', W-40, brandY+64);
     return cv;
   }
   function generate(){
     if(!STATE.t){ alert('先选一支球队'); return; }
+    var btn=document.getElementById('genBtn'), old=btn.textContent;
+    btn.disabled=true; btn.textContent='🎨 生成中…';
     buildPoster();
-    setTimeout(function(){
-      try{
-        var cv=drawCanvas(), img=document.getElementById('outImg');
-        img.src=cv.toDataURL('image/png'); img.classList.add('show');
-        document.getElementById('outTip').classList.add('show');
-        img.onclick=function(){ var a=document.createElement('a'); a.href=img.src; a.download='我的夺冠之路_'+TEAMS[STATE.t].n+'.png'; a.click(); };
-        img.scrollIntoView({behavior:'smooth',block:'center'});
-      }catch(err){ alert('海报生成失败：'+err); }
-    }, 150);
+    function render(){
+      setTimeout(function(){
+        try{
+          var cv=drawCanvas(); lastDataURL=cv.toDataURL('image/png');
+          var img=document.getElementById('outImg');
+          img.src=lastDataURL; img.classList.add('show');
+          document.getElementById('outTip').classList.add('show');
+          document.getElementById('dlBtn').style.display='';
+          img.onclick=function(){ var a=document.createElement('a'); a.href=lastDataURL; a.download='我的夺冠之路_'+TEAMS[STATE.t].n+'.png'; a.click(); };
+          img.scrollIntoView({behavior:'smooth',block:'center'});
+        }catch(err){ alert('海报生成失败：'+err); }
+        btn.disabled=false; btn.textContent=old;
+      }, 120);
+    }
+    if(bgOK || BG.complete) render();
+    else { BG.onload=function(){ bgOK=true; render(); }; BG.onerror=function(){ render(); }; }
   }
 
   document.getElementById('genBtn').addEventListener('click', generate);
+  document.getElementById('dlBtn').addEventListener('click', function(){
+    if(!lastDataURL) return;
+    if(navigator.canShare){
+      try{
+        var b=atob(lastDataURL.split(',')[1]), arr=new Uint8Array(b.length);
+        for(var i=0;i<b.length;i++) arr[i]=b.charCodeAt(i);
+        var file=new File([arr],'夺冠之路_'+TEAMS[STATE.t].n+'.png',{type:'image/png'});
+        if(navigator.canShare({files:[file]})){ navigator.share({files:[file],title:'我的世界杯夺冠之路'}).catch(function(){}); return; }
+      }catch(e){}
+    }
+    var a=document.createElement('a'); a.href=lastDataURL; a.download='我的夺冠之路_'+TEAMS[STATE.t].n+'.png'; document.body.appendChild(a); a.click(); a.remove();
+  });
   document.getElementById('copyBtn').addEventListener('click', function(){
     if(!STATE.t){ alert('先选一支球队'); return; }
     var url=shareURL();
