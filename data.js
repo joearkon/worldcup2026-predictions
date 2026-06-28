@@ -58,6 +58,23 @@ const WORLDCUP_DATA = {
   /* ---------- 赛事预测记录（新比赛往最前面加） ---------- */
   matches: [
     {
+      date: "2026-06-29 03:00（北京时间）",
+      sortKey: "2026-06-29 03:00",
+      group: "1/16决赛",
+      phase: "ko",
+      home: { flag: "🇿🇦", name: "南非" },
+      away: { flag: "🇨🇦", name: "加拿大" },
+      mainPred: "0-1 加拿大（常规/加时·加晋级）",
+      altPred: "1-1（120′）→ 点球",
+      advancePred: "加拿大",
+      advance: null,
+      decidedBy: null,
+      actual: null,
+      status: "pending",
+      report: "世界杯淘汰赛预测_南非vs加拿大.html",
+      note: "【🏆R32·本届首场KO·双方均队史首次踢世界杯淘汰赛】加浅盘favorite(多书商约-135/晋级约-310)但首发缺Davies(伤愈仅替补·下半场奇兵)+Koné报销+Eustáquio存疑+慢热守不稳;南非真铁桶+绝平DNA+Mokoena停赛归来增稳。⑦维KO成色两边皆空白→若拖点球=五五开。【晋级】主押加拿大(天赋+盘口·南非锋钝难在常规赢下)但置信中等;【走向】常规/加时加小胜、低分锁死高概率拖加时甚至点球;【120′双锚】主0-1加(David/拉林凿1·Davies下半场是破铁桶钥匙)/次1-1(120′)→点球。The One Risk=南非铁桶+绝平DNA×加无Davies首发→0-0/1-1闷到点球,双方KO成色空白点球五五,南非偷晋级(KO版「控得住≠攻得破」·头号冷门点)。"
+    },
+    {
       date: "2026-06-28 10:00（北京时间）",
       sortKey: "2026-06-28 10:00",
       group: "J组",
