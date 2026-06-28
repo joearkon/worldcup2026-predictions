@@ -36,6 +36,13 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
 .pk{font-size:11px;color:#888;margin-top:5px;width:100%;display:none}
 .pk label{margin-right:10px;cursor:pointer}
 .pk.show{display:block}
+.mode-toggle{background:#111;border:1px solid #1e1e1e;border-radius:9px;padding:10px 12px;margin-bottom:10px;font-size:12.5px;color:#cfcfcf}
+.mode-toggle .mt-lab{font-weight:800;color:#e8b84b;margin-right:6px}
+.mode-toggle label{margin-right:14px;cursor:pointer}
+.mode-toggle input{vertical-align:-1px;margin-right:3px}
+.mode-toggle .mt-tip{font-size:11px;color:#777;margin-top:6px;line-height:1.5}
+#rounds.wl .sc-in{display:none}
+#rounds.wl .pk{display:none!important}
 .namebox{margin:12px 0}
 .namebox input{width:100%;background:#0a0a0a;color:#fff;border:1px solid #333;border-radius:8px;padding:9px 12px;font-size:13px}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
@@ -78,7 +85,7 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
 <a class="home-btn" href="index.html" title="返回主页">🏠</a>
 
 <h1>🏆 我的世界杯夺冠之路</h1>
-<div class="sub">挑一支你看好的队 · 填上你预测的淘汰赛比分 · 生成专属海报（可扫码分享）</div>
+<div class="sub">挑一支你看好的队 · 默认只猜胜负（可切换猜比分）· 生成专属海报（可扫码分享）</div>
 <div class="back"><a href="index.html">🏠 返回主页</a> · <a href="bracket.html">🏆 看完整晋级图</a></div>
 
 <div class="step-h">① 选一支你看好的球队</div>
@@ -86,7 +93,13 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
 <div class="tip" id="lockTip"></div>
 
 <div id="pathBox">
-  <div class="step-h">② 预测它的夺冠之路（每轮填你看好的比分）</div>
+  <div class="step-h">② 预测它的夺冠之路</div>
+  <div class="mode-toggle">
+    <span class="mt-lab">预测方式：</span>
+    <label><input type="radio" name="predmode" value="wl" checked> 只猜胜负</label>
+    <label><input type="radio" name="predmode" value="score"> 猜比分</label>
+    <div class="mt-tip">默认「只猜胜负」——每轮选对手、你的队晋级，海报显示「晋级 / 🏆夺冠」；切「猜比分」可逐轮填分，<b style="color:#e8b84b">填了比分海报就显示比分</b>。</div>
+  </div>
   <div id="rounds"></div>
   <div class="namebox"><input id="predName" maxlength="16" placeholder="✍️ 写上你的名字（会印在海报上，可不填）"></div>
   <div class="actions">
@@ -185,7 +198,7 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
   document.getElementById('lockTip').textContent =
     '已锁定 '+pickable.length+' 支 · 其余待 6/28 小组赛收官+最佳第三名分配后自动开放';
 
-  var STATE = { t:null, path:null, o:[], s:[], pk:[], name:'' };
+  var STATE = { t:null, path:null, o:[], s:[], pk:[], name:'', mode:'wl' };
 
   teamGrid.innerHTML = pickable.map(function(c){
     var t=TEAMS[c];
@@ -199,12 +212,21 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
     selectTeam(c);
   });
 
+  [].forEach.call(document.getElementsByName('predmode'), function(r){
+    r.addEventListener('change', function(){
+      STATE.mode = r.value;
+      var box=document.getElementById('rounds'); if(box) box.className=(STATE.mode==='wl'?'wl':'');
+    });
+  });
+
   function selectTeam(code, preset){
     var path=buildPath(code); if(!path) return;
     STATE.t=code; STATE.path=path;
     STATE.o = path.map(function(r,i){ return (preset&&preset.o&&preset.o[i])||''; });
     STATE.s = path.map(function(r,i){ return (preset&&preset.s&&preset.s[i])||['','']; });
     STATE.pk= path.map(function(r,i){ return (preset&&preset.pk&&preset.pk[i])||''; });
+    STATE.mode = (preset&&preset.m)||STATE.mode||'wl';
+    [].forEach.call(document.getElementsByName('predmode'),function(r){r.checked=(r.value===STATE.mode);});
     renderRounds();
     document.getElementById('pathBox').style.display='block';
     if(preset && preset.name){ document.getElementById('predName').value=preset.name; STATE.name=preset.name; }
@@ -231,7 +253,8 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
     }).join('');
     [].forEach.call(box.querySelectorAll('.scMe,.scOp'), function(inp){ inp.addEventListener('input', syncPk); });
     [].forEach.call(box.querySelectorAll('.oppSel'), function(s){ s.addEventListener('change', function(){ STATE.o[+s.getAttribute('data-i')]=s.value; }); });
-    box.addEventListener('change', function(e){ if(e.target.type==='radio'){ var i=+e.target.name.replace('pk',''); STATE.pk[i]=e.target.value; } });
+    box.addEventListener('change', function(e){ if(e.target.type==='radio' && e.target.name.indexOf('pk')===0){ var i=+e.target.name.replace('pk',''); STATE.pk[i]=e.target.value; } });
+    box.className = (STATE.mode==='wl') ? 'wl' : '';
     syncPk();
   }
   function syncPk(){
@@ -249,7 +272,7 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
   function dec(s){ try{ return JSON.parse(decodeURIComponent(escape(atob(s)))); }catch(e){ return null; } }
   function shareURL(){
     STATE.name=document.getElementById('predName').value.trim();
-    var payload={ t:STATE.t, o:STATE.o, s:STATE.s, pk:STATE.pk, name:STATE.name };
+    var payload={ t:STATE.t, o:STATE.o, s:STATE.s, pk:STATE.pk, name:STATE.name, m:STATE.mode };
     return location.origin+location.pathname+'?p='+enc(payload);
   }
 
@@ -262,17 +285,21 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
     var rowsHtml=STATE.path.map(function(r,i){
       var opp = STATE.o[i] || codeName(r.opp);
       var me=STATE.s[i][0], op=STATE.s[i][1];
-      var scoreTxt = (me===''||op==='')? '— -—' : (me+' - '+op);
-      var tie=(me!==''&&op!==''&&(+me===+op));
-      var pkTxt = tie ? ' <span class="pk">('+(STATE.pk[i]==='me'?'点球过':STATE.pk[i]==='opp'?'点球负':'点球')+')</span>' : '';
-      var champ='';
-      if(r.rd==='决赛' && me!==''&&op!==''){
-        var win=(+me>+op)||(tie&&STATE.pk[i]==='me');
-        if(win) champ=' <span class="p-champ">🏆</span>';
+      var hasSc=(me!==''&&op!=='');
+      var isFinal=(r.rd==='决赛');
+      var cell;
+      if(hasSc){
+        var tie=(+me===+op);
+        var pkTxt = tie ? ' <span class="pk">('+(STATE.pk[i]==='me'?'点球过':STATE.pk[i]==='opp'?'点球负':'点球')+')</span>' : '';
+        var champ='';
+        if(isFinal && ((+me>+op)||(tie&&STATE.pk[i]==='me'))) champ=' <span class="p-champ">🏆</span>';
+        cell = (me+' - '+op)+pkTxt+champ;
+      }else{
+        cell = isFinal ? '<span style="color:#e8b84b;font-weight:900">🏆 夺冠</span>' : '<span style="color:#9a917b">晋级 ›</span>';
       }
       return '<div class="p-row"><span class="p-rd">'+r.rd+'</span>'+
         '<span class="p-opp"><span class="vs">vs</span>'+opp+'</span>'+
-        '<span class="p-sc">'+scoreTxt+pkTxt+champ+'</span></div>';
+        '<span class="p-sc">'+cell+'</span></div>';
     }).join('');
     document.getElementById('pRows').innerHTML=rowsHtml;
     var nm=STATE.name||'匿名球迷';
@@ -317,11 +344,17 @@ h1{font-size:22px;color:#fff;text-align:center;margin-bottom:4px}
       ctx.textAlign='left'; ctx.fillStyle='#e8b84b'; ctx.font='800 13px '+FONT; ctx.fillText(r.rd, rx, ry);
       var opp=STATE.o[i]||codeName(r.opp);
       ctx.fillStyle='#d8d0bd'; ctx.font='14px '+FONT; ctx.fillText('vs '+opp, rx+70, ry);
-      var me=STATE.s[i][0], op=STATE.s[i][1], tie=(me!==''&&op!==''&&(+me===+op));
-      var sc=(me===''||op==='')?'– –':(me+' - '+op);
-      if(tie) sc+=' ('+(STATE.pk[i]==='me'?'点球过':STATE.pk[i]==='opp'?'点球负':'点球')+')';
-      if(r.rd==='决赛'&&me!==''&&op!==''&&((+me>+op)||(tie&&STATE.pk[i]==='me'))) sc+=' 🏆';
-      ctx.textAlign='right'; ctx.fillStyle='#fff'; ctx.font='900 16px '+FONT; ctx.fillText(sc, rxEnd, ry);
+      var me=STATE.s[i][0], op=STATE.s[i][1], hasSc=(me!==''&&op!==''), isFinal=(r.rd==='决赛');
+      var sc, scColor='#fff';
+      if(hasSc){
+        var tie=(+me===+op);
+        sc=me+' - '+op;
+        if(tie) sc+=' ('+(STATE.pk[i]==='me'?'点球过':STATE.pk[i]==='opp'?'点球负':'点球')+')';
+        if(isFinal&&((+me>+op)||(tie&&STATE.pk[i]==='me'))) sc+=' 🏆';
+      }else{
+        sc=isFinal?'🏆 夺冠':'晋级 ›'; scColor='#e8b84b';
+      }
+      ctx.textAlign='right'; ctx.fillStyle=scColor; ctx.font='900 16px '+FONT; ctx.fillText(sc, rxEnd, ry);
       if(i<n-1){ ctx.strokeStyle='rgba(255,255,255,.07)'; ctx.beginPath(); ctx.moveTo(rx,panelTop+panelPad+(i+1)*rowH); ctx.lineTo(rxEnd,panelTop+panelPad+(i+1)*rowH); ctx.stroke(); }
     });
     ctx.textAlign='center'; ctx.fillStyle='#cabfa6'; ctx.font='13px '+FONT;
