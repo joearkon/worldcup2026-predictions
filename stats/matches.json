@@ -4814,6 +4814,175 @@
       ],
       "lesson": "'须赢方失手'病根这次没应验=克替补/定位球凿开真铁桶抢胜(次选1-0克方向对);校准:克罗地亚set piece是破密防主武器",
       "_gaps": "过程stats未确认,留null"
+    },
+    {
+      "id": "20260628-JOR-ARG",
+      "date": "2026-06-28",
+      "group": "J",
+      "round": 3,
+      "home": "约旦",
+      "away": "阿根廷",
+      "ft": [
+        1,
+        3
+      ],
+      "ht": [
+        0,
+        2
+      ],
+      "goals": [
+        {
+          "team": "阿根廷",
+          "scorer": "洛塞尔索",
+          "min": 19,
+          "type": "open"
+        },
+        {
+          "team": "阿根廷",
+          "scorer": "劳塔罗·马丁内斯",
+          "min": 31,
+          "type": "pk"
+        },
+        {
+          "team": "约旦",
+          "scorer": "阿尔塔马里",
+          "min": 55,
+          "type": "open"
+        },
+        {
+          "team": "阿根廷",
+          "scorer": "梅西",
+          "min": 80,
+          "type": "open"
+        }
+      ],
+      "stats": {
+        "poss": [
+          null,
+          null
+        ],
+        "shots": [
+          null,
+          null
+        ],
+        "sot": [
+          null,
+          null
+        ],
+        "corners": [
+          null,
+          null
+        ],
+        "xg": [
+          null,
+          null
+        ]
+      },
+      "absences": "阿根廷部分轮换(已锁头名)",
+      "our_pred": {
+        "main": "0-2 阿根廷",
+        "alt": "1-2 阿根廷",
+        "status": "direction"
+      },
+      "tags": [
+        "阿根廷三战全胜9分锁J组头名",
+        "梅西仍首发建功",
+        "约旦阿尔塔马里咬1",
+        "约旦三连败垫底出局"
+      ],
+      "lesson": "'阿即便轮换板凳仍碾压约旦会漏防线'+'约双出口咬1'形态对路,押0-2/1-2方向对、净胜球略低估(实际1-3);The One Risk(梅西休)未发作",
+      "_gaps": "过程stats未确认,留null"
+    },
+    {
+      "id": "20260628-ALG-AUT",
+      "date": "2026-06-28",
+      "group": "J",
+      "round": 3,
+      "home": "阿尔及利亚",
+      "away": "奥地利",
+      "ft": [
+        3,
+        3
+      ],
+      "ht": [
+        1,
+        1
+      ],
+      "goals": [
+        {
+          "team": "奥地利",
+          "scorer": "阿瑙托维奇",
+          "min": 28,
+          "type": "open"
+        },
+        {
+          "team": "阿尔及利亚",
+          "scorer": "贝尔加利",
+          "min": 42,
+          "type": "open"
+        },
+        {
+          "team": "奥地利",
+          "scorer": "萨比策",
+          "min": 55,
+          "type": "open"
+        },
+        {
+          "team": "阿尔及利亚",
+          "scorer": "马赫雷斯",
+          "min": 60,
+          "type": "open"
+        },
+        {
+          "team": "阿尔及利亚",
+          "scorer": "马赫雷斯",
+          "min": 93,
+          "type": "open"
+        },
+        {
+          "team": "奥地利",
+          "scorer": "卡拉季奇",
+          "min": 96,
+          "type": "open"
+        }
+      ],
+      "stats": {
+        "poss": [
+          null,
+          null
+        ],
+        "shots": [
+          null,
+          null
+        ],
+        "sot": [
+          null,
+          null
+        ],
+        "corners": [
+          null,
+          null
+        ],
+        "xg": [
+          null,
+          null
+        ]
+      },
+      "absences": null,
+      "our_pred": {
+        "main": "1-1 平",
+        "alt": "1-0 阿尔及利亚",
+        "status": "direction"
+      },
+      "tags": [
+        "末轮6球大战3-3",
+        "马赫雷斯梅开二度(含90+3扳平)",
+        "奥地利靠净胜球保J2出线",
+        "阿尔及利亚4分最佳第三出线",
+        "双双晋级"
+      ],
+      "lesson": "主押'1-1平·奥平即出线'方向+晋级逻辑双中(奥净胜0>阿-2升J2);比分大幅低估(两队放开对攻3-3),'平皆有戏'局别锁低分",
+      "_gaps": "过程stats(控球/xG)与贝尔加利进球分钟未完全确认"
     }
   ]
 }
