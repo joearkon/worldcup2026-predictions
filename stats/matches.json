@@ -10,7 +10,7 @@
     "tags": "可复用的球队/规律标签",
     "lesson": "本场对预测框架的一句话教训"
   },
-  "_updated": "2026-06-25",
+  "_updated": "2026-06-28",
   "_round1_pending": [],
   "matches": [
     {
@@ -4545,6 +4545,275 @@
         "柯克曲/贝哈尔特进球时间未核实",
         "控球/射门/xG未核实"
       ]
+    },
+    {
+      "id": "20260628-COL-POR",
+      "date": "2026-06-28",
+      "group": "K",
+      "round": 3,
+      "home": "哥伦比亚",
+      "away": "葡萄牙",
+      "ft": [
+        0,
+        0
+      ],
+      "ht": [
+        0,
+        0
+      ],
+      "goals": [],
+      "stats": {
+        "poss": [
+          null,
+          null
+        ],
+        "shots": [
+          null,
+          null
+        ],
+        "sot": [
+          null,
+          null
+        ],
+        "corners": [
+          null,
+          null
+        ],
+        "xg": [
+          null,
+          null
+        ]
+      },
+      "absences": "两队均已出线,普遍轮换(葡疑似休部分主力)",
+      "our_pred": {
+        "main": "1-1 平",
+        "alt": "1-2 葡萄牙",
+        "status": "direction"
+      },
+      "tags": [
+        "末轮双方已出线踢闷局",
+        "葡萄牙便秘剧本复刻(C罗多核硬队前哑火)",
+        "哥伦比亚锁K组头名",
+        "葡萄牙K2出线→1/16战克罗地亚"
+      ],
+      "lesson": "主预测平方向对(0-0比1-1更闷);末轮均出线=低分默契局判读再次成立",
+      "_gaps": "过程stats(控球/射门/xG)未确认,留null"
+    },
+    {
+      "id": "20260628-COD-UZB",
+      "date": "2026-06-28",
+      "group": "K",
+      "round": 3,
+      "home": "刚果（金）",
+      "away": "乌兹别克斯坦",
+      "ft": [
+        3,
+        1
+      ],
+      "ht": [
+        0,
+        1
+      ],
+      "goals": [
+        {
+          "team": "乌兹别克斯坦",
+          "scorer": "绍穆罗多夫",
+          "min": 10,
+          "type": "open"
+        },
+        {
+          "team": "刚果（金）",
+          "scorer": "维萨",
+          "min": 68,
+          "type": "pk"
+        },
+        {
+          "team": "刚果（金）",
+          "scorer": "马耶莱",
+          "min": 78,
+          "type": "open"
+        },
+        {
+          "team": "刚果（金）",
+          "scorer": "维萨",
+          "min": 90,
+          "type": "open"
+        }
+      ],
+      "stats": {
+        "poss": [
+          null,
+          null
+        ],
+        "shots": [
+          null,
+          null
+        ],
+        "sot": [
+          null,
+          null
+        ],
+        "corners": [
+          null,
+          null
+        ],
+        "xg": [
+          null,
+          null
+        ]
+      },
+      "absences": null,
+      "our_pred": {
+        "main": "2-0 刚果金",
+        "alt": "2-1 刚果金",
+        "status": "direction"
+      },
+      "tags": [
+        "刚果金0-1落后下半场连追3球逆转",
+        "维萨梅开二度(含点球)",
+        "刚果金以最佳第三出线(队史第二次参赛首进淘汰赛)",
+        "对会漏弱防往上够对路·净胜略低估"
+      ],
+      "lesson": "'物理硬防+反击遇会漏弱防→往上够'对路,押2-0/2-1略低估(实际3-1);The One Risk(0-1落后)半场兑现被逆转",
+      "_gaps": "过程stats未确认,留null"
+    },
+    {
+      "id": "20260628-PAN-ENG",
+      "date": "2026-06-28",
+      "group": "L",
+      "round": 3,
+      "home": "巴拿马",
+      "away": "英格兰",
+      "ft": [
+        0,
+        2
+      ],
+      "ht": [
+        0,
+        0
+      ],
+      "goals": [
+        {
+          "team": "英格兰",
+          "scorer": "贝林厄姆",
+          "min": 62,
+          "type": "open"
+        },
+        {
+          "team": "英格兰",
+          "scorer": "凯恩",
+          "min": 67,
+          "type": "open"
+        }
+      ],
+      "stats": {
+        "poss": [
+          null,
+          null
+        ],
+        "shots": [
+          null,
+          null
+        ],
+        "sot": [
+          null,
+          null
+        ],
+        "corners": [
+          null,
+          null
+        ],
+        "xg": [
+          null,
+          null
+        ]
+      },
+      "absences": "赖斯疑似伤缺替补",
+      "our_pred": {
+        "main": "0-2 英格兰",
+        "alt": "0-1 英格兰",
+        "status": "exact"
+      },
+      "tags": [
+        "主预测精确命中(第9个exact)",
+        "凯恩破英格兰队史世界杯进球纪录(第11球超莱因克尔)",
+        "英格兰锁L组头名",
+        "深盘大热打真铁桶按#1收口别屠杀=2-0精确"
+      ],
+      "lesson": "'深盘大热打真铁桶按#1收口别屠杀+巴已出局守成松→2-0'精确兑现,The One Risk(0-0/1-0)未发作",
+      "_gaps": "过程stats未确认,留null"
+    },
+    {
+      "id": "20260628-CRO-GHA",
+      "date": "2026-06-28",
+      "group": "L",
+      "round": 3,
+      "home": "克罗地亚",
+      "away": "加纳",
+      "ft": [
+        2,
+        1
+      ],
+      "ht": [
+        1,
+        0
+      ],
+      "goals": [
+        {
+          "team": "克罗地亚",
+          "scorer": "苏契奇",
+          "min": 31,
+          "type": "open"
+        },
+        {
+          "team": "加纳",
+          "scorer": "卢卡森",
+          "min": 73,
+          "type": "fk"
+        },
+        {
+          "team": "克罗地亚",
+          "scorer": "弗拉西奇",
+          "min": 83,
+          "type": "header"
+        }
+      ],
+      "stats": {
+        "poss": [
+          null,
+          null
+        ],
+        "shots": [
+          null,
+          null
+        ],
+        "sot": [
+          null,
+          null
+        ],
+        "corners": [
+          null,
+          null
+        ],
+        "xg": [
+          null,
+          null
+        ]
+      },
+      "absences": null,
+      "our_pred": {
+        "main": "1-1 平",
+        "alt": "1-0 克罗地亚",
+        "status": "direction"
+      },
+      "tags": [
+        "弗拉西奇83'头球绝杀(莫德里奇角球)",
+        "克须赢得偿L组次名出线",
+        "加纳虽负仍以最佳第三出线",
+        "克连续两场靠定位球/替补凿铁桶(set piece主武器)"
+      ],
+      "lesson": "'须赢方失手'病根这次没应验=克替补/定位球凿开真铁桶抢胜(次选1-0克方向对);校准:克罗地亚set piece是破密防主武器",
+      "_gaps": "过程stats未确认,留null"
     }
   ]
 }
