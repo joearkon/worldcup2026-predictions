@@ -42,6 +42,17 @@ html[data-theme="light"] .bk-round::before{color:#a07d1c}
 html[data-theme="light"] .bk-badge{background:#efeadf;color:#888;border-color:#ddd4c0}
 .bk-sc{font-size:10px;color:#777;font-weight:700}
 .bk-sc.link{color:#5a8abf}
+.bk-sc.s-exact{color:#2ecc8f}
+.bk-sc.s-alt{color:#e8b84b}
+.bk-sc.s-direction{color:#5a8abf}
+.bk-sc.s-miss{color:#e06c6c}
+html[data-theme="light"] .bk-sc.s-exact{color:#0d9263}
+html[data-theme="light"] .bk-sc.s-alt{color:#b8860b}
+html[data-theme="light"] .bk-sc.s-miss{color:#c84545}
+.bk-slot.win{background:rgba(46,204,143,.10)}
+.bk-slot.win .bk-nm{color:#2ecc8f}
+html[data-theme="light"] .bk-slot.win{background:rgba(13,146,99,.08)}
+html[data-theme="light"] .bk-slot.win .bk-nm{color:#0d9263}
 .bk-slot{display:flex;align-items:center;gap:5px;padding:4px 6px;font-size:11.5px;background:var(--bk-card);border-left:1px solid var(--bk-cardbd);border-right:1px solid var(--bk-cardbd)}
 .bk-slot:last-child{border-bottom:1px solid var(--bk-cardbd);border-radius:0 0 8px 8px}
 .bk-mk{width:14px;height:16px;flex:none;border-radius:3px 3px 5px 5px;background:#2a2a2a;border:1px solid #3a3a3a}
@@ -115,28 +126,78 @@ html[data-theme="light"] .bk-champ-tag,html[data-theme="light"] .bk-champ-tag b{
       return '第'+seq(+c.slice(1))+'场'+(c.charAt(0)==='W'?'胜者':'负者');
     return c;
   }
-  function slot(code){
+  // 队名→国旗（用于把解析出的晋级方填进下一轮卡片）
+  var NF = {}; if(KO.teams) Object.keys(KO.teams).forEach(function(k){ NF[KO.teams[k].n]=KO.teams[k].f; });
+  function predOf(no){ var m=BN[String(no)]; return m?koReport(m):null; }
+  function isSettled(p){ return !!(p && p.status && p.status!=="pending" && p.advance); }
+  // 把位置码解析成队名：组位置码直接查表；W/L+场号则按该场已结算的晋级/出局方递归解析
+  function nameOfCode(code){
     var t = KO.teams && KO.teams[code];
-    if(t) return '<div class="bk-slot"><span class="bk-fl">'+t.f+'</span><span class="bk-nm">'+t.n+'</span></div>';
+    if(t) return t.n;
+    var mm = code.match(/^([WL])(\d+)$/);
+    if(mm && +mm[2]>=73){
+      var no=+mm[2], p=predOf(no);
+      if(isSettled(p)){
+        var nm = matchNames(no);
+        if(nm){ var lose = nm[0]===p.advance ? nm[1] : nm[0];
+          return mm[1]==='W' ? p.advance : lose; }
+      }
+    }
+    return null;
+  }
+  function matchNames(no){
+    var m=BN[String(no)]; if(!m) return null;
+    var na=nameOfCode(m.a), nb=nameOfCode(m.b);
+    return (na&&nb)?[na,nb]:null;
+  }
+  function slot(code, winNm){
+    var t = KO.teams && KO.teams[code];
+    var nm = t ? t.n : nameOfCode(code);
+    var fl = t ? t.f : (nm ? (NF[nm]||'') : '');
+    if(nm){
+      var win = winNm && nm===winNm ? ' win' : '';
+      return '<div class="bk-slot'+win+'"><span class="bk-fl">'+fl+'</span><span class="bk-nm">'+nm+'</span></div>';
+    }
     return '<div class="bk-slot"><span class="bk-mk"></span><span class="bk-nm">'+fmtCode(code)+'</span></div>';
   }
+  var BKSTAT = { exact:{cls:"s-exact",txt:"✅ 精确命中"}, alt:{cls:"s-alt",txt:"🟡 次选命中"},
+    direction:{cls:"s-direction",txt:"🔵 晋级命中"}, miss:{cls:"s-miss",txt:"❌ 未命中"} };
   function matchEl(no, isFinal){
     var m = BN[String(no)]; if(!m) return '';
     var pred = koReport(m), rep = pred ? pred.report : null;
-    var rt = rep ? '<span class="bk-sc link">⏳ 已预测 ›</span>' : '<span class="bk-sc">未预测</span>';
+    var settled = isSettled(pred);
+    var ta = KO.teams && KO.teams[m.a];
+    var flip = !!(pred && ta && pred.home && ta.n!==pred.home.name);
+    var winNm = settled ? pred.advance : null;
+    var rt;
+    if(settled){
+      var s = BKSTAT[pred.status] || BKSTAT.direction;
+      rt = '<span class="bk-sc '+(rep?'link ':'')+s.cls+'">'+s.txt+(rep?' ›':'')+'</span>';
+    } else {
+      rt = rep ? '<span class="bk-sc link">⏳ 已预测 ›</span>' : '<span class="bk-sc">未预测</span>';
+    }
     var cls = 'bk-match'+(isFinal?' final':'')+(rep?' clickable':'');
     var attr = rep ? ' onclick="location.href=\''+encodeURI('reports/'+rep)+'\'"' : '';
     var pf = '';
     if(pred){
-      var bs = pred.mainPred && pred.mainPred.match(/(\d+)\s*[-:]\s*(\d+)/);
       var parts = [];
-      if(bs) parts.push('预测 '+bs[1]+'-'+bs[2]);
-      if(pred.advancePred) parts.push('晋级 '+pred.advancePred);
+      if(settled){
+        if(pred.actual){
+          var ac = pred.actual.match(/(\d+)\s*[-:]\s*(\d+)/);
+          if(ac) parts.push('实际 '+(flip?ac[2]:ac[1])+'-'+(flip?ac[1]:ac[2])+(pred.decidedBy==='pens'?'(点)':pred.decidedBy==='et'?'(加)':''));
+        }
+        var adv = pred.advance || pred.advancePred;
+        if(adv) parts.push('晋级 '+adv);
+      } else {
+        var bs = pred.mainPred && pred.mainPred.match(/(\d+)\s*[-:]\s*(\d+)/);
+        if(bs) parts.push('预测 '+(flip?bs[2]:bs[1])+'-'+(flip?bs[1]:bs[2]));
+        if(pred.advancePred) parts.push('晋级 '+pred.advancePred);
+      }
       if(parts.length) pf = '<div style="font-size:9px;color:#e8b84b;font-weight:700;text-align:center;padding-top:3px;margin-top:3px;border-top:1px solid #222">'+parts.join(' · ')+'</div>';
     }
     return '<div class="'+cls+'"'+attr+'>'+
       '<div class="bk-mhead"><span class="bk-badge">第'+seq(no)+'场</span>'+rt+'</div>'+
-      slot(m.a)+slot(m.b)+pf+'</div>';
+      slot(m.a,winNm)+slot(m.b,winNm)+pf+'</div>';
   }
   function roundEl(nos, label, isLast){
     return '<div class="bk-round'+(isLast?' last':'')+'" data-r="'+label+'">'+
