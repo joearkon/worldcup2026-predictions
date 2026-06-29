@@ -658,6 +658,19 @@ html[data-theme="light"] .kol-mk{background:#e4dfd3;border-color:#d8cfba}
   });
   document.getElementById('koTimeline').innerHTML=html;
   var note=document.getElementById('koNote'); if(note) note.textContent='🧩 '+KO.note;
+
+  /* 加载后定位到今天的淘汰赛日（今天没KO则定位下一个比赛日；全部赛完则停在最后一天）。
+     仅当小组赛已全部结束(无 >=今天 的小组赛)时才锚定KO，避免小组赛阶段抢锚。 */
+  var GF = WORLDCUP_DATA.fixtures || [];
+  var groupUpcoming = GF.some(function(f){ return f.date >= todayStr; });
+  if(!groupUpcoming){
+    var koDays = [].slice.call(document.querySelectorAll('#koTimeline .tl-day[data-date]'));
+    var tEl = null;
+    for(var i=0;i<koDays.length;i++){ if(koDays[i].getAttribute('data-date') >= todayStr){ tEl = koDays[i]; break; } }
+    if(!tEl && koDays.length) tEl = koDays[koDays.length-1];
+    if(tEl){ var dh = tEl.querySelector('.tl-date') || tEl;
+      setTimeout(function(){ dh.scrollIntoView({block:"start"}); }, 0); }
+  }
 })();
 </script>
 
