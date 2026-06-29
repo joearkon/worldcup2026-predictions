@@ -10,9 +10,73 @@
     "tags": "可复用的球队/规律标签",
     "lesson": "本场对预测框架的一句话教训"
   },
-  "_updated": "2026-06-28",
+  "_updated": "2026-06-29",
   "_round1_pending": [],
   "matches": [
+    {
+      "id": "20260628-RSA-CAN",
+      "date": "2026-06-28",
+      "group": "1/16决赛",
+      "round": "ko",
+      "phase": "ko",
+      "home": "南非",
+      "away": "加拿大",
+      "ft": [
+        0,
+        1
+      ],
+      "ht": [
+        0,
+        0
+      ],
+      "decided_by": "reg",
+      "advance": "加拿大",
+      "goals": [
+        {
+          "team": "加拿大",
+          "scorer": "Eustáquio",
+          "min": 92,
+          "type": "open"
+        }
+      ],
+      "stats": {
+        "poss": [
+          null,
+          null
+        ],
+        "shots": [
+          null,
+          null
+        ],
+        "sot": [
+          null,
+          null
+        ],
+        "corners": [
+          null,
+          null
+        ],
+        "xg": [
+          null,
+          null
+        ]
+      },
+      "absences": "加拿大:Koné(报销)、Davies(伤愈仅替补·未首发);南非:Mokoena停赛归来复出",
+      "our_pred": {
+        "main": "0-1 加拿大(90′/加时小胜·加晋级)",
+        "alt": "1-1(120′)→点球·加拿大过",
+        "advance_pred": "加拿大",
+        "status": "exact"
+      },
+      "tags": [
+        "KO首场",
+        "控得住≠攻得破(差点兑现)",
+        "浅盘favorite小胜收口",
+        "补时绝杀避点球",
+        "加拿大队史首胜KO"
+      ],
+      "lesson": "KO首役验证:浅盘favorite打真铁桶=按小胜(1球)收口别屠杀,The One Risk(铁桶+绝平DNA拖点球偷晋级)几乎兑现到92'、favorite靠补时凿1顶住——晋级方向押对的同时,90′闷局走向也判准(reg不是et/pens)。"
+    },
     {
       "id": "20260623-COL-COD",
       "date": "2026-06-23",
