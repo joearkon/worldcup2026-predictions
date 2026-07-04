@@ -18,9 +18,17 @@
   Cache-Control: public, max-age=3600
 
 # —— HTML / 首页:保持回源校验,赛后更新即时生效(不长缓存) ——
+# 注意:Cloudflare Pages 把 xxx.html 308跳到无扩展名 /xxx,故必须同时列出无扩展名 clean URL,
+#      否则 /*.html 匹配不到 /bracket、/road → 对阵图页被长缓存、赛后不更新(2026-07-04 修)。
 /
   Cache-Control: public, max-age=0, must-revalidate
 /*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/bracket
+  Cache-Control: public, max-age=0, must-revalidate
+/road
+  Cache-Control: public, max-age=0, must-revalidate
+/reports/*
   Cache-Control: public, max-age=0, must-revalidate
 
 # —— 全站安全响应头 ——
