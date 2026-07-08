@@ -10,7 +10,7 @@
   "tags": "可复用的球队/规律标签",
   "lesson": "本场对预测框架的一句话教训"
  },
- "_updated": "2026-07-06",
+ "_updated": "2026-07-08",
  "_round1_pending": [],
  "matches": [
   {
@@ -6024,6 +6024,301 @@
    ],
    "lesson": "『低分紧局』被打脸——四战零封的墨西哥防线遇真质量对手直接漏2,主场声浪也放大对攻;拋硬币级比赛把O/U押小是画蛇添足,晋级判断(质量+⑦维)才是该重锤的部分",
    "_gaps": "过程stats未采集"
+  },
+  {
+   "id": "20260707-POR-ESP",
+   "date": "2026-07-07",
+   "group": "KO",
+   "round": "R16",
+   "home": "葡萄牙",
+   "away": "西班牙",
+   "ft": [
+    0,
+    1
+   ],
+   "ht": [
+    0,
+    0
+   ],
+   "decided_by": "reg",
+   "advance": "西班牙",
+   "goals": [
+    {
+     "team": "西班牙",
+     "scorer": "梅里诺",
+     "min": 91,
+     "type": "open"
+    }
+   ],
+   "stats": {
+    "poss": [
+     null,
+     null
+    ],
+    "shots": [
+     null,
+     null
+    ],
+    "sot": [
+     null,
+     null
+    ],
+    "corners": [
+     null,
+     null
+    ],
+    "xg": [
+     null,
+     null
+    ]
+   },
+   "absences": "葡萄牙:门德斯56′伤退打乱攻防",
+   "our_pred": {
+    "main": "1-2 西班牙",
+    "alt": "0-1 西 / 1-1→点球",
+    "advance_pred": "西班牙",
+    "status": "alt"
+   },
+   "tags": [
+    "🟡次选0-1精确命中·晋级对",
+    "梅里诺90+1′替补绝杀(费兰·托雷斯助攻)",
+    "西班牙连续6场世界杯常规时间零封=世界杯史第一队",
+    "C罗41岁泪别世界杯·亚马尔拥抱致敬",
+    "The One Risk(葡速度打身后爆冷)落空·未被拖进便秘",
+    "西班牙进八强战比利时"
+   ],
+   "lesson": "深盘favorite对对攻型(非真铁桶)对手,便秘死穴不触发、终结力会兑现;次选0-1押对说明该给『替补/晚段1球定江山』更高权重,主盘1-2高估一球",
+   "_gaps": "过程stats未采集"
+  },
+  {
+   "id": "20260707-USA-BEL",
+   "date": "2026-07-07",
+   "group": "KO",
+   "round": "R16",
+   "home": "美国",
+   "away": "比利时",
+   "ft": [
+    1,
+    4
+   ],
+   "ht": [
+    1,
+    2
+   ],
+   "decided_by": "reg",
+   "advance": "比利时",
+   "goals": [
+    {
+     "team": "比利时",
+     "scorer": "德凯特拉雷",
+     "min": 9,
+     "type": "open"
+    },
+    {
+     "team": "美国",
+     "scorer": "蒂尔曼",
+     "min": 31,
+     "type": "fk"
+    },
+    {
+     "team": "比利时",
+     "scorer": "德凯特拉雷",
+     "min": 33,
+     "type": "header"
+    },
+    {
+     "team": "比利时",
+     "scorer": "范纳肯",
+     "min": 56,
+     "type": "open"
+    },
+    {
+     "team": "比利时",
+     "scorer": "卢卡库",
+     "min": 93,
+     "type": "open"
+    }
+   ],
+   "stats": {
+    "poss": [
+     null,
+     null
+    ],
+    "shots": [
+     null,
+     null
+    ],
+    "sot": [
+     null,
+     null
+    ],
+    "corners": [
+     null,
+     null
+    ],
+    "xg": [
+     null,
+     null
+    ]
+   },
+   "absences": "比利时:德布劳内(KDB)高挂免战牌未登场",
+   "our_pred": {
+    "main": "2-1 美国",
+    "alt": "2-2→点球 / 1-2 比利时",
+    "advance_pred": "美国",
+    "status": "miss"
+   },
+   "tags": [
+    "❌晋级方向押反·本届KO第3败",
+    "德凯特拉雷9′/33′梅开二度",
+    "范纳肯56′抢门将弗里兹出击失误空门",
+    "卢卡库90+3′替补锁定4-1",
+    "KDB未登场·比利时无核心照样血洗=The One Risk主角全错",
+    "美加墨三东道主全部止步16强·欧洲8强占6席",
+    "比利时进八强战西班牙"
+   ],
+   "lesson": "The One Risk押对了『比利时老练碾压』的方向却锚错了主角(赌KDB手术刀、实际KDB没上是德凯特拉雷双响+对手门将低级失误);抛硬币级比赛别被『主场+青春』的情绪叙事拉向东道主,盘口后段移向的一方(比利时)才是真信号",
+   "_gaps": "过程stats未采集"
+  },
+  {
+   "id": "20260708-ARG-EGY",
+   "date": "2026-07-08",
+   "group": "KO",
+   "round": "R16",
+   "home": "阿根廷",
+   "away": "埃及",
+   "ft": [
+    3,
+    2
+   ],
+   "ht": [
+    0,
+    1
+   ],
+   "decided_by": "reg",
+   "advance": "阿根廷",
+   "goals": [
+    {
+     "team": "埃及",
+     "scorer": "易卜拉欣",
+     "min": 15,
+     "type": "header"
+    },
+    {
+     "team": "埃及",
+     "scorer": "齐库",
+     "min": 67,
+     "type": "open"
+    },
+    {
+     "team": "阿根廷",
+     "scorer": "罗梅罗",
+     "min": 79,
+     "type": "header"
+    },
+    {
+     "team": "阿根廷",
+     "scorer": "梅西",
+     "min": 83,
+     "type": "open"
+    },
+    {
+     "team": "阿根廷",
+     "scorer": "恩佐",
+     "min": 92,
+     "type": "header"
+    }
+   ],
+   "stats": {
+    "poss": [
+     null,
+     null
+    ],
+    "shots": [
+     null,
+     null
+    ],
+    "sot": [
+     null,
+     null
+    ],
+    "corners": [
+     null,
+     null
+    ],
+    "xg": [
+     null,
+     null
+    ]
+   },
+   "absences": null,
+   "our_pred": null,
+   "tags": [
+    "⚪未预测·用户外出漏预测·仅留档",
+    "让二追三史诗逆转(埃及一度2-0)",
+    "梅西19′失点(舒贝尔扑出·本届第2次失点)+83′扳平+助攻恩佐绝杀",
+    "梅西本届个人第8球领跑射手榜",
+    "阿根廷队史首次世界杯半场落后翻盘",
+    "阿根廷进八强战瑞士"
+   ],
+   "lesson": "未预测场次仅留档;可复用画像=阿根廷KO『先丢球也能靠梅西+set piece翻盘』的抗压/终结底蕴,以及『杀不死比赛→拖到晚段才见分晓』的隐患",
+   "_gaps": "用户外出未出预测;过程stats未采集"
+  },
+  {
+   "id": "20260708-SUI-COL",
+   "date": "2026-07-08",
+   "group": "KO",
+   "round": "R16",
+   "home": "瑞士",
+   "away": "哥伦比亚",
+   "ft": [
+    0,
+    0
+   ],
+   "ht": [
+    0,
+    0
+   ],
+   "decided_by": "pens",
+   "pens": [
+    4,
+    3
+   ],
+   "advance": "瑞士",
+   "goals": [],
+   "stats": {
+    "poss": [
+     null,
+     null
+    ],
+    "shots": [
+     null,
+     null
+    ],
+    "sot": [
+     null,
+     null
+    ],
+    "corners": [
+     null,
+     null
+    ],
+    "xg": [
+     null,
+     null
+    ]
+   },
+   "absences": null,
+   "our_pred": null,
+   "tags": [
+    "⚪未预测·用户外出漏预测·仅留档",
+    "本届淘汰赛首场0-0(120′闷战·多伦多)",
+    "点球4-3·瑞士门将科贝尔扑出库乔·埃尔南德斯(9.0评分3扑救)",
+    "哥伦比亚桑切斯中横梁·瑞士阿坎吉罚失",
+    "两支不败之师相遇·瑞士进八强战阿根廷"
+   ],
+   "lesson": "未预测场次仅留档;可复用画像=瑞士⑦维clutch延续(点球关又过)+『杀不死比赛』0-0闷局与哥伦比亚多核破铁桶钝化互相成全,双硬防对话Under兑现",
+   "_gaps": "用户外出未出预测;过程stats未采集"
   }
  ]
 }
