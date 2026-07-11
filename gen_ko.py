@@ -6,6 +6,10 @@ import gen_report as G  # 复用 CSS / dims / bars / srcs（import 不触发其�
 RDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
 
 def ko_page(m):
+    ko_tag = m.get("ko_tag", "")
+    ko_tag_html = f'<div class="ko-tag">{ko_tag}</div>' if ko_tag else ''
+    adv_badge = m.get("adv_badge", "")
+    adv_html = f'<div class="win" style="margin-top:6px;color:#e8b84b">晋级：<span class="adv">{adv_badge}</span></div>' if adv_badge else ''
     return f'''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -25,6 +29,8 @@ def ko_page(m):
 <script src="../theme.js?v=2"></script>
 <style>
 {G.CSS}
+.ko-tag{{display:block;text-align:center;font-size:11px;color:#caa3ff;background:rgba(150,90,230,.1);border:1px solid rgba(150,90,230,.32);border-radius:8px;padding:7px 12px;margin:0 auto 22px;max-width:680px;line-height:1.6}}
+.adv{{display:inline-block;font-size:12px;font-weight:800;color:#1a1a1a;background:linear-gradient(135deg,#e8b84b,#c8941f);border-radius:6px;padding:3px 12px}}
 .footer{{text-align:center;font-size:11px;color:#555;margin-top:20px}}
 </style>
 </head>
@@ -33,9 +39,10 @@ def ko_page(m):
 <h1>{m["h1"]}</h1>
 <div class="sub">{m["sub"]}</div>
 
+{ko_tag_html}
 <div class="vs-banner">
   <div class="team"><div class="team-flag">{m["hf"]}</div><div class="team-name">{m["hn"]}</div><div class="team-tag">{m["ht"]}</div></div>
-  <div class="score-box"><div class="score">{m["score"]}</div><div class="score-label">{m["score_label"]}</div><div class="win">{m["win"]}</div></div>
+  <div class="score-box"><div class="score">{m["score"]}</div><div class="score-label">{m["score_label"]}</div><div class="win">{m["win"]}</div>{adv_html}</div>
   <div class="team"><div class="team-flag">{m["af"]}</div><div class="team-name">{m["an"]}</div><div class="team-tag">{m["at"]}</div></div>
 </div>
 
@@ -104,7 +111,7 @@ M.append(dict(
  sub="北京时间 2026-07-12 05:00 · 1/4决赛 · 迈阿密",
  hf="🇳🇴", hn="挪威", ht="哈兰德7球领跑·高空杀招·防线5.5遇对攻丢球",
  af="🏴󠁧󠁢󠁥󠁮󠁧󠁿", an="英格兰", at="凯恩+贝林厄姆·愿对攻·后防重组(Quansah停赛)",
- score="2 : 3", score_label="最可能比分（次选 2-1英 / 2-2点球）", win="胜负：英格兰胜（对攻大球·both score）",
+ score="2 : 3", score_label="最可能比分（次选 2-1英）", win="胜负：英格兰胜（对攻大球·both score）",
  advance="英格兰晋级（置信中·挪威live威胁偏高）",
  advance_note="盘口英格兰~65%晋级、4/9进4强;挪威17/10晋级、刚2-1淘汰巴西=live冷门候选,晋级判断非高置信。",
  pub="2026-07-10（初盘）",
@@ -125,12 +132,17 @@ M.append(dict(
  k2="哈兰德高空 vs 英重组后防(Quansah停赛·James顶)",
  k3="英格兰领先能否守住(领先守不稳老毛病)",
  verdict_title="英格兰对攻取胜(3-2)·挪威live冷门候选",
+ ko_tag='🏆 <b>两弱防+双强攻的对攻大球局</b> · 英格兰 <b>4/9进4强(~65%)·对攻Over</b>：front four(萨卡/贝林/戈登/凯恩)质量+大赛经验更全面;挪威28年首进世界杯KO·⑦维空白,但刚2-1淘汰巴西=本届最live冷门候选。<b>晋级押英</b>但置信中等——拖加时/点球英占优(挪KO零经验)。淘汰赛无平局:结论给<b>「晋级方+走向」</b>,比分给120′双锚。',
+ adv_badge='🏴 英格兰',
  verdict_body='<p>这是<b style="color:#e8b84b">两弱防+双强攻的对攻大球局</b>,不是闷平局。英格兰质量+板凳深度+大赛经验更全面,front four(萨卡/贝林厄姆/戈登/凯恩)能凿开挪威一般的防线;但英后防因Quansah停赛重组、加上"领先守不稳"老毛病,正撞挪威的高空/定位球杀招+领跑射手榜的哈兰德→大概率被咬球,难零封。</p><p>晋级押英格兰(盘口65%),但<b>置信度只给中等</b>:挪威刚2-1淘汰巴西,是本届最live的冷门候选。拖到加时/点球,英大场底蕴 vs 挪KO零经验→英占优。</p>',
  risk='哈兰德(高空+领跑射手榜7球)爆发,打穿英格兰因Quansah停赛而重组的后防+英"领先守不稳",挪威复刻2-1淘汰巴西的upset剧本掀翻晋级。挪威唯一软肋=KO经验空白(28年首进),真拖点球会露怯。',
  srcs=[("ESPN · QF preview","https://www.espn.com/soccer/story/_/id/49294844"),
        ("FIFA · Norway v England preview","https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/norway-england-preview-live-stream-team-news-tickets"),
        ("Squawka · 预测","https://www.squawka.com/us/news/world-cup/match-preview-norway-vs-england-07-11-26-world-cup-2026-quarterfinals/"),
-       ("Betfair · Haaland v Kane tips","https://betting.betfair.com/football/world-cup-2026/who-will-win-norway-v-england-tips-predictions-quarter-final-latest-erling-haaland-harry-kane-060726-204.html")],
+       ("Betfair · Haaland v Kane tips","https://betting.betfair.com/football/world-cup-2026/who-will-win-norway-v-england-tips-predictions-quarter-final-latest-erling-haaland-harry-kane-060726-204.html"),
+       ("OddsPortal · 欧赔+亚盘+大小球","https://www.oddsportal.com/football/world/world-championship-2026/"),
+       ("AsianBookie · 亚盘中心","https://beta.asianbookie.com/en/world-cup"),
+       ("Oddspedia · 欧盘/亚盘对比","https://oddspedia.com/football/world/world-cup")],
 ))
 
 # ===== ② 阿根廷 vs 瑞士 (#100 · 1/4决赛) =====
@@ -142,7 +154,7 @@ M.append(dict(
  sub="北京时间 2026-07-12 09:00 · 1/4决赛 · 堪萨斯城",
  hf="🇦🇷", hn="阿根廷", ht="梅西8球carry·防守强·点球之王E.马丁内斯",
  af="🇨🇭", an="瑞士", at="数据碾压但转化差·世界杯R16天花板·点球有底气",
- score="2 : 0", score_label="最可能比分（次选 1-0阿 / 1-1点球）", win="胜负：阿根廷胜（梅西carry+零封·Under）",
+ score="2 : 0", score_label="最可能比分（次选 1-0阿）", win="胜负：阿根廷胜（梅西carry+零封·Under）",
  advance="阿根廷晋级（置信中高·顺盘）",
  advance_note="盘口阿根廷~73%晋级、-145胜;瑞士+450胜。阿天赋碾压+KO clutch顶级,瑞士世界杯3届止步16强、攻坚上限低。",
  pub="2026-07-10（初盘）",
@@ -163,12 +175,17 @@ M.append(dict(
  k2="梅西carry vs 瑞士门将神扑",
  k3="阿根廷防线松(R32/R16各丢2)是否被瑞士反击/定位球抓到",
  verdict_title="阿根廷梅西carry零封晋级(2-0)·Under",
+ ko_tag='🏆 <b>天赋碾压+Under基调</b> · 阿根廷 <b>-145(~56%胜)·73%晋级</b>：梅西carry可无视控球强行破局、防线零封能力真实;瑞士"控得住≠攻不破"+世界杯3届止步R16、攻坚上限低。<b>晋级押阿·信盘口锚别下修</b>(此前下修1-0踩坑)。瑞士唯一活路=控死阿+拖点球,却正撞E.马丁内斯点球之王。淘汰赛无平局:结论给<b>「晋级方+走向」</b>,比分给120′双锚。',
+ adv_badge='🇦🇷 阿根廷',
  verdict_body='<p>阿根廷是<b style="color:#e8b84b">天赋碾压档、非便秘型</b>——梅西8球carry可无视控球/xG强行破局,防线零封能力真实(小组两场0失球)。瑞士是"控得住≠攻不破"的典型(数据碾压但转化差)、且世界杯R16天花板压顶(3届止步16强、攻坚上限低)→大概率进不了球。<b>信盘口锚别下修</b>(阿根廷画像铁律,此前下修1-0踩过坑)。</p><p>大盘Under基调兑现,2-0是最可能。瑞士唯一活路是控死阿根廷+门将神扑拖到点球(复刻Euro2020淘汰法国)——但点球恰恰撞上E.马丁内斯这个点球之王,是瑞士最不该走到的剧本。</p>',
  risk='瑞士把"控得住攻不破"反转成"控死阿根廷"+门将连续神扑,拖到加时/点球复刻Euro2020淘汰法国剧本。但瑞士这条唯一活路正好撞上阿根廷最强环节(E.马丁内斯点球之王),且阿防线松(R32/R16各丢2)若被瑞士定位球抓到才有戏。',
  srcs=[("ESPN · QF preview","https://www.espn.com/soccer/story/_/id/49294844"),
        ("bet365 · Argentina v Switzerland preview","https://news.bet365.com/en-us/article/argentina-vs-switzerland-quarterfinal-preview-lineup-predictions/2026070916124631618"),
        ("Yahoo · prediction/odds","https://sports.yahoo.com/articles/argentina-vs-switzerland-2026-world-132433817.html"),
-       ("OddsShark · picks","https://www.oddsshark.com/soccer/world-cup/argentina-switzerland-picks-odds-2026")],
+       ("OddsShark · picks","https://www.oddsshark.com/soccer/world-cup/argentina-switzerland-picks-odds-2026"),
+       ("OddsPortal · 欧赔+亚盘+大小球","https://www.oddsportal.com/football/world/world-championship-2026/"),
+       ("AsianBookie · 亚盘中心","https://beta.asianbookie.com/en/world-cup"),
+       ("Oddspedia · 欧盘/亚盘对比","https://oddspedia.com/football/world/world-cup")],
 ))
 
 # ===== ③ 西班牙 vs 比利时 (#98 · 1/4决赛) — 改后重生成(2-0零封) =====
@@ -201,12 +218,17 @@ M.append(dict(
  k2="西班牙终结 vs 库尔图瓦门神",
  k3="库尔图瓦能否封神拖住西班牙(唯一克星模板)",
  verdict_title="西班牙零封晋级(2-0)·主预测下修去both score",
+ ko_tag='🏆 <b>本届最强防 vs 无正牌9号</b> · 西班牙 <b>~61%胜/76%晋级</b>·6连场零封=世界杯历史最长纪录;比利时黄金一代KO脆、奥纳纳伤缺、仅老化卢卡库。<b>晋级押西·主押2-0零封</b>(去both score)。唯一变数=库尔图瓦封神(西唯一克星=真铁桶+神门将·2022摩洛哥)。淘汰赛无平局:结论给<b>「晋级方+走向」</b>,比分给120′双锚。',
+ adv_badge='🇪🇸 西班牙',
  verdict_body='<p>本场<b style="color:#e8b84b">主预测由「2-1西·both score」改为「2-0西·零封」</b>。理由:西班牙6连场零封=世界杯历史最长纪录、5场未失球、防守本届最硬;比利时无正牌9号(仅老化卢卡库)、小组两场运动战0进球、奥纳纳伤缺——给比利时那个"安慰球"没有依据。这正是昨天法国2-0摩洛哥栽的同一个坑(系统性低估强防队零封能力),直接纠正。</p><p>晋级押西班牙(盘口76%),Euro2024冠军KO成色顶级。唯一变数=库尔图瓦这个世界级门神——西班牙历史上唯一的克星模板就是"真铁桶+神门将"(2022摩洛哥),若库尔图瓦封神,可能把比分压到1-0甚至拖点球。</p>',
  risk='库尔图瓦封神(世界级门神=西班牙唯一克星模板·2022摩洛哥Bounou/R1佛得角Vozinha重演),连续扑救拖死西班牙到点球+比利时黄金一代绝境自救(卢卡库/蒂勒曼斯末段·复刻R32逆转塞内加尔剧本)。这是比利时唯一活路,故次选留1-1→点球偏西。',
  srcs=[("ESPN · QF preview","https://www.espn.com/soccer/story/_/id/49294844"),
        ("Squawka · Spain v Belgium","https://www.squawka.com/us/news/world-cup/match-preview-spain-vs-belgium-07-10-26-world-cup-2026-quarterfinals/"),
        ("SportPesa · team news h2h","https://blog.ke.sportpesa.com/2026/07/07/spain-vs-belgium-prediction-world-cup-2026-quarterfinal-preview-team-news-key-stats-h2h/"),
-       ("RotoWire · picks/odds","https://www.rotowire.com/soccer/article/spain-vs-belgium-picks-tips-odds-best-bets-2026-world-cup-quarterfinal-121916")],
+       ("RotoWire · picks/odds","https://www.rotowire.com/soccer/article/spain-vs-belgium-picks-tips-odds-best-bets-2026-world-cup-quarterfinal-121916"),
+       ("OddsPortal · 欧赔+亚盘+大小球","https://www.oddsportal.com/football/world/world-championship-2026/"),
+       ("AsianBookie · 亚盘中心","https://beta.asianbookie.com/en/world-cup"),
+       ("Oddspedia · 欧盘/亚盘对比","https://oddspedia.com/football/world/world-cup")],
 ))
 
 if __name__ == "__main__":
