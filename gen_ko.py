@@ -231,6 +231,49 @@ M.append(dict(
        ("Oddspedia · 欧盘/亚盘对比","https://oddspedia.com/football/world/world-cup")],
 ))
 
+# ===== ④ 英格兰 vs 阿根廷 (#102 · 半决赛) =====
+M.append(dict(
+ file="世界杯淘汰赛预测_英格兰vs阿根廷.html",
+ title="2026世界杯半决赛预测 · 英格兰 vs 阿根廷",
+ desc="抛硬币级强强对话·⑦维E.马丁内斯点球之王决胜;英微favorite但拖点球利阿;主1-1(120′)点球阿·次2-1阿/1-2英·晋级阿根廷",
+ h1="2026 世界杯 半决赛 · 英格兰 vs 阿根廷",
+ sub="北京时间 2026-07-16 03:00 · 半决赛 · 亚特兰大",
+ hf="🏴󠁧󠁢󠁥󠁮󠁧󠁿", hn="英格兰", ht="贝林厄姆KO carry·凯恩支点(哑火隐患)·防线会漏(孔萨停赛重组)",
+ af="🇦🇷", an="阿根廷", at="梅西carry+set piece·⑦维顶级E.马丁内斯·连打两加时腿沉",
+ score="1 : 1", score_label="最可能比分（120′·次选 2-1阿）", win="胜负：阿根廷晋级（1-1→点球·⑦维决胜）",
+ advance="阿根廷晋级（置信中·near coin-flip·顺⑦维微逆最薄盘口）",
+ advance_note="盘口英格兰-126晋级/阿根廷+108=英微favorite,但Squawka模型阿53%进决赛、庄家预期大概率加时(英90′胜+155/阿+205)。抛硬币局,⑦维(点球之王E.马丁内斯)做决胜层→偏阿。",
+ pub="2026-07-14（初盘）",
+ odds_title="抛硬币·英微favorite晋级(-126)·预期加时",
+ odds_body='<b style="color:#ddd">晋级</b>：英格兰 <b>-126</b>(~56%)·阿根廷 <b>+108</b>(~48%)·<b style="color:#e8c860">Squawka模型阿根廷53%进决赛</b>。<br><b style="color:#ddd">90分胜</b>：英格兰 <b>+175</b>·平 <b>+185</b>·阿根廷 <b>+200</b>(三向近均势)。<br><b style="color:#ddd">走向</b>：<b style="color:#e8c860">庄家预期大概率加时</b>——英90′胜+155 vs 晋级-126、阿90′胜+205 vs 晋级+108,晋级赔率远低于90′胜=市场押常规难分。<br><b style="color:#ddd">伤停</b>：⚠️英格兰孔萨(Konsa)停赛→昆萨(Quansah)顶中卫、后防再度重组;阿根廷主力齐整、梅西领衔。<br><b style="color:#ddd">阵容</b>：🏴 图赫尔(4-2-3-1)凯恩;贝林厄姆/萨卡/福登;后防重组。🇦🇷 斯卡洛尼 E.马丁内斯;梅西+阿尔瓦雷斯/劳塔罗;麦卡利斯特/恩佐/德保罗。<br><b style="color:#e8b84b">checklist</b>：① 抛硬币局+两队QF常规均1-1→别押零封/别押大屠杀·往低分紧局+加时收口 ② ⑦维=决胜层:拖加时/点球撞E.马丁内斯(点球之王)=阿最强环节、英点球包袱 ③ The One Risk=阿连打两加时腿沉+英体能足+贝林厄姆carry常规内解决。',
+ win_rel='<b style="color:#e8b84b">主=阿根廷晋级(1-1·120′→点球)</b>——两队都会漏也都能进但强强对话强度高、双方QF常规均1-1,拖到加时/点球撞E.马丁内斯点球之王;<b>次=2-1阿</b>(梅西/阿尔瓦雷斯常规/加时解决·both score)/<b>1-2英</b>(贝林厄姆carry+阿双加时腿沉的upset)。',
+ dims=[("① 阵容硬实力","lean-even","顶级对顶级","阿根廷卫冕冠军天赋+梅西;英格兰凯恩/贝林厄姆/萨卡/福登深度=当今两支最全面之一,纸面难分。"),
+       ("② 状态与打法","lean-even","对攻but强度高","两队KO防线都会漏(英领先守不稳/阿每场丢球)、都能进→both score;但半决赛防守强度高于小组赛,总进球往下收。阿连打两加时腿沉是变量。"),
+       ("③ 处境与动机","lean-even","半决赛生死","都全力;梅西或末届世界杯冲卫冕、英追1966后首冠,动机拉满无留力。"),
+       ("④ 赛场因素","lean-even","中立·亚特兰大(室内)","无主场加成;室内空调场利技术流。阿累计KO minutes(两场120′)>英(一场120′)=英体能微占优。"),
+       ("⑤ 软性指标","lean-a","⑦维KO成色差距","⭐阿根廷2022冠军+E.马丁内斯点球之王+梅西大场carry=顶级;英格兰2018 4强/Euro2020亚军有底蕴但'1966后无冠+破铁桶/点球'包袱→越往加时/点球阿越占优。")],
+ d6='🏴 英格兰 — 小组4-2克/0-0加/2-1巴拿马 · R32 2-1刚果金 · R16 3-2墨西哥 · QF <b>加时2-1挪威</b>(贝林厄姆双响carry)。<b style="color:#999">进攻高度依赖贝林厄姆(凯恩QF哑火·越位被吹)、防线会漏+领先守不稳(每场先丢或被咬)</b>,2018后首进世界杯4强。<br>🇦🇷 阿根廷 — 小组3-0阿尔/2-0奥 · R32 <b>加时3-2佛得角</b> · R16 <b>3-2埃及(0-2落后逆转)</b> · QF <b>加时3-1瑞士</b>。梅西carry+set piece破局,但<b style="color:#999">KO每场丢球(防线松)+连续两场加时=腿沉/疲劳隐患</b>。',
+ d7='🇦🇷 阿根廷 KO成色：⭐顶级——2022世界杯冠军,点球淘汰荷兰(E.马丁内斯扑2点)、决赛点球胜法国;<b style="color:#e8c860">E.马丁内斯=点球之王</b>、梅西大场carry、斯卡洛尼调度成熟、阿尔瓦雷斯/劳塔罗加时爆发力(QF 112′/120′连下两城)。越往加时/点球⑦维越加权。<br>🏴 英格兰 KO成色：2018世界杯4强(点球淘汰哥伦比亚)+Euro2020亚军(决赛点球负意)=底蕴,但<b style="color:#999">"1966后无冠+破铁桶/点球"心理包袱、贝林厄姆KO carry是新变量</b>;本届KO多常规/加时解决。<br><b style="color:#e8b84b">⚖ ⑥⑦维收口</b>：主1-1(120′)→点球阿(撞E.马丁内斯这个英最不该走到的剧本);这正是庄家预期(晋级赔率≪90′胜=押加时)+两队QF常规均1-1的复现。别押英零封、别押大屠杀(强强对话收口)。',
+ bars=[("1-1→点球 阿根廷(主)","","18","18"),("2-1 阿根廷(次·both score)","alt","15","15"),("1-2 英格兰(次·upset)","alt","13","13"),
+       ("2-2→点球 阿根廷","mid","12","12"),("2-1 英格兰(常规)","mid","12","12"),("2-0/2-1 阿根廷(常规)","mid","11","11"),("其他/更大比分","mid","19","19")],
+ bars_note="抛硬币+两队QF常规均1-1→比分重心在低分紧局+加时;阿根廷晋级(含常规/加时/点球)合计约52-53%(≈Squawka模型·顺⑦维微逆盘口),英格兰约47-48%(体能足+贝林厄姆carry常规内解决)。",
+ k1="梅西/阿尔瓦雷斯(阿) vs 贝林厄姆/凯恩(英)",
+ k2="梅西carry+E.马丁内斯点球 vs 贝林厄姆KO carry",
+ k3="阿根廷连打两加时腿沉 / 英孔萨停赛后防重组 / 会否再拖点球",
+ verdict_title="阿根廷⑦维点球占优晋级(1-1→点球)·硬币局微顺⑦维",
+ ko_tag='🏆 <b>抛硬币级强强对话</b> · 盘口英格兰 <b>-126晋级</b>(微favorite)、但Squawka模型 <b>阿根廷53%</b>进决赛、庄家 <b>预期加时</b>。两队QF常规均1-1+双方KO防线都会漏都能进。<b>⑦维=决胜层</b>:拖加时/点球撞E.马丁内斯点球之王=阿最强环节、英点球包袱。<b>晋级押阿·置信中</b>(near coin-flip·顺⑦维微逆最薄盘口·非为逆而逆)。淘汰赛无平局:结论给<b>「晋级方+走向」</b>,比分给120′双锚。',
+ adv_badge='🇦🇷 阿根廷',
+ verdict_body='<p>这是一场<b style="color:#e8b84b">真正的抛硬币局</b>:盘口英格兰晋级-126、阿根廷+108(英微favorite),但Squawka模型阿根廷53%进决赛,两条信号几乎对冲。两队QF常规时间<b>双双打成1-1</b>(英加时2-1挪威/阿加时3-1瑞士),且双方KO防线都会漏(英"领先守不稳"、阿每场丢球)、锋线都能进→大概率又是一场往加时走的低分紧局,而非大开大合的屠杀。</p><p>在这个庄家都<b>预期加时</b>(晋级赔率远低于90′胜)的剧本里,<b>第⑦维KO成色是决胜层</b>:阿根廷2022冠军底蕴+E.马丁内斯这个点球之王+梅西大场carry,正好卡在英格兰"1966后破铁桶/点球"的心理包袱靶心上——拖到点球是英格兰最不该走到、却最可能走到的剧本。故<b>晋级押阿根廷、置信中</b>(near coin-flip·用⑦维给这枚硬币加权、非为逆而逆)。主=1-1(120′)→点球阿过,次=2-1阿(梅西/阿尔瓦雷斯常规解决)/1-2英(贝林厄姆carry掀翻)。</p>',
+ risk='英格兰体能更足(阿根廷连打两场120′加时=腿沉)+贝林厄姆KO carry火力全开+抓住阿根廷松散的KO防线,在<b>常规/加时内</b>就解决战斗、不给E.马丁内斯上点球场的机会;或凯恩终于爆发。这是本场把"晋级押阿"打翻的最大不确定性——阿根廷的疲劳 vs 英格兰的质量与体能。',
+ srcs=[("SI · England v Argentina opening odds","https://www.si.com/betting/england-vs-argentina-opening-odds-for-world-cup-semifinals-will-england-make-history"),
+       ("Squawka · England v Argentina 预测","https://www.squawka.com/us/news/world-cup/match-preview-england-vs-argentina-07-15-26-world-cup-2026-semifinals/"),
+       ("ESPN · SF preview/predictions","https://www.espn.com/soccer/story/_/id/49334623/fifa-world-cup-semifinal-preview-predictions-odds-argentina-england-france-spain"),
+       ("CBS Sports · prediction/picks","https://www.cbssports.com/soccer/news/england-argentina-odds-prediction-time-2026-world-cup-semifinal-picks/"),
+       ("FOX Sports · SF odds","https://www.foxsports.com/stories/soccer/2026-world-cup-odds-which-nations-favored-reach-semifinals"),
+       ("OddsPortal · 欧赔+亚盘+大小球","https://www.oddsportal.com/football/world/world-championship-2026/"),
+       ("Oddspedia · 欧盘/亚盘对比","https://oddspedia.com/football/world/world-cup")],
+))
+
 if __name__ == "__main__":
     for m in M:
         io.open(os.path.join(RDIR, m["file"]), "w", encoding="utf-8").write(ko_page(m))
