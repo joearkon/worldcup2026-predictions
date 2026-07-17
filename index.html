@@ -299,13 +299,14 @@ html[data-theme="light"] .kol-mk{background:#e4dfd3;border-color:#d8cfba}
     return ka < kb ? -1 : ka > kb ? 1 : (a.group < b.group ? -1 : 1);
   });
 
-  var ICON = { exact:"✅", alt:"🟡", direction:"🔵", miss:"❌", pending:"⏳" };
+  var ICON = { exact:"✅", alt:"🟡", direction:"🔵", miss:"❌", pending:"⏳", upcoming:"🗓" };
   var STATUS_TXT = {
     exact:     { cls:"s-exact",     txt:"✅ 精确命中" },
     alt:       { cls:"s-alt",       txt:"🟡 次选命中" },
     direction: { cls:"s-direction", txt:"🔵 胜负命中" },
     miss:      { cls:"s-miss",      txt:"❌ 未命中" },
-    pending:   { cls:"s-pending",   txt:"⏳ 已预测" }
+    pending:   { cls:"s-pending",   txt:"⏳ 已预测" },
+    upcoming:  { cls:"s-none",      txt:"🗓 待预测" }
   };
 
   /* ---- 工具：按队名把 fixture 匹配到预测记录 ---- */
@@ -328,8 +329,8 @@ html[data-theme="light"] .kol-mk{background:#e4dfd3;border-color:#d8cfba}
   // 复用统一口径：比分命中=exact+alt；胜负/晋级命中=exact+alt+direction
   //   小组赛 direction = 胜平负对；淘汰赛 direction = 比分没中但晋级方对
   // nopred = 已赛但未出预测(用户外出漏预测)，只留档展示比分/晋级，不进任何命中率/覆盖口径
-  var total   = M.filter(function(m){return m.status!=="nopred";}).length;
-  var settled = M.filter(function(m){return m.status!=="pending"&&m.status!=="nopred";});
+  var total   = M.filter(function(m){return m.status!=="nopred"&&m.status!=="upcoming";}).length;
+  var settled = M.filter(function(m){return m.status!=="pending"&&m.status!=="nopred"&&m.status!=="upcoming";});
   function isKO(m){ return m.phase==="ko"; }
 
   // 桶统计工具：传入一组已开赛场次，算出比分命中/胜负(晋级)命中数与率
@@ -351,7 +352,7 @@ html[data-theme="light"] .kol-mk{background:#e4dfd3;border-color:#d8cfba}
   // —— 淘汰赛桶 ——
   var koSettled = settled.filter(isKO);
   var ko = tally(koSettled);
-  var koCovered = M.filter(function(m){return isKO(m)&&m.status!=="nopred";}).length;     // 已出具淘汰赛预测的场次（满额 32 场，nopred 不计）
+  var koCovered = M.filter(function(m){return isKO(m)&&m.status!=="nopred"&&m.status!=="upcoming";}).length;     // 已出具淘汰赛预测的场次（满额 32 场，nopred 不计）
   var koHasResult = ko.n > 0;
   var koScoreHint = koHasResult ? ("已开赛 "+ko.n+" 场中 "+ko.sHit+" 场比分命中 · 含加时,点球不计")
                                 : (koCovered ? ("淘汰赛未开打 · 已预测 "+koCovered+" 场待验证") : "淘汰赛尚未开始");
