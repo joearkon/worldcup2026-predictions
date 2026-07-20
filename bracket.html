@@ -205,10 +205,12 @@ html[data-theme="light"] .bk-champ-tag,html[data-theme="light"] .bk-champ-tag b{
   }
   var L = roundEl(T.leftR32,'1/16',false)+roundEl(T.leftR16,'1/8',false)+roundEl(T.leftQF,'1/4',false)+roundEl(T.leftSF,'半决赛',true);
   var R = roundEl(T.rightSF,'半决赛',true)+roundEl(T.rightQF,'1/4',false)+roundEl(T.rightR16,'1/8',false)+roundEl(T.rightR32,'1/16',false);
+  var champP = predOf(T.final), champ = isSettled(champP) ? champP.advance : null;
+  var champTxt = champ ? ((NF[champ]||'')+' '+champ+' 🏆') : '待揭晓';
   var fin = '<div class="bk-final-col">'+
     '<img class="bk-cup" src="assets/trophy.png" alt="大力神杯">'+
     '<div class="bk-final-label">决 赛</div>'+ matchEl(T.final,true)+
-    '<div class="bk-champ-tag">🏆 冠军<br><b>待揭晓</b></div>'+
+    '<div class="bk-champ-tag">🏆 冠军<br><b>'+champTxt+'</b></div>'+
     '<div class="bk-third"><div class="bk-third-label">🥉 季军赛</div>'+matchEl(103,false)+'</div></div>';
   document.getElementById('bkBracket').innerHTML = '<div class="bk-half L">'+L+'</div>'+fin+'<div class="bk-half R">'+R+'</div>';
   document.getElementById('bkBanner').textContent = '🧩 '+KO.note;
