@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>2026 世界杯预测 · 整体收官复盘（方向命中79.2%·框架跨界迁移A股）</title>
-<meta name="description" content="2026世界杯预测整体收官复盘：全届101场，方向命中80/101=79.2%(小组赛到淘汰赛无衰减)、比分30/101含16精确、决赛次锚1-0精确收口。双锚机制/球队画像/⑦维KO成色三大可复用资产，净胜球低估+探测到没扣扳机10次是错题，框架同构迁移到A股交易体系 · powered by 坤桑">
+<title>2026 世界杯预测 · 整体收官复盘（方向命中79.2%·含重做改进方向）</title>
+<meta name="description" content="2026世界杯预测整体收官复盘：全届101场，方向命中80/101=79.2%(小组赛到淘汰赛无衰减)、比分30/101含16精确、决赛次锚1-0精确收口。双锚机制/球队画像/⑦维KO成色三大可复用资产，净胜球低估+探测到没扣扳机10次是错题，附『如果重做这个系统』的实时盘口/技术架构/方法论改进方向 · powered by 坤桑">
 <link rel="canonical" href="https://worldcup2026.kunkun1023.xyz/reports/世界杯总复盘_2026收官.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="2026世界杯预测中心">
-<meta property="og:title" content="2026 世界杯预测 · 整体收官复盘（方向命中79.2%·框架跨界迁移A股）">
-<meta property="og:description" content="全届101场方向命中79.2%全程无衰减，双锚+画像+⑦维是可复用资产；净胜球低估、探测到没扣扳机10次是带进下个项目的错题；这套预测→复盘→成文纪律的闭环，本质是一台决策训练机。">
+<meta property="og:title" content="2026 世界杯预测 · 整体收官复盘（方向命中79.2%·含重做改进方向）">
+<meta property="og:description" content="全届101场方向命中79.2%全程无衰减，双锚+画像+⑦维是可复用资产；净胜球低估、探测到没扣扳机10次是带进下个项目的错题；附『如果重做这个系统』的改进方向：实时盘口自动化/结果回填/xG过程指标/框架回测。">
 <meta property="og:image" content="https://worldcup2026.kunkun1023.xyz/og.jpg">
 <meta property="og:url" content="https://worldcup2026.kunkun1023.xyz/reports/世界杯总复盘_2026收官.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -108,61 +108,40 @@ td .m{color:#fff;font-weight:700}
   <div class="lesson"><b class="r">④ 动机/软性维度容易读反。</b>末轮"默契球/留力"、季军赛"荣誉战谁认真"——把动机锚给错了对象（给了姆巴佩金靴个人动机，实际认真的是英格兰全队）。软性维度权重低但一旦读反就是方向 miss。</div>
 </div>
 
-<h2>四、这套框架以后的利用价值</h2>
+<h2>四、如果重做这个系统 · 改进方向</h2>
+
+<p style="font-size:13px;color:#bbb;margin-bottom:14px">复盘完战绩，更值钱的是"下次怎么做得更好"。分三块：<b style="color:#e8b84b">实时盘口 / 技术架构 / 方法论</b>。</p>
 
 <div class="card">
-  <div class="card-title">A. 对下一个赛事（欧洲杯/下届世界杯）——直接继承</div>
-  <div class="lesson"><b>team_profiles.md 画像库</b>：球队打法/防线成色是慢变量，可跨赛事沿用，开赛即有底子。</div>
-  <div class="lesson"><b>五维 + ⑥本届表现 + ⑦KO成色 模板</b> + <b>双锚机制</b> + <b>The One Risk</b>：整套评判骨架可复制。</div>
-  <div class="lesson"><b>错题清单直接变开赛 checklist</b>：净胜球分叉收口、盘口三连下修、动机别给错对象、The One Risk 敢扶正——四条贴在预测前必读。</div>
-  <div class="lesson">纯静态站 + <b>gen_ko.py / gen_report.py</b> 生成管道、<b>deploy.sh</b> 发布链路，换个赛事改数据源即可复用。</div>
+  <div class="card-title">A. 实时盘口（最大的技术缺口）</div>
+  <p style="font-size:13px;color:#ddd;margin-bottom:12px">本届盘口全靠<b>手工记录</b>（<b>临场追踪.md</b>），滞后、易漏、无法回测——盘口三连（退盘+砍让球+转小球）好几次是赛后才发现"信号早给了"。重做必须做成自动化：</p>
+  <div class="lesson"><b>接实时赔率 API</b>：欧盘 Pinnacle/Bet365、亚盘皇冠等，或 the-odds-api 这类聚合源，按分钟落库，画赔率移动曲线。</div>
+  <div class="lesson"><b>盘口异动自动告警</b>：让"退盘 / 大幅砍让球 / 大小球转向"变成程序触发的信号，而不是人肉盯——把赛前监控从被动记录升级成主动推送。</div>
+  <div class="lesson"><b>sharp money 追踪</b>：记录关键盘口跳动方向，赛后验证"跟 sharp 是否更准"，把盘口从"感觉"变成可统计的修正层。</div>
+</div>
+
+<div class="card">
+  <div class="card-title">B. 技术架构</div>
+  <div class="lesson"><b>结果自动回填</b>：本届比分靠手动搜+录，决赛都差点漏。接赛果 API（football-data.org / API-Football）自动回填 <b>matches.json</b>，KPI 实时刷新。</div>
+  <div class="lesson"><b>数据升级到过程指标</b>：现在画像多靠肉眼看比赛。接 <b>xG/xGA、射正、控球、高压次数</b>等每场过程数据，让第⑥维"本届表现"从主观读盘变成有数支撑，"虐菜=0"也能量化判定。</div>
+  <div class="lesson"><b>预测流程半自动化</b>：五维打分做成结构化输入表→模板生成报告初稿→人只做最后裁决，省掉每场手写 HTML 的重复劳动（现在 <b>gen_ko.py / gen_report.py</b> 已是雏形，可再往前一步）。</div>
+  <div class="lesson"><b>框架回测</b>：把"往一球收口""深盘打铁桶反指"等规则写成可回测的判据，拿历届世界杯/联赛数据跑一遍胜率，用数据决定规则该不该留、阈值定在哪——而不是靠单届样本拍脑袋。</div>
 </div>
 
 <div class="card win">
-  <div class="card-title">B. ⭐ 跨界迁移到 A股交易框架（这才是对你最值钱的部分）</div>
-  <p style="font-size:13px;color:#ddd;margin-bottom:12px">这套东西的内核和你的交易体系是<b class="real">同构</b>的，可以互相校准：</p>
-  <div class="tbl-wrap">
-  <table>
-    <tr><th>世界杯框架</th><th>A股交易框架</th><th>共同内核</th></tr>
-    <tr>
-      <td class="m">主预测 + 次选双锚</td><td>基本面主线 + 备选情形预案</td>
-      <td><b class="real">双锚容错，别单押一个剧本</b></td>
-    </tr>
-    <tr>
-      <td class="m">盘口 vs 真实力（预期差）</td><td>财报预期差（如锐捷"名不副实"误判翻案）</td>
-      <td><b class="real">市场价格里已 price-in 什么</b></td>
-    </tr>
-    <tr>
-      <td class="m">复盘台账 / 总检讨页</td><td>decision_ledger 决策台账 / 错题本</td>
-      <td><b class="real">判断做成可推导规则，脱离临场情绪</b></td>
-    </tr>
-    <tr>
-      <td class="m">"探测到没扣扳机" 10 次</td><td>看对却没执行（<b class="wrong">今天长电破位没减</b>）</td>
-      <td><b class="real">看对 ≠ 做对，执行断层是最贵的 miss</b></td>
-    </tr>
-    <tr>
-      <td class="m">净胜球别过度乐观</td><td>止盈别贪、别把浮盈当安全垫</td>
-      <td><b class="real">对好结果收口，别线性外推</b></td>
-    </tr>
-    <tr>
-      <td class="m">⑦维"越到加时权重越高"</td><td>越满仓/越深套，仓位管理权重越高</td>
-      <td><b class="real">极端情形下，风控维度前置</b></td>
-    </tr>
-    <tr>
-      <td class="m">一场不改框架，规则用户拍板</td><td>交易铁律不因单日盈亏推翻</td>
-      <td><b class="real">纪律的稳定性 > 单次结果</b></td>
-    </tr>
-  </table>
-  </div>
-  <p style="font-size:13px;color:#eee;margin-top:12px"><b style="color:#fff">最该带走的一条</b>：世界杯里"The One Risk 写对了没扶正"= 10 次 miss；今天长电"破位条件全满足、纪律说该减、却在扛"——<b class="wrong">是同一个执行断层</b>。这套复盘系统真正的价值，不是预测得多准，是<b class="real">逼你把"看对"变成"做对"</b>。</p>
+  <div class="card-title">C. 方法论（把这届的错变成下届的规则）</div>
+  <div class="lesson"><b class="g">净胜球收口分叉</b>：收口规则不能一刀切。加一个前置判断——铁桶局→往一球收；会漏球/强弱悬殊/荣誉战对攻→敢往上够。这是本届最大的比分病根。</div>
+  <div class="lesson"><b class="g">The One Risk 要有"扶正"机制</b>：全届 10 次"反向剧本写对了却没敢改主预测"。下次给 The One Risk 定一个硬触发（如盘口同向印证 + ⑥维支持 → 必须扶正为主预测），把"看对"逼成"押对"。</div>
+  <div class="lesson"><b class="g">动机/软性维度量化</b>：末轮默契球、荣誉战谁认真——这类最容易读反。建一个动机清单（出线状态/轮换意图/教练谢幕/金靴竞争…）逐项打分，别凭感觉给锚。</div>
+  <div class="lesson"><b class="g">画像库结构化</b>：<b>team_profiles.md</b> 现在是散文。改成字段化（防线档位/门将稳定性/单核依赖/KO抗压/板凳深度），可排序、可比较、可喂给打分表。</div>
 </div>
 
 <h2>五、结论</h2>
 
 <div class="card">
-  <div class="lesson"><b class="g">框架成立</b>：方向命中 ~79% 全程无衰减，双锚 + 画像 + ⑦维是可复用资产。</div>
-  <div class="lesson"><b class="r">短板明确</b>：净胜球收口分叉、The One Risk 敢扶正、盘口纪律执行——三条带进下一个项目。</div>
-  <div class="lesson"><b>最大红利在跨界</b>：这套"预测→复盘→成文纪律→校准"的闭环，本质是一台<b class="real">决策训练机</b>，对交易的价值 ≥ 对足球本身。</div>
+  <div class="lesson"><b class="g">框架成立</b>：方向命中 ~79% 全程无衰减，双锚 + 球队画像 + ⑦维 KO成色是可复用资产。</div>
+  <div class="lesson"><b class="r">短板明确</b>：净胜球收口要分叉、The One Risk 要敢扶正、盘口纪律要落地——三条带进下一个赛事。</div>
+  <div class="lesson"><b>重做的核心升级</b>：把<b class="real">手工的盘口/赛果/画像自动化</b>，把<b class="real">规则从单届经验变成可回测判据</b>——让这套系统从"娱乐预测"进化成"数据驱动、可持续迭代"的赛事分析引擎。</div>
   <div class="quote" style="border-left-color:#e8b84b;color:#cbb57e;margin-top:6px">🏆 西班牙时隔 16 年再捧杯，梅西末届止步亚军。全届 104 场，我们陪跑 101 场——赢在方向、栽在剧本、值在留痕。</div>
 </div>
 
